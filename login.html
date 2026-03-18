@@ -187,14 +187,14 @@
         return;
       }
 
-      const selectedPlan = localStorage.getItem("selectedPlan");
+const params = new URLSearchParams(window.location.search);
+const selectedPlan = params.get("plan");
 
-      if(selectedPlan){
-        window.location.href = "/members.html?checkout=1";
-      } else {
-        window.location.href = "/members.html";
-      }
-    }
+if(selectedPlan){
+  window.location.href = `/members.html?checkout=1&plan=${selectedPlan}`;
+} else {
+  window.location.href = "/members.html";
+}
   </script>
 
 </body>
