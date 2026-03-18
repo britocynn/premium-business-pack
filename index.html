@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Premium Business Pack</title>
 
 <style>
-
 body{
   margin:0;
   font-family: Arial, sans-serif;
@@ -22,6 +20,27 @@ body{
   margin:auto;
 }
 
+.top-actions{
+  margin-bottom:20px;
+}
+
+.top-actions button{
+  width:auto;
+  margin:5px;
+  padding:10px 18px;
+}
+
+.language-wrap{
+  margin-bottom:25px;
+}
+
+.language-wrap select{
+  padding:12px 14px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+}
+
 h1{
   font-size:2.4rem;
   margin-bottom:10px;
@@ -30,6 +49,7 @@ h1{
 .subtitle{
   color:#cbb58c;
   margin-bottom:30px;
+  font-size:1.05rem;
 }
 
 .box{
@@ -47,6 +67,7 @@ h1{
 
 .feature{
   margin-bottom:10px;
+  font-size:1rem;
 }
 
 .pricing{
@@ -67,10 +88,15 @@ h1{
   border:1px solid #e0cfa9;
 }
 
+.card h3{
+  margin-top:0;
+}
+
 .price{
   font-size:28px;
   margin:15px 0;
   color:#9c6a26;
+  font-weight:bold;
 }
 
 button{
@@ -93,81 +119,71 @@ button{
   color:#f5ead9;
 }
 
-.top-actions{
-  margin-bottom:30px;
-}
-
-.top-actions button{
-  width:auto;
-  margin:5px;
-  padding:10px 18px;
-}
-
 .footer{
   margin-top:40px;
   font-size:14px;
   color:#cbb58c;
 }
-
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
 <div class="top-actions">
-  <button class="btn-secondary" onclick="goLogin()">Login</button>
-  <button class="btn-secondary" onclick="goSignup()">Create Account</button>
+  <button class="btn-secondary" id="loginBtn" onclick="goLogin()">Login</button>
+  <button class="btn-secondary" id="signupBtn" onclick="goSignup()">Create Account</button>
 </div>
 
-<h1>✦ Premium Business Pack ✦</h1>
-<p class="subtitle">Everything you need to build, launch and grow your income online</p>
+<div class="language-wrap">
+  <select id="language" onchange="updateLanguage()">
+    <option value="en">English</option>
+    <option value="pt">Português</option>
+  </select>
+</div>
+
+<h1 id="title">✦ Premium Business Pack ✦</h1>
+<p class="subtitle" id="subtitle">Everything you need to build, launch and grow your income online</p>
 
 <div class="box">
-  <h2>What you get:</h2>
+  <h2 id="boxTitle">What you get:</h2>
 
-  <div class="feature">✔ Premium Business Name Generator</div>
-  <div class="feature">✔ Business & Side Hustle Ideas Generator</div>
-  <div class="feature">✔ Digital Business eBook</div>
-  <div class="feature">✔ Execution Checklist</div>
-  <div class="feature">✔ Lifetime Access</div>
+  <div class="feature" id="feature1">✔ Premium Business Name Generator</div>
+  <div class="feature" id="feature2">✔ Business & Side Hustle Ideas Generator</div>
+  <div class="feature" id="feature3">✔ Digital Business eBook</div>
+  <div class="feature" id="feature4">✔ Execution Checklist</div>
+  <div class="feature" id="feature5">✔ Lifetime Access</div>
 </div>
 
 <div class="pricing">
 
   <div class="card">
-    <h3>Complete Pack</h3>
-    <div class="price">€9</div>
-
-    <p>
+    <h3 id="plan1Title">Complete Pack</h3>
+    <div class="price" id="plan1Price">€57</div>
+    <p id="plan1Desc">
       Full access to all tools and resources to start and grow your business.
     </p>
-
-    <button class="btn-primary" onclick="buyBasic()">Get Access</button>
+    <button class="btn-primary" id="plan1Btn" onclick="buyBasic()">Get Access</button>
   </div>
 
   <div class="card">
-    <h3>Complete + Editable Library</h3>
-    <div class="price">€19</div>
-
-    <p>
+    <h3 id="plan2Title">Complete + Editable Library</h3>
+    <div class="price" id="plan2Price">€87</div>
+    <p id="plan2Desc">
       Includes everything + editable templates and advanced resources.
     </p>
-
-    <button class="btn-primary" onclick="buyPremium()">Get Full Access</button>
+    <button class="btn-primary" id="plan2Btn" onclick="buyPremium()">Get Full Access</button>
   </div>
 
 </div>
 
-<div class="footer">
+<div class="footer" id="footerText">
   Smart tools for modern entrepreneurs
 </div>
 
 </div>
 
 <script>
-
 function goLogin(){
   window.location.href = "/login.html";
 }
@@ -175,8 +191,6 @@ function goLogin(){
 function goSignup(){
   window.location.href = "/signup.html";
 }
-
-// ⚠️ depois vamos ligar isto ao Stripe API
 
 function buyBasic(){
   window.location.href = "/login.html";
@@ -186,6 +200,55 @@ function buyPremium(){
   window.location.href = "/login.html";
 }
 
+function updateLanguage(){
+  const lang = document.getElementById("language").value;
+
+  if(lang === "pt"){
+    document.documentElement.lang = "pt";
+    document.getElementById("loginBtn").innerText = "Entrar";
+    document.getElementById("signupBtn").innerText = "Criar Conta";
+    document.getElementById("title").innerText = "✦ Pack Premium de Negócio ✦";
+    document.getElementById("subtitle").innerText = "Tudo o que é necessário para criar, lançar e fazer crescer o rendimento online";
+    document.getElementById("boxTitle").innerText = "O que está incluído:";
+    document.getElementById("feature1").innerText = "✔ Gerador Premium de Nomes de Negócio";
+    document.getElementById("feature2").innerText = "✔ Gerador de Ideias de Negócio e Renda Extra";
+    document.getElementById("feature3").innerText = "✔ E-book Digital de Negócio";
+    document.getElementById("feature4").innerText = "✔ Checklist de Execução";
+    document.getElementById("feature5").innerText = "✔ Acesso Vitalício";
+
+    document.getElementById("plan1Title").innerText = "Pack Completo";
+    document.getElementById("plan1Desc").innerText = "Acesso completo a todas as ferramentas e recursos para criar e desenvolver o negócio.";
+    document.getElementById("plan1Btn").innerText = "Quero Aceder";
+
+    document.getElementById("plan2Title").innerText = "Pack Completo + Biblioteca Editável";
+    document.getElementById("plan2Desc").innerText = "Inclui tudo + templates editáveis e recursos avançados.";
+    document.getElementById("plan2Btn").innerText = "Quero o Acesso Total";
+
+    document.getElementById("footerText").innerText = "Ferramentas inteligentes para empreendedores modernos";
+  } else {
+    document.documentElement.lang = "en";
+    document.getElementById("loginBtn").innerText = "Login";
+    document.getElementById("signupBtn").innerText = "Create Account";
+    document.getElementById("title").innerText = "✦ Premium Business Pack ✦";
+    document.getElementById("subtitle").innerText = "Everything you need to build, launch and grow your income online";
+    document.getElementById("boxTitle").innerText = "What you get:";
+    document.getElementById("feature1").innerText = "✔ Premium Business Name Generator";
+    document.getElementById("feature2").innerText = "✔ Business & Side Hustle Ideas Generator";
+    document.getElementById("feature3").innerText = "✔ Digital Business eBook";
+    document.getElementById("feature4").innerText = "✔ Execution Checklist";
+    document.getElementById("feature5").innerText = "✔ Lifetime Access";
+
+    document.getElementById("plan1Title").innerText = "Complete Pack";
+    document.getElementById("plan1Desc").innerText = "Full access to all tools and resources to start and grow your business.";
+    document.getElementById("plan1Btn").innerText = "Get Access";
+
+    document.getElementById("plan2Title").innerText = "Complete + Editable Library";
+    document.getElementById("plan2Desc").innerText = "Includes everything + editable templates and advanced resources.";
+    document.getElementById("plan2Btn").innerText = "Get Full Access";
+
+    document.getElementById("footerText").innerText = "Smart tools for modern entrepreneurs";
+  }
+}
 </script>
 
 </body>
