@@ -249,38 +249,32 @@
     }
 
     async function buyPlan(plan) {
-      try {
-        const { data: { user } } = await supabaseClient.auth.getUser();
+  const { data: { user } } = await supabaseClient.auth.getUser();
 
-        if (!user) {
-          window.location.href = `/login.html?plan=${plan}`;
-          return;
-        }
+  if (!user) {
+    window.location.href = `/signup.html?plan=${plan}`;
+    return;
+  }
 
-        const response = await fetch("/api/create-checkout-session", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            plan: plan,
-            userId: user.id
-          })
-        });
+  const response = await fetch("/api/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      plan: plan,
+      userId: user.id
+    })
+  });
 
-        const data = await response.json();
+  const data = await response.json();
 
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          alert("Could not start checkout.");
-          console.error(data);
-        }
-      } catch (error) {
-        console.error(error);
-        alert("Something went wrong.");
-      }
-    }
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("Could not start checkout.");
+  }
+}
   </script>
 
 </body>
