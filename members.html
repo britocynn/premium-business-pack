@@ -268,7 +268,7 @@ const profile = await getProfile();
   async function startCheckoutIfNeeded(user) {
   const params = new URLSearchParams(window.location.search);
   const shouldCheckout = params.get("checkout");
-  const selectedPlan = localStorage.getItem("selectedPlan");
+  const selectedPlan = params.get("plan");
 
   if (shouldCheckout === "1" && selectedPlan) {
     const response = await fetch('/api/create-checkout-session', {
@@ -283,7 +283,6 @@ const profile = await getProfile();
     const data = await response.json();
 
     if (data.url) {
-      localStorage.removeItem("selectedPlan");
       window.location.href = data.url;
     } else {
       alert("Erro ao iniciar pagamento.");
