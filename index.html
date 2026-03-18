@@ -248,8 +248,14 @@
       }
     }
 
-function buyPlan(plan) {
-  window.location.href = `/login.html?plan=${plan}`;
+async function buyPlan(plan) {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    window.location.href = `/members.html?checkout=1&plan=${plan}`;
+  } else {
+    window.location.href = `/login.html?plan=${plan}`;
+  }
 }
   </script>
 
