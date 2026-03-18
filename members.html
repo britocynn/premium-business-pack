@@ -9,14 +9,16 @@
     body{
       margin:0;
       font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+      background:
+        radial-gradient(circle at top, rgba(156,106,38,0.16) 0%, rgba(17,13,10,0) 26%),
+        linear-gradient(180deg, #17120f 0%, #0d0b0a 100%);
       color:#f5ead9;
-      padding:32px 18px 50px;
+      padding:28px 16px 42px;
     }
 
     .container{
-      max-width:1100px;
-      margin:auto;
+      max-width:1080px;
+      margin:0 auto;
     }
 
     .top-bar{
@@ -25,47 +27,47 @@
       align-items:center;
       gap:12px;
       flex-wrap:wrap;
-      margin-bottom:28px;
+      margin-bottom:22px;
     }
 
-    .left-actions,
-    .right-actions{
+    .top-left,
+    .top-right{
       display:flex;
       align-items:center;
       gap:10px;
       flex-wrap:wrap;
     }
 
-    .logout-btn,
-    .ghost-btn{
-      background:#2b241c;
+    .logout-btn{
+      background:rgba(255,250,242,0.06);
       color:#f5ead9;
-      border:none;
-      padding:12px 16px;
-      border-radius:12px;
-      font-weight:bold;
+      border:1px solid rgba(224,207,169,0.18);
+      padding:11px 16px;
+      border-radius:14px;
+      font-weight:600;
       cursor:pointer;
       font-size:14px;
+      backdrop-filter: blur(6px);
     }
 
     .language-select{
-      padding:12px 14px;
-      border-radius:12px;
-      border:none;
-      font-size:14px;
-      font-weight:bold;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid rgba(224,207,169,0.18);
       background:#fffaf2;
       color:#2b241c;
+      font-size:14px;
+      font-weight:600;
     }
 
     .hero{
-      background: linear-gradient(180deg, rgba(248,240,227,0.98), rgba(255,250,242,0.98));
+      background:linear-gradient(180deg, rgba(250,244,235,0.98), rgba(255,250,242,0.98));
       color:#2b241c;
-      border-radius:24px;
-      padding:30px 24px;
-      box-shadow:0 16px 40px rgba(0,0,0,0.25);
-      margin-bottom:26px;
-      border:1px solid #e0cfa9;
+      border:1px solid rgba(224,207,169,0.8);
+      border-radius:28px;
+      padding:26px 22px;
+      box-shadow:0 16px 50px rgba(0,0,0,0.24);
+      margin-bottom:24px;
     }
 
     .hero-top{
@@ -82,206 +84,256 @@
 
     .hero h1{
       margin:0 0 10px 0;
-      font-size:clamp(2rem, 4vw, 3rem);
+      font-size:clamp(1.9rem, 4vw, 2.8rem);
       line-height:1.05;
+      font-weight:700;
+      letter-spacing:-0.03em;
     }
 
-    .hero p{
+    .hero-subtitle{
       margin:0;
-      color:#6b5a43;
-      line-height:1.6;
+      color:#6f5c44;
       font-size:1rem;
+      line-height:1.65;
+      max-width:700px;
     }
 
-    .plan-badge{
-  background:linear-gradient(135deg,#d6a84f,#9c6a26);
-  color:white;
-  padding:12px 16px;
-  border-radius:14px;
-  font-weight:bold;
-  font-size:14px;
-  text-align:center;
-  box-shadow:0 8px 20px rgba(156,106,38,0.28);
-  width:fit-content;
-  max-width:100%;
-}
+    .plan-pill{
+      align-self:flex-start;
+      background:linear-gradient(135deg,#dfb35a,#b67d2f);
+      color:white;
+      border-radius:999px;
+      padding:12px 18px;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:0.02em;
+      box-shadow:0 10px 24px rgba(182,125,47,0.28);
+      text-align:center;
+      white-space:nowrap;
+    }
 
-    .meta{
+    .meta-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:14px;
       margin-top:22px;
     }
 
     .meta-card{
-      background:#fffaf2;
-      border:1px solid #ead9b8;
-      border-radius:16px;
-      padding:16px;
+      background:rgba(255,250,242,0.72);
+      border:1px solid rgba(224,207,169,0.8);
+      border-radius:20px;
+      padding:18px 18px 16px;
     }
 
     .meta-label{
+      margin:0 0 8px 0;
       font-size:12px;
-      font-weight:bold;
-      letter-spacing:.04em;
+      font-weight:700;
+      letter-spacing:0.08em;
       text-transform:uppercase;
-      color:#9b7a47;
-      margin-bottom:6px;
+      color:#9a7740;
     }
 
     .meta-value{
+      margin:0;
+      font-size:1rem;
+      line-height:1.5;
       color:#2b241c;
-      font-weight:bold;
-      line-height:1.4;
+      font-weight:600;
       word-break:break-word;
     }
 
     .locked-box{
       display:none;
-      background: linear-gradient(180deg, rgba(248,240,227,0.98), rgba(255,250,242,0.98));
+      background:linear-gradient(180deg, rgba(250,244,235,0.98), rgba(255,250,242,0.98));
       color:#2b241c;
-      border-radius:24px;
-      padding:28px 24px;
-      box-shadow:0 16px 40px rgba(0,0,0,0.25);
-      margin-bottom:26px;
-      border:1px solid #e0cfa9;
+      border:1px solid rgba(224,207,169,0.8);
+      border-radius:28px;
+      padding:26px 22px;
+      box-shadow:0 16px 50px rgba(0,0,0,0.24);
+      margin-bottom:24px;
       text-align:center;
     }
 
     .locked-box h2{
       margin:0 0 10px 0;
-      font-size:2rem;
+      font-size:1.8rem;
+      font-weight:700;
+      letter-spacing:-0.02em;
     }
 
     .locked-box p{
       margin:0;
-      color:#6b5a43;
-      line-height:1.6;
+      color:#6f5c44;
+      line-height:1.65;
     }
 
-    .locked-box .ghost-btn{
+    .locked-btn{
       margin-top:18px;
+      background:#2b241c;
+      color:#f5ead9;
+      border:none;
+      padding:12px 18px;
+      border-radius:14px;
+      font-weight:600;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:12px;
+      margin:0 0 16px 0;
+      flex-wrap:wrap;
     }
 
     .section-title{
-      margin:0 0 16px 0;
-      font-size:1.25rem;
-      color:#f5ead9;
+      margin:0;
+      font-size:1.15rem;
+      color:#f3e7d3;
+      font-weight:600;
+      letter-spacing:-0.01em;
     }
 
-    .grid{
+    .section-subtitle{
+      margin:0;
+      color:#cdb89a;
+      font-size:0.94rem;
+    }
+
+    .tools-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
       gap:18px;
     }
 
     .tool-card{
-      background:#fffaf2;
+      background:linear-gradient(180deg, rgba(255,250,242,0.98), rgba(247,239,228,0.98));
       color:#2b241c;
-      border:1px solid #e0cfa9;
-      border-radius:22px;
-      padding:22px 18px 18px;
-      box-shadow:0 14px 30px rgba(0,0,0,0.22);
+      border:1px solid rgba(224,207,169,0.82);
+      border-radius:24px;
+      padding:18px 18px 16px;
+      box-shadow:0 14px 34px rgba(0,0,0,0.18);
       display:flex;
       flex-direction:column;
-      min-height:240px;
+      min-height:230px;
+      transition:transform .18s ease, box-shadow .18s ease;
     }
 
-    .tool-tag{
+    .tool-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 36px rgba(0,0,0,0.22);
+    }
+
+    .tool-badge{
       align-self:flex-start;
-      background:#f3e2bd;
-      color:#8f6727;
-      font-size:12px;
-      font-weight:bold;
-      padding:7px 10px;
+      background:#f1dfb7;
+      color:#936c2e;
       border-radius:999px;
-      margin-bottom:14px;
+      padding:7px 11px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:0.08em;
       text-transform:uppercase;
-      letter-spacing:.04em;
+      margin-bottom:14px;
     }
 
     .tool-card h3{
       margin:0 0 10px 0;
-      font-size:1.45rem;
-      line-height:1.15;
+      font-size:1.38rem;
+      line-height:1.16;
+      letter-spacing:-0.02em;
+      font-weight:700;
     }
 
     .tool-card p{
-      margin:0 0 18px 0;
-      color:#6b5a43;
-      line-height:1.55;
+      margin:0 0 16px 0;
+      color:#6d5a43;
+      line-height:1.6;
+      font-size:0.97rem;
       flex-grow:1;
     }
 
     .tool-btn{
       width:100%;
       border:none;
-      border-radius:14px;
-      padding:14px;
-      font-weight:bold;
+      border-radius:16px;
+      padding:14px 16px;
+      font-weight:700;
       font-size:15px;
       cursor:pointer;
-      background:linear-gradient(135deg,#d6a84f,#9c6a26);
+      background:linear-gradient(135deg,#dfb35a,#b67d2f);
       color:white;
+      box-shadow:0 10px 22px rgba(182,125,47,0.22);
     }
 
     .tool-card.locked{
-      opacity:.72;
+      opacity:0.72;
     }
 
     .tool-card.locked .tool-btn{
-      background:#b6b6b6;
+      background:#bfb7ab;
+      color:white;
       cursor:not-allowed;
+      box-shadow:none;
     }
 
     .footer-note{
-      margin-top:26px;
+      margin-top:24px;
       text-align:center;
-      color:#cbb58c;
+      color:#cdb89a;
       font-size:14px;
+      line-height:1.5;
     }
 
-    @media (max-width: 640px){
-  body{
-    padding:22px 14px 40px;
-  }
+    @media (max-width: 700px){
+      body{
+        padding:20px 14px 36px;
+      }
 
-  .hero,
-  .locked-box{
-    padding:24px 18px;
-  }
+      .hero,
+      .locked-box{
+        padding:22px 18px;
+        border-radius:24px;
+      }
 
-  .hero-top{
-    flex-direction:column;
-    align-items:stretch;
-  }
+      .hero-top{
+        flex-direction:column;
+        align-items:stretch;
+      }
 
-  .plan-badge{
-    width:100%;
-    max-width:100%;
-    box-sizing:border-box;
-    margin-top:8px;
-  }
+      .plan-pill{
+        white-space:normal;
+        width:100%;
+        box-sizing:border-box;
+      }
 
-  .meta{
-    grid-template-columns:1fr;
-  }
+      .meta-grid{
+        grid-template-columns:1fr;
+      }
 
-  .tool-card{
-    min-height:auto;
-  }
-}
+      .tool-card{
+        min-height:auto;
+      }
+
+      .tool-card h3{
+        font-size:1.26rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
 
     <div class="top-bar">
-      <div class="left-actions">
+      <div class="top-left">
         <button class="logout-btn" id="logoutBtn" onclick="logout()">Logout</button>
       </div>
 
-      <div class="right-actions">
+      <div class="top-right">
         <select id="language" class="language-select" onchange="updateLanguage()">
           <option value="en">English</option>
           <option value="pt">Português</option>
@@ -293,21 +345,21 @@
       <div class="hero-top">
         <div class="hero-text">
           <h1 id="title">Members Area</h1>
-          <p id="subtitle">Access your premium tools and resources in one private space.</p>
+          <p class="hero-subtitle" id="subtitle">Access your premium tools and resources in one private space.</p>
         </div>
 
-        <div class="plan-badge" id="planBadge">Plan: Checking...</div>
+        <div class="plan-pill" id="planBadge">Plan: Checking...</div>
       </div>
 
-      <div class="meta">
+      <div class="meta-grid">
         <div class="meta-card">
-          <div class="meta-label" id="emailLabel">Account Email</div>
-          <div class="meta-value" id="emailValue">Loading...</div>
+          <p class="meta-label" id="emailLabel">Account Email</p>
+          <p class="meta-value" id="emailValue">Loading...</p>
         </div>
 
         <div class="meta-card">
-          <div class="meta-label" id="statusLabel">Access Status</div>
-          <div class="meta-value" id="statusValue">Checking...</div>
+          <p class="meta-label" id="statusLabel">Access Status</p>
+          <p class="meta-value" id="statusValue">Checking...</p>
         </div>
       </div>
     </div>
@@ -315,43 +367,48 @@
     <div class="locked-box" id="lockedBox">
       <h2 id="lockedTitle">Access not active</h2>
       <p id="lockedText">Your account exists, but you do not yet have an active premium plan.</p>
-      <button class="ghost-btn" id="lockedBtn" onclick="window.location.href='/index.html'">View Plans</button>
+      <button class="locked-btn" id="lockedBtn" onclick="window.location.href='/index.html'">View Plans</button>
     </div>
 
     <div id="contentArea">
-      <h2 class="section-title" id="toolsTitle">Your Tools</h2>
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" id="toolsTitle">Your Tools</h2>
+          <p class="section-subtitle" id="toolsSubtitle">Everything organized for fast access and clear execution.</p>
+        </div>
+      </div>
 
-      <div class="grid">
+      <div class="tools-grid">
         <div class="tool-card">
-          <div class="tool-tag" id="tagNames">Premium</div>
+          <div class="tool-badge" id="tagNames">Premium</div>
           <h3 id="namesTitle">Premium Name Generator</h3>
           <p id="namesDesc">Create stronger, more memorable and more premium business names.</p>
           <button class="tool-btn" id="namesBtn" onclick="window.location.href='/premium-names.html'">Open</button>
         </div>
 
         <div class="tool-card">
-          <div class="tool-tag" id="tagIdeas">Premium</div>
+          <div class="tool-badge" id="tagIdeas">Premium</div>
           <h3 id="ideasTitle">Business Ideas Generator</h3>
           <p id="ideasDesc">Generate premium ideas with stronger monetization potential.</p>
           <button class="tool-btn" id="ideasBtn" onclick="window.location.href='/ideas.html'">Open</button>
         </div>
 
         <div class="tool-card">
-          <div class="tool-tag" id="tagEbook">Guide</div>
+          <div class="tool-badge" id="tagEbook">Guide</div>
           <h3 id="ebookTitle">eBook</h3>
           <p id="ebookDesc">Access your digital guide and core learning materials.</p>
           <button class="tool-btn" id="ebookBtn" onclick="window.location.href='/ebook.html'">Open</button>
         </div>
 
         <div class="tool-card">
-          <div class="tool-tag" id="tagChecklist">Action</div>
+          <div class="tool-badge" id="tagChecklist">Action</div>
           <h3 id="checklistTitle">Checklist</h3>
           <p id="checklistDesc">Follow a structured execution checklist step by step.</p>
           <button class="tool-btn" id="checklistBtn" onclick="window.location.href='/checklist.html'">Open</button>
         </div>
 
         <div class="tool-card" id="libraryCard">
-          <div class="tool-tag" id="tagLibrary">Upgrade</div>
+          <div class="tool-badge" id="tagLibrary">Upgrade</div>
           <h3 id="libraryTitle">Premium Library</h3>
           <p id="libraryDesc">Exclusive templates, tools and advanced resources.</p>
           <button class="tool-btn" id="libraryBtn" onclick="window.location.href='/library.html'">Open</button>
@@ -359,7 +416,7 @@
       </div>
 
       <div class="footer-note" id="footerNote">
-        Everything in one place, organized for fast execution.
+        Everything in one place, designed to help you move with clarity and speed.
       </div>
     </div>
 
@@ -390,6 +447,7 @@
         document.getElementById("emailLabel").innerText = "Email da Conta";
         document.getElementById("statusLabel").innerText = "Estado do Acesso";
         document.getElementById("toolsTitle").innerText = "As Tuas Ferramentas";
+        document.getElementById("toolsSubtitle").innerText = "Tudo organizado para acesso rápido e execução clara.";
 
         document.getElementById("tagNames").innerText = "Premium";
         document.getElementById("tagIdeas").innerText = "Premium";
@@ -421,7 +479,7 @@
         document.getElementById("lockedText").innerText = "A tua conta já existe, mas ainda não tens um plano premium ativo.";
         document.getElementById("lockedBtn").innerText = "Ver Packs";
 
-        document.getElementById("footerNote").innerText = "Tudo num só lugar, organizado para execução rápida.";
+        document.getElementById("footerNote").innerText = "Tudo num só lugar, pensado para te ajudar a avançar com clareza e rapidez.";
       } else {
         document.documentElement.lang = "en";
         document.title = "Members Area";
@@ -431,6 +489,7 @@
         document.getElementById("emailLabel").innerText = "Account Email";
         document.getElementById("statusLabel").innerText = "Access Status";
         document.getElementById("toolsTitle").innerText = "Your Tools";
+        document.getElementById("toolsSubtitle").innerText = "Everything organized for fast access and clear execution.";
 
         document.getElementById("tagNames").innerText = "Premium";
         document.getElementById("tagIdeas").innerText = "Premium";
@@ -462,7 +521,7 @@
         document.getElementById("lockedText").innerText = "Your account exists, but you do not yet have an active premium plan.";
         document.getElementById("lockedBtn").innerText = "View Plans";
 
-        document.getElementById("footerNote").innerText = "Everything in one place, organized for fast execution.";
+        document.getElementById("footerNote").innerText = "Everything in one place, designed to help you move with clarity and speed.";
       }
 
       renderProfileData();
