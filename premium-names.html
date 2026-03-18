@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Name Generator</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+      color:#f5ead9;
+      padding:40px 20px;
+      text-align:center;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:25px;
+    }
+
+    .language-wrap select{
+      padding:10px 12px;
+      border-radius:10px;
+      border:none;
+      font-size:15px;
+    }
+
+    .back-btn{
+      background:#2b241c;
+      color:#f5ead9;
+      border:none;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .hero{
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      margin-bottom:24px;
+      text-align:left;
+    }
+
+    .hero h1{
+      margin:0 0 10px 0;
+      text-align:center;
+    }
+
+    .hero p{
+      margin:8px 0;
+      text-align:center;
+      color:#6b5a43;
+    }
+
+    .generator-box{
+      background:#fffaf2;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+      border:1px solid #e0cfa9;
+      text-align:left;
+    }
+
+    label{
+      display:block;
+      margin:14px 0 8px;
+      font-weight:bold;
+    }
+
+    input, select{
+      width:100%;
+      box-sizing:border-box;
+      padding:14px;
+      border-radius:10px;
+      border:1px solid #d9c39b;
+      font-size:16px;
+    }
+
+    button.primary{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:16px;
+      font-weight:bold;
+      margin-top:20px;
+      background:linear-gradient(135deg,#d6a84f,#9c6a26);
+      color:white;
+    }
+
+    .results{
+      margin-top:24px;
+      display:grid;
+      gap:14px;
+    }
+
+    .result-card{
+      background:#f8f0e3;
+      border:1px solid #e0cfa9;
+      border-radius:14px;
+      padding:18px;
+    }
+
+    .result-name{
+      font-size:20px;
+      font-weight:bold;
+      color:#2b241c;
+      margin-bottom:8px;
+    }
+
+    .result-desc{
+      color:#5f503c;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .locked{
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      display:none;
+    }
+
+    .locked button{
+      margin-top:16px;
+      background:#2b241c;
+      color:#f5ead9;
+      border:none;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .hidden{
+      display:none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="top-bar">
+      <button class="back-btn" id="backBtn" onclick="goBack()">← Back</button>
+
+      <div class="language-wrap">
+        <select id="language" onchange="updateLanguage()">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1 id="title">Premium Name Generator</h1>
+      <p id="subtitle">Generate stronger, more brandable and more premium business names.</p>
+    </div>
+
+    <div class="locked" id="lockedBox">
+      <h2 id="lockedTitle">Access not active</h2>
+      <p id="lockedText">You need an active premium plan to use this tool.</p>
+      <button id="lockedBtn" onclick="window.location.href='/index.html'">View Plans</button>
+    </div>
+
+    <div id="contentArea" class="generator-box hidden">
+      <label id="keywordLabel" for="keyword">Business keyword / niche</label>
+      <input id="keyword" type="text" placeholder="e.g. beauty, accounting, digital, finance">
+
+      <label id="styleLabel" for="style">Name style</label>
+      <select id="style">
+        <option value="luxury">Luxury / Premium</option>
+        <option value="modern">Modern / Brandable</option>
+        <option value="professional">Professional / Trustworthy</option>
+      </select>
+
+      <button class="primary" id="generateBtn" onclick="generateNames()">Generate Premium Names</button>
+
+      <div class="results" id="results"></div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-client.js"></script>
+  <script src="/js/auth.js"></script>
+
+  <script>
+    function goBack(){
+      window.location.href = "/members.html";
+    }
+
+    function updateLanguage(){
+      const lang = document.getElementById("language").value;
+
+      if(lang === "pt"){
+        document.documentElement.lang = "pt";
+        document.title = "Gerador Premium de Nomes";
+        document.getElementById("backBtn").innerText = "← Voltar";
+        document.getElementById("title").innerText = "Gerador Premium de Nomes";
+        document.getElementById("subtitle").innerText = "Gera nomes de negócio mais fortes, mais premium e mais brandáveis.";
+        document.getElementById("keywordLabel").innerText = "Palavra-chave / nicho";
+        document.getElementById("keyword").placeholder = "ex.: beleza, contabilidade, digital, finanças";
+        document.getElementById("styleLabel").innerText = "Estilo do nome";
+        document.getElementById("style").options[0].text = "Luxo / Premium";
+        document.getElementById("style").options[1].text = "Moderno / Brandable";
+        document.getElementById("style").options[2].text = "Profissional / Confiança";
+        document.getElementById("generateBtn").innerText = "Gerar Nomes Premium";
+        document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
+        document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para usar esta ferramenta.";
+        document.getElementById("lockedBtn").innerText = "Ver Packs";
+      } else {
+        document.documentElement.lang = "en";
+        document.title = "Premium Name Generator";
+        document.getElementById("backBtn").innerText = "← Back";
+        document.getElementById("title").innerText = "Premium Name Generator";
+        document.getElementById("subtitle").innerText = "Generate stronger, more brandable and more premium business names.";
+        document.getElementById("keywordLabel").innerText = "Business keyword / niche";
+        document.getElementById("keyword").placeholder = "e.g. beauty, accounting, digital, finance";
+        document.getElementById("styleLabel").innerText = "Name style";
+        document.getElementById("style").options[0].text = "Luxury / Premium";
+        document.getElementById("style").options[1].text = "Modern / Brandable";
+        document.getElementById("style").options[2].text = "Professional / Trustworthy";
+        document.getElementById("generateBtn").innerText = "Generate Premium Names";
+        document.getElementById("lockedTitle").innerText = "Access not active";
+        document.getElementById("lockedText").innerText = "You need an active premium plan to use this tool.";
+        document.getElementById("lockedBtn").innerText = "View Plans";
+      }
+    }
+
+    function capitalize(word){
+      if(!word) return "";
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
+
+    function generateLuxuryNames(keyword){
+      const prefixes = ["Velora", "Aurea", "Lunara", "Virelle", "Élan", "Nobira", "Serelle", "Altiera"];
+      const suffixes = ["Studio", "Maison", "Collective", "Group", "Lab", "House", "Atelier", "Works"];
+      const root = capitalize(keyword);
+
+      return [
+        `${root} ${suffixes[0]}`,
+        `${prefixes[0]} ${root}`,
+        `${root}${prefixes[1]}`,
+        `${prefixes[2]} ${suffixes[1]}`,
+        `${root} ${suffixes[2]}`,
+        `${prefixes[3]} ${root}`
+      ];
+    }
+
+    function generateModernNames(keyword){
+      const prefixes = ["Nexa", "Vynta", "Zentro", "Lumio", "Axora", "Noviq", "Brivon", "Klyra"];
+      const suffixes = ["Flow", "Core", "Lab", "Hive", "Boost", "Wave", "Scale", "Base"];
+      const root = capitalize(keyword);
+
+      return [
+        `${prefixes[0]}${root}`,
+        `${root}${suffixes[0]}`,
+        `${prefixes[1]} ${suffixes[1]}`,
+        `${root} ${suffixes[2]}`,
+        `${prefixes[2]} ${root}`,
+        `${prefixes[3]} ${suffixes[3]}`
+      ];
+    }
+
+    function generateProfessionalNames(keyword){
+      const prefixes = ["Prime", "Trust", "Clear", "Elite", "Solid", "Core", "Bright", "Vision"];
+      const suffixes = ["Partners", "Consulting", "Advisory", "Solutions", "Services", "Experts", "Associates", "Management"];
+      const root = capitalize(keyword);
+
+      return [
+        `${root} ${suffixes[0]}`,
+        `${prefixes[0]} ${root}`,
+        `${prefixes[1]} ${suffixes[1]}`,
+        `${root} ${suffixes[2]}`,
+        `${prefixes[2]} ${root} ${suffixes[3]}`,
+        `${prefixes[3]} ${root}`
+      ];
+    }
+
+    function getDescription(name, keyword, lang){
+      if(lang === "pt"){
+        return `Nome pensado para um posicionamento mais premium e memorável dentro do nicho de ${keyword}.`;
+      }
+      return `A stronger, more premium and memorable name positioned for the ${keyword} niche.`;
+    }
+
+    function generateNames(){
+      const keyword = document.getElementById("keyword").value.trim();
+      const style = document.getElementById("style").value;
+      const lang = document.getElementById("language").value;
+      const results = document.getElementById("results");
+
+      if(!keyword){
+        alert(lang === "pt"
+          ? "Introduz uma palavra-chave ou nicho."
+          : "Please enter a keyword or niche.");
+        return;
+      }
+
+      let names = [];
+
+      if(style === "luxury"){
+        names = generateLuxuryNames(keyword);
+      } else if(style === "modern"){
+        names = generateModernNames(keyword);
+      } else {
+        names = generateProfessionalNames(keyword);
+      }
+
+      results.innerHTML = "";
+
+      names.forEach(name => {
+        const card = document.createElement("div");
+        card.className = "result-card";
+
+        const title = document.createElement("div");
+        title.className = "result-name";
+        title.innerText = name;
+
+        const desc = document.createElement("div");
+        desc.className = "result-desc";
+        desc.innerText = getDescription(name, keyword, lang);
+
+        card.appendChild(title);
+        card.appendChild(desc);
+        results.appendChild(card);
+      });
+    }
+
+    async function checkAccess(){
+      const user = await getCurrentUser();
+
+      if(!user){
+        window.location.href = "/login.html";
+        return;
+      }
+
+      const profile = await getProfile();
+
+      if(!profile || profile.is_premium !== true){
+        document.getElementById("lockedBox").style.display = "block";
+        document.getElementById("contentArea").classList.add("hidden");
+        return;
+      }
+
+      document.getElementById("lockedBox").style.display = "none";
+      document.getElementById("contentArea").classList.remove("hidden");
+    }
+
+    updateLanguage();
+    checkAccess();
+  </script>
+
+</body>
+</html>
