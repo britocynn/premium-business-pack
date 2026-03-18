@@ -155,6 +155,18 @@ button{
   <div class="feature" id="feature5">✔ Lifetime Access</div>
 </div>
 
+  <div style="margin-top: 30px; text-align: center;">
+
+  <button onclick="buyPlan('complete')" style="margin:10px; padding:15px 25px;">
+    Get Full Pack
+  </button>
+
+  <button onclick="buyPlan('complete_plus_library')" style="margin:10px; padding:15px 25px;">
+    Get Full Pack + Library
+  </button>
+
+</div>
+  
 <div class="pricing">
 
   <div class="card">
@@ -252,14 +264,10 @@ function updateLanguage(){
     document.getElementById("footerText").innerText = "Smart tools for modern entrepreneurs";
   }
 }
-</script>
 
-</body>
-</html>
+  async function buyPlan(plan) {
 
-async function buyPlan(plan) {
-
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await supabaseClient.auth.getUser();
 
   if (!user) {
     alert("You need to login first");
@@ -281,11 +289,8 @@ async function buyPlan(plan) {
 
   window.location.href = data.url;
 }
+</script>
 
-<button onclick="buyPlan('complete')">
-  Get Full Pack
-</button>
+</body>
+</html>
 
-<button onclick="buyPlan('complete_plus_library')">
-  Get Full Pack + Library
-</button>
