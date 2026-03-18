@@ -190,15 +190,14 @@
 
   const result = await signUpUser(email, password, redirectTo);
 
-  if(result){
-    message.innerText = lang === "pt"
-      ? "Conta criada com sucesso. Verifica o teu email para confirmares a conta."
-      : "Account created successfully. Please check your email to confirm your account.";
+if(result){
+  message.innerText = lang === "pt"
+    ? "Conta criada com sucesso. A redirecionar para o login..."
+    : "Account created successfully. Redirecting to login...";
 
-    setTimeout(() => {
-      window.location.href = redirectTo;
-    }, 2500);
-  }
+  setTimeout(() => {
+    window.location.href = redirectTo;
+  }, 1200);
 }
 
     updateLanguage();
