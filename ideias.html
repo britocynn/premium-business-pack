@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Ideas Generator</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+  color:#f5ead9;
+  padding:40px 20px;
+  text-align:center;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+}
+
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.top-bar button, select{
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  font-weight:bold;
+}
+
+h1{
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#cbb58c;
+  margin-bottom:30px;
+}
+
+.controls{
+  margin-bottom:25px;
+}
+
+.controls button{
+  margin:5px;
+  padding:12px 18px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.generate{
+  background:linear-gradient(135deg,#d6a84f,#9c6a26);
+  color:white;
+}
+
+.more{
+  background:#2b241c;
+  color:#f5ead9;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:#fffaf2;
+  color:#2b241c;
+  padding:18px;
+  border-radius:16px;
+  text-align:left;
+}
+
+.card h3{
+  margin:0 0 8px 0;
+}
+
+.card p{
+  font-size:14px;
+  color:#6b5a43;
+}
+
+.card button{
+  margin-top:10px;
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.copy{
+  background:#2b241c;
+  color:white;
+}
+
+.favorite{
+  background:#d6a84f;
+  color:white;
+}
+
+.locked{
+  display:none;
+  background:#f8f0e3;
+  color:#2b241c;
+  padding:25px;
+  border-radius:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="top-bar">
+  <button onclick="goBack()">← Back</button>
+
+  <select id="language" onchange="updateLanguage()">
+    <option value="en">English</option>
+    <option value="pt">Português</option>
+  </select>
+</div>
+
+<h1 id="title">Business Ideas Generator</h1>
+<p class="subtitle" id="subtitle">
+Discover profitable ideas you can start today.
+</p>
+
+<div class="locked" id="lockedBox">
+  <h2 id="lockedTitle">Access not active</h2>
+  <p id="lockedText">You need premium access</p>
+  <button onclick="window.location.href='/index.html'">View Plans</button>
+</div>
+
+<div id="appArea">
+
+<div class="controls">
+  <button class="generate" onclick="generateIdeas()">Generate Ideas</button>
+  <button class="more" onclick="generateIdeas()">Generate More</button>
+</div>
+
+<div class="grid" id="ideasContainer"></div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/auth.js"></script>
+
+<script>
+
+function goBack(){
+  window.location.href = "/members.html";
+}
+
+function updateLanguage(){
+  const lang = document.getElementById("language").value;
+
+  if(lang === "pt"){
+    document.getElementById("title").innerText = "Gerador de Ideias de Negócio";
+    document.getElementById("subtitle").innerText = "Descobre ideias lucrativas que podes começar hoje.";
+
+    document.getElementById("lockedTitle").innerText = "Acesso não ativo";
+    document.getElementById("lockedText").innerText = "Precisas de acesso premium";
+
+  } else {
+    document.getElementById("title").innerText = "Business Ideas Generator";
+    document.getElementById("subtitle").innerText = "Discover profitable ideas you can start today.";
+
+    document.getElementById("lockedTitle").innerText = "Access not active";
+    document.getElementById("lockedText").innerText = "You need premium access";
+  }
+}
+
+async function checkAccess(){
+  const user = await getCurrentUser();
+
+  if(!user){
+    window.location.href = "/login.html";
+    return;
+  }
+
+  const profile = await getProfile();
+
+  if(!profile || profile.is_premium !== true){
+    document.getElementById("lockedBox").style.display = "block";
+    document.getElementById("appArea").style.display = "none";
+    return;
+  }
+}
+
+const ideasPool = [
+  {title:"Digital Product Store", desc:"Sell templates, guides or digital tools online."},
+  {title:"Niche Instagram Page", desc:"Grow a targeted audience and monetize with offers."},
+  {title:"Freelance Services", desc:"Offer skills like design, copywriting or consulting."},
+  {title:"Online Course", desc:"Teach a skill you already master."},
+  {title:"Dropshipping Store", desc:"Sell products without holding inventory."},
+  {title:"Personal Brand", desc:"Build authority and sell your expertise."},
+  {title:"Ebook Business", desc:"Create and sell digital books."},
+  {title:"Affiliate Marketing", desc:"Earn commissions promoting products."},
+  {title:"AI Content Agency", desc:"Offer AI-powered services to businesses."},
+  {title:"Local Service Business", desc:"Cleaning, beauty, consulting or similar."},
+  {title:"Subscription Community", desc:"Create exclusive content for members."},
+  {title:"TikTok Monetization", desc:"Grow fast and monetize traffic."}
+];
+
+function generateIdeas(){
+  const container = document.getElementById("ideasContainer");
+
+  for(let i=0;i<6;i++){
+    const idea = ideasPool[Math.floor(Math.random()*ideasPool.length)];
+
+    const card = document.createElement("div");
+    card.className="card";
+
+    card.innerHTML = `
+      <h3>${idea.title}</h3>
+      <p>${idea.desc}</p>
+      <button class="copy" onclick="copyText('${idea.title}')">Copy</button>
+      <button class="favorite" onclick="saveFav('${idea.title}')">★</button>
+    `;
+
+    container.appendChild(card);
+  }
+}
+
+function copyText(text){
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+
+function saveFav(text){
+  let favs = JSON.parse(localStorage.getItem("favs") || "[]");
+  favs.push(text);
+  localStorage.setItem("favs", JSON.stringify(favs));
+  alert("Saved!");
+}
+
+updateLanguage();
+checkAccess();
+
+</script>
+
+</body>
+</html>
