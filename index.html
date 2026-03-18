@@ -251,11 +251,42 @@
 async function buyPlan(plan) {
   const { data: { user } } = await supabaseClient.auth.getUser();
 
-  if (user) {
-    window.location.href = `/members.html?checkout=1&plan=${plan}`;
-  } else {
+  if (!user) {
     window.location.href = `/login.html?plan=${plan}`;
+    return;
   }
+
+  const { data: profile, error } = await supabaseClient
+    .from("profiles")
+    .select("is_premium, plan")
+    .eq("id", user.id)
+    .single();
+
+  if (error) {
+    alert("Could not verify your account plan.");
+    return;
+  }
+
+  // Já tem o plano completo + biblioteca
+  if (profile.is_premium === true && profile.plan === "complete_plus_library") {
+    alert("You already have the highest plan.");
+    return;
+  }
+
+  // Já tem o plano completo e está a tentar comprar o mesmo
+  if (profile.is_premium === true && profile.plan === "complete" && plan === "complete") {
+    alert("You already have this plan.");
+    return;
+  }
+
+  // Se tem o completo e quer fazer upgrade para biblioteca, deixa seguir
+  if (profile.is_premium === true && profile.plan === "complete" && plan === "complete_plus_library") {
+    window.location.href = `/members.html?checkout=1&plan=${plan}`;
+    return;
+  }
+
+  // Conta free/logada
+  window.location.href = `/members.html?checkout=1&plan=${plan}`;
 }
   </script>
 
