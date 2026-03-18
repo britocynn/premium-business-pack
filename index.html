@@ -253,3 +253,36 @@ function updateLanguage(){
 
 </body>
 </html>
+
+async function buyPlan(plan) {
+
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    alert("You need to login first");
+    return;
+  }
+
+  const response = await fetch('/api/create-checkout-session', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      plan: plan,
+      userId: user.id
+    })
+  });
+
+  const data = await response.json();
+
+  window.location.href = data.url;
+}
+
+<button onclick="buyPlan('complete')">
+  Get Full Pack
+</button>
+
+<button onclick="buyPlan('complete_plus_library')">
+  Get Full Pack + Library
+</button>
