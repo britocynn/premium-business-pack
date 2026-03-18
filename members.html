@@ -251,6 +251,12 @@ await startCheckoutIfNeeded(user);
 
 const profile = await getProfile();
 
+  if (!profile || !profile.is_premium) {
+  document.getElementById("contentArea").style.display = "none";
+  document.getElementById("noAccess").style.display = "block";
+  return;
+}
+
   if (!profile || profile.is_premium !== true) {
   document.getElementById("membersCards").classList.add("hidden");
   document.getElementById("lockedBox").classList.remove("hidden");
