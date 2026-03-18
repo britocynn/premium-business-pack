@@ -1,1 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Premium Business Pack</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+  color:#f5ead9;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+}
+
+h1{
+  font-size:2.4rem;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#cbb58c;
+  margin-bottom:30px;
+}
+
+.box{
+  background:#f8f0e3;
+  color:#2b241c;
+  padding:25px;
+  border-radius:20px;
+  margin-bottom:20px;
+  text-align:left;
+}
+
+.box h2{
+  margin-top:0;
+}
+
+.feature{
+  margin-bottom:10px;
+}
+
+.pricing{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:30px;
+}
+
+.card{
+  background:#fffaf2;
+  color:#2b241c;
+  padding:25px;
+  border-radius:20px;
+  width:280px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  border:1px solid #e0cfa9;
+}
+
+.price{
+  font-size:28px;
+  margin:15px 0;
+  color:#9c6a26;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#d6a84f,#9c6a26);
+  color:white;
+}
+
+.btn-secondary{
+  background:#2b241c;
+  color:#f5ead9;
+}
+
+.top-actions{
+  margin-bottom:30px;
+}
+
+.top-actions button{
+  width:auto;
+  margin:5px;
+  padding:10px 18px;
+}
+
+.footer{
+  margin-top:40px;
+  font-size:14px;
+  color:#cbb58c;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="top-actions">
+  <button class="btn-secondary" onclick="goLogin()">Login</button>
+  <button class="btn-secondary" onclick="goSignup()">Create Account</button>
+</div>
+
+<h1>✦ Premium Business Pack ✦</h1>
+<p class="subtitle">Everything you need to build, launch and grow your income online</p>
+
+<div class="box">
+  <h2>What you get:</h2>
+
+  <div class="feature">✔ Premium Business Name Generator</div>
+  <div class="feature">✔ Business & Side Hustle Ideas Generator</div>
+  <div class="feature">✔ Digital Business eBook</div>
+  <div class="feature">✔ Execution Checklist</div>
+  <div class="feature">✔ Lifetime Access</div>
+</div>
+
+<div class="pricing">
+
+  <div class="card">
+    <h3>Complete Pack</h3>
+    <div class="price">€9</div>
+
+    <p>
+      Full access to all tools and resources to start and grow your business.
+    </p>
+
+    <button class="btn-primary" onclick="buyBasic()">Get Access</button>
+  </div>
+
+  <div class="card">
+    <h3>Complete + Editable Library</h3>
+    <div class="price">€19</div>
+
+    <p>
+      Includes everything + editable templates and advanced resources.
+    </p>
+
+    <button class="btn-primary" onclick="buyPremium()">Get Full Access</button>
+  </div>
+
+</div>
+
+<div class="footer">
+  Smart tools for modern entrepreneurs
+</div>
+
+</div>
+
+<script>
+
+function goLogin(){
+  window.location.href = "/login.html";
+}
+
+function goSignup(){
+  window.location.href = "/signup.html";
+}
+
+// ⚠️ depois vamos ligar isto ao Stripe API
+
+function buyBasic(){
+  window.location.href = "/login.html";
+}
+
+function buyPremium(){
+  window.location.href = "/login.html";
+}
+
+</script>
+
+</body>
+</html>
