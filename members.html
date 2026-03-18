@@ -226,14 +226,16 @@ function updateLanguage(){
 }
 
 async function loadMembersArea(){
-  const user = await getCurrentUser();
+const user = await getCurrentUser();
 
-  if(!user){
-    window.location.href = "/login.html";
-    return;
-  }
+if(!user){
+  window.location.href = "/login.html";
+  return;
+}
 
-  const profile = await getProfile();
+await startCheckoutIfNeeded(user);
+
+const profile = await getProfile();
 
   document.getElementById("emailText").innerText =
     document.getElementById("language").value === "pt"
@@ -263,6 +265,31 @@ async function loadMembersArea(){
   }
 }
 
+  async function startCheckoutIfNeeded(user) {
+  const params = new URLSearchParams(window.location.search);
+  const shouldCheckout = params.get("checkout");
+  const selectedPlan = localStorage.getItem("selectedPlan");
+
+  if (shouldCheckout === "1" && selectedPlan) {
+    const response = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        plan: selectedPlan,
+        userId: user.id
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.url) {
+      localStorage.removeItem("selectedPlan");
+      window.location.href = data.url;
+    } else {
+      alert("Erro ao iniciar pagamento.");
+    }
+  }
+}
 loadMembersArea();
 </script>
 
