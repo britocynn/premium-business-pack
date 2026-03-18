@@ -192,13 +192,16 @@ function goSignup(){
   window.location.href = "/signup.html";
 }
 
-function buyBasic(){
+async function buyBasic(){
+  localStorage.setItem("selectedPlan", "complete");
   window.location.href = "/login.html";
 }
 
-function buyPremium(){
+async function buyPremium(){
+  localStorage.setItem("selectedPlan", "complete_plus_library");
   window.location.href = "/login.html";
 }
+</script>
 
 function updateLanguage(){
   const lang = document.getElementById("language").value;
