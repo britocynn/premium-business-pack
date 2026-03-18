@@ -246,34 +246,35 @@
       }
     }
 
-    async function buyPlan(plan) {
-      const { data: { user } } = await supabaseClient.auth.getUser();
+<script>
+async function buyPlan(plan) {
+  const { data: { user } } = await supabaseClient.auth.getUser();
 
-      if (!user) {
-        localStorage.setItem("selectedPlan", plan);
-        window.location.href = "/login.html";
-        return;
-      }
+  if (!user) {
+    window.location.href = `/login.html?plan=${plan}`;
+    return;
+  }
 
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          plan: plan,
-          userId: user.id
-        })
-      });
+  const response = await fetch('/api/create-checkout-session', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      plan: plan,
+      userId: user.id
+    })
+  });
 
-      const data = await response.json();
+  const data = await response.json();
 
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert("Could not start checkout.");
-      }
-    }
+  if (data.url) {
+    window.location.href = data.url;
+  } else {
+    alert("Could not start checkout.");
+  }
+}
+</script>
   </script>
 
 </body>
