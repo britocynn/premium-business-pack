@@ -182,7 +182,12 @@ async function handleLogin(){
 
   const result = await signInUser(email, password);
 
-  if(result){
+if(result){
+  const selectedPlan = localStorage.getItem("selectedPlan");
+
+  if(selectedPlan){
+    window.location.href = "/members.html?checkout=1";
+  } else {
     window.location.href = "/members.html";
   }
 }
