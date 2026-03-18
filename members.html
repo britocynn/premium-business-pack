@@ -13,12 +13,10 @@ body{
   color:#f5ead9;
   padding:40px 20px;
 }
-
 .container{
   max-width:1100px;
   margin:auto;
 }
-
 .top-bar{
   display:flex;
   justify-content:space-between;
@@ -26,13 +24,11 @@ body{
   flex-wrap:wrap;
   margin-bottom:30px;
 }
-
 .top-bar select{
   padding:10px;
   border-radius:10px;
   border:none;
 }
-
 .logout{
   background:#2b241c;
   color:#f5ead9;
@@ -41,114 +37,104 @@ body{
   border-radius:10px;
   cursor:pointer;
 }
-
 h1{
   text-align:center;
   margin-bottom:10px;
 }
-
 .subtitle{
   text-align:center;
   color:#cbb58c;
   margin-bottom:30px;
 }
-
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
 }
-
 .card{
   background:#fffaf2;
   color:#2b241c;
   padding:22px;
   border-radius:18px;
 }
-
 .card h3{
   margin:0 0 10px 0;
 }
-
 .card p{
   color:#6b5a43;
   font-size:14px;
   line-height:1.5;
 }
-
-.card button{
+.card a{
+  display:block;
   width:100%;
   margin-top:15px;
   padding:14px;
   border:none;
   border-radius:10px;
   font-weight:bold;
-  cursor:pointer;
+  text-decoration:none;
+  text-align:center;
   background:linear-gradient(135deg,#d6a84f,#9c6a26);
   color:white;
+  box-sizing:border-box;
 }
-
 .locked{
   opacity:0.5;
 }
-
-.locked button{
+.locked a{
   background:#999;
-  cursor:not-allowed;
+  pointer-events:none;
 }
-
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
-<div class="top-bar">
-  <button class="logout" onclick="logout()">Logout</button>
+  <div class="top-bar">
+    <button class="logout" onclick="logout()" id="logoutBtn">Logout</button>
 
-  <select id="language" onchange="updateLanguage()">
-    <option value="en">English</option>
-    <option value="pt">Português</option>
-  </select>
-</div>
+    <select id="language" onchange="updateLanguage()">
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>
 
-<h1 id="title">Members Area</h1>
-<p class="subtitle" id="subtitle">Access your premium tools and resources</p>
+  <h1 id="title">Members Area</h1>
+  <p class="subtitle" id="subtitle">Access your premium tools and resources</p>
 
-<div class="grid">
+  <div class="grid">
+    <div class="card">
+      <h3 id="namesTitle">Premium Name Generator</h3>
+      <p id="namesDesc">Create stronger, more memorable and more premium business names.</p>
+      <a href="/names.html?v=3" id="namesBtn">OPEN NAMES</a>
+    </div>
 
-<div class="card">
-  <h3 id="namesTitle">Premium Name Generator</h3>
-  <p id="namesDesc">Create stronger, more memorable and more premium business names.</p>
-  <button onclick="goNames()" id="namesBtn">Open Names</button>
-</div>
+    <div class="card">
+      <h3 id="ideasTitle">Business Ideas Generator</h3>
+      <p id="ideasDesc">Generate premium ideas with high monetization potential.</p>
+      <a href="/ideas.html?v=3" id="ideasBtn">OPEN IDEAS</a>
+    </div>
 
-<div class="card">
-  <h3 id="ideasTitle">Business Ideas Generator</h3>
-  <p id="ideasDesc">Generate premium ideas with high monetization potential.</p>
-  <button onclick="goIdeas()" id="ideasBtn">Open Ideas</button>
-</div>
+    <div class="card">
+      <h3 id="ebookTitle">eBook</h3>
+      <p id="ebookDesc">Access your digital guide and core materials.</p>
+      <a href="/ebook.html?v=3" id="ebookBtn">OPEN EBOOK</a>
+    </div>
 
-<div class="card">
-  <h3 id="ebookTitle">eBook</h3>
-  <p id="ebookDesc">Access your digital guide and core materials.</p>
-  <button onclick="goEbook()" id="ebookBtn">Open</button>
-</div>
+    <div class="card" id="checklistCard">
+      <h3 id="checklistTitle">Checklist</h3>
+      <p id="checklistDesc">Follow a structured execution checklist step by step.</p>
+      <a href="/checklist.html?v=3" id="checklistBtn">OPEN CHECKLIST</a>
+    </div>
 
-<div class="card" id="checklistCard">
-  <h3 id="checklistTitle">Checklist</h3>
-  <p id="checklistDesc">Follow a structured execution checklist step by step.</p>
-  <button onclick="goChecklist()" id="checklistBtn">Open</button>
-</div>
-
-<div class="card" id="libraryCard">
-  <h3 id="libraryTitle">Premium Library</h3>
-  <p id="libraryDesc">Exclusive templates, tools and advanced resources.</p>
-  <button onclick="goLibrary()" id="libraryBtn">Open</button>
-</div>
-
-</div>
+    <div class="card" id="libraryCard">
+      <h3 id="libraryTitle">Premium Library</h3>
+      <p id="libraryDesc">Exclusive templates, tools and advanced resources.</p>
+      <a href="/library.html?v=3" id="libraryBtn">OPEN LIBRARY</a>
+    </div>
+  </div>
 
 </div>
 
@@ -157,27 +143,6 @@ h1{
 <script src="/js/auth.js"></script>
 
 <script>
-
-function goNames(){
-  window.location.href = "/names.html?v=2";
-}
-
-function goIdeas(){
-  window.location.href = "/ideas.html?v=2";
-}
-
-function goEbook(){
-  window.location.href = "/ebook.html?v=2";
-}
-
-function goChecklist(){
-  window.location.href = "/checklist.html?v=2";
-}
-
-function goLibrary(){
-  window.location.href = "/library.html?v=2";
-}
-
 async function logout(){
   await supabaseClient.auth.signOut();
   window.location.href = "/login.html";
@@ -188,28 +153,54 @@ function updateLanguage(){
 
   if(lang === "pt"){
     document.title = "Área de Membros";
+    document.getElementById("logoutBtn").innerText = "Terminar Sessão";
     document.getElementById("title").innerText = "Área de Membros";
     document.getElementById("subtitle").innerText = "Acede às tuas ferramentas e recursos premium";
 
     document.getElementById("namesTitle").innerText = "Gerador Premium de Nomes";
-    document.getElementById("namesDesc").innerText = "Cria nomes de negócio mais fortes, memoráveis e premium.";
-    document.getElementById("namesBtn").innerText = "Abrir";
+    document.getElementById("namesDesc").innerText = "Cria nomes de negócio mais fortes, memoráveis e mais premium.";
+    document.getElementById("namesBtn").innerText = "ABRIR NOMES";
 
     document.getElementById("ideasTitle").innerText = "Gerador de Ideias de Negócio";
-    document.getElementById("ideasDesc").innerText = "Gera ideias com maior potencial de monetização.";
-    document.getElementById("ideasBtn").innerText = "Abrir";
+    document.getElementById("ideasDesc").innerText = "Gera ideias premium com maior potencial de monetização.";
+    document.getElementById("ideasBtn").innerText = "ABRIR IDEIAS";
 
     document.getElementById("ebookTitle").innerText = "E-book";
-    document.getElementById("ebookDesc").innerText = "Acede ao teu guia digital.";
-    document.getElementById("ebookBtn").innerText = "Abrir";
+    document.getElementById("ebookDesc").innerText = "Acede ao teu guia digital e materiais principais.";
+    document.getElementById("ebookBtn").innerText = "ABRIR E-BOOK";
 
     document.getElementById("checklistTitle").innerText = "Checklist";
-    document.getElementById("checklistDesc").innerText = "Segue um plano estruturado passo a passo.";
-    document.getElementById("checklistBtn").innerText = "Abrir";
+    document.getElementById("checklistDesc").innerText = "Segue uma checklist estruturada passo a passo.";
+    document.getElementById("checklistBtn").innerText = "ABRIR CHECKLIST";
 
     document.getElementById("libraryTitle").innerText = "Biblioteca Premium";
-    document.getElementById("libraryDesc").innerText = "Templates e recursos avançados exclusivos.";
-    document.getElementById("libraryBtn").innerText = "Abrir";
+    document.getElementById("libraryDesc").innerText = "Templates exclusivos, ferramentas e recursos avançados.";
+    document.getElementById("libraryBtn").innerText = "ABRIR BIBLIOTECA";
+  } else {
+    document.title = "Members Area";
+    document.getElementById("logoutBtn").innerText = "Logout";
+    document.getElementById("title").innerText = "Members Area";
+    document.getElementById("subtitle").innerText = "Access your premium tools and resources";
+
+    document.getElementById("namesTitle").innerText = "Premium Name Generator";
+    document.getElementById("namesDesc").innerText = "Create stronger, more memorable and more premium business names.";
+    document.getElementById("namesBtn").innerText = "OPEN NAMES";
+
+    document.getElementById("ideasTitle").innerText = "Business Ideas Generator";
+    document.getElementById("ideasDesc").innerText = "Generate premium ideas with high monetization potential.";
+    document.getElementById("ideasBtn").innerText = "OPEN IDEAS";
+
+    document.getElementById("ebookTitle").innerText = "eBook";
+    document.getElementById("ebookDesc").innerText = "Access your digital guide and core materials.";
+    document.getElementById("ebookBtn").innerText = "OPEN EBOOK";
+
+    document.getElementById("checklistTitle").innerText = "Checklist";
+    document.getElementById("checklistDesc").innerText = "Follow a structured execution checklist step by step.";
+    document.getElementById("checklistBtn").innerText = "OPEN CHECKLIST";
+
+    document.getElementById("libraryTitle").innerText = "Premium Library";
+    document.getElementById("libraryDesc").innerText = "Exclusive templates, tools and advanced resources.";
+    document.getElementById("libraryBtn").innerText = "OPEN LIBRARY";
   }
 }
 
@@ -223,16 +214,13 @@ async function checkAccess(){
 
   const profile = await getProfile();
 
-  // bloquear biblioteca se não for plano avançado
   if(profile && profile.plan !== "complete_plus_library"){
     document.getElementById("libraryCard").classList.add("locked");
-    document.getElementById("libraryBtn").disabled = true;
   }
 }
 
 updateLanguage();
 checkAccess();
-
 </script>
 
 </body>
