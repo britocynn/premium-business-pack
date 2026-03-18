@@ -1,296 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Business Pack</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Business Pack</title>
 
-<style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
-  color:#f5ead9;
-  text-align:center;
-  padding:40px 20px;
-}
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+      color:#f5ead9;
+      text-align:center;
+      padding:40px 20px;
+    }
 
-.container{
-  max-width:900px;
-  margin:auto;
-}
+    .container{
+      max-width:900px;
+      margin:auto;
+    }
 
-.top-actions{
-  margin-bottom:20px;
-}
+    .top-actions{
+      margin-bottom:20px;
+    }
 
-.top-actions button{
-  width:auto;
-  margin:5px;
-  padding:10px 18px;
-}
+    .top-actions button{
+      width:auto;
+      margin:5px;
+      padding:10px 18px;
+    }
 
-.language-wrap{
-  margin-bottom:25px;
-}
+    .language-wrap{
+      margin-bottom:25px;
+    }
 
-.language-wrap select{
-  padding:12px 14px;
-  border-radius:10px;
-  border:none;
-  font-size:16px;
-}
+    .language-wrap select{
+      padding:12px 14px;
+      border-radius:10px;
+      border:none;
+      font-size:16px;
+    }
 
-h1{
-  font-size:2.4rem;
-  margin-bottom:10px;
-}
+    h1{
+      font-size:2.4rem;
+      margin-bottom:10px;
+    }
 
-.subtitle{
-  color:#cbb58c;
-  margin-bottom:30px;
-  font-size:1.05rem;
-}
+    .subtitle{
+      color:#cbb58c;
+      margin-bottom:30px;
+      font-size:1.05rem;
+    }
 
-.box{
-  background:#f8f0e3;
-  color:#2b241c;
-  padding:25px;
-  border-radius:20px;
-  margin-bottom:20px;
-  text-align:left;
-}
+    .box{
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:25px;
+      border-radius:20px;
+      margin-bottom:20px;
+      text-align:left;
+    }
 
-.box h2{
-  margin-top:0;
-}
+    .box h2{
+      margin-top:0;
+    }
 
-.feature{
-  margin-bottom:10px;
-  font-size:1rem;
-}
+    .feature{
+      margin-bottom:10px;
+      font-size:1rem;
+    }
 
-.pricing{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin-top:30px;
-}
+    .pricing{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:30px;
+    }
 
-.card{
-  background:#fffaf2;
-  color:#2b241c;
-  padding:25px;
-  border-radius:20px;
-  width:280px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
-  border:1px solid #e0cfa9;
-}
+    .card{
+      background:#fffaf2;
+      color:#2b241c;
+      padding:25px;
+      border-radius:20px;
+      width:280px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+      border:1px solid #e0cfa9;
+    }
 
-.card h3{
-  margin-top:0;
-}
+    .card h3{
+      margin-top:0;
+    }
 
-.price{
-  font-size:28px;
-  margin:15px 0;
-  color:#9c6a26;
-  font-weight:bold;
-}
+    .price{
+      font-size:28px;
+      margin:15px 0;
+      color:#9c6a26;
+      font-weight:bold;
+    }
 
-button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:16px;
-  font-weight:bold;
-}
+    button{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:16px;
+      font-weight:bold;
+    }
 
-.btn-primary{
-  background:linear-gradient(135deg,#d6a84f,#9c6a26);
-  color:white;
-}
+    .btn-primary{
+      background:linear-gradient(135deg,#d6a84f,#9c6a26);
+      color:white;
+    }
 
-.btn-secondary{
-  background:#2b241c;
-  color:#f5ead9;
-}
+    .btn-secondary{
+      background:#2b241c;
+      color:#f5ead9;
+    }
 
-.footer{
-  margin-top:40px;
-  font-size:14px;
-  color:#cbb58c;
-}
-</style>
+    .footer{
+      margin-top:40px;
+      font-size:14px;
+      color:#cbb58c;
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
 
-<div class="top-actions">
-  <button class="btn-secondary" id="loginBtn" onclick="goLogin()">Login</button>
-  <button class="btn-secondary" id="signupBtn" onclick="goSignup()">Create Account</button>
-</div>
+    <div class="top-actions">
+      <button class="btn-secondary" id="loginBtn" onclick="goLogin()">Login</button>
+      <button class="btn-secondary" id="signupBtn" onclick="goSignup()">Create Account</button>
+    </div>
 
-<div class="language-wrap">
-  <select id="language" onchange="updateLanguage()">
-    <option value="en">English</option>
-    <option value="pt">Português</option>
-  </select>
-</div>
+    <div class="language-wrap">
+      <select id="language" onchange="updateLanguage()">
+        <option value="en">English</option>
+        <option value="pt">Português</option>
+      </select>
+    </div>
 
-<h1 id="title">✦ Premium Business Pack ✦</h1>
-<p class="subtitle" id="subtitle">Everything you need to build, launch and grow your income online</p>
+    <h1 id="title">✦ Premium Business Pack ✦</h1>
+    <p class="subtitle" id="subtitle">Everything you need to build, launch and grow your income online</p>
 
-<div class="box">
-  <h2 id="boxTitle">What you get:</h2>
+    <div class="box">
+      <h2 id="boxTitle">What you get:</h2>
 
-  <div class="feature" id="feature1">✔ Premium Business Name Generator</div>
-  <div class="feature" id="feature2">✔ Business & Side Hustle Ideas Generator</div>
-  <div class="feature" id="feature3">✔ Digital Business eBook</div>
-  <div class="feature" id="feature4">✔ Execution Checklist</div>
-  <div class="feature" id="feature5">✔ Lifetime Access</div>
-</div>
+      <div class="feature" id="feature1">✔ Premium Business Name Generator</div>
+      <div class="feature" id="feature2">✔ Business & Side Hustle Ideas Generator</div>
+      <div class="feature" id="feature3">✔ Digital Business eBook</div>
+      <div class="feature" id="feature4">✔ Execution Checklist</div>
+      <div class="feature" id="feature5">✔ Lifetime Access</div>
+    </div>
 
-  <div style="margin-top: 30px; text-align: center;">
+    <div class="pricing">
 
-  <button onclick="buyPlan('complete')" style="margin:10px; padding:15px 25px;">
-    Get Full Pack
-  </button>
+      <div class="card">
+        <h3 id="plan1Title">Complete Pack</h3>
+        <div class="price" id="plan1Price">€57</div>
+        <p id="plan1Desc">
+          Full access to all tools and resources to start and grow your business.
+        </p>
+        <button class="btn-primary" id="plan1Btn" onclick="buyPlan('complete')">Get Access</button>
+      </div>
 
-  <button onclick="buyPlan('complete_plus_library')" style="margin:10px; padding:15px 25px;">
-    Get Full Pack + Library
-  </button>
+      <div class="card">
+        <h3 id="plan2Title">Complete + Editable Library</h3>
+        <div class="price" id="plan2Price">€87</div>
+        <p id="plan2Desc">
+          Includes everything + editable templates and advanced resources.
+        </p>
+        <button class="btn-primary" id="plan2Btn" onclick="buyPlan('complete_plus_library')">Get Full Access</button>
+      </div>
 
-</div>
-  
-<div class="pricing">
+    </div>
 
-  <div class="card">
-    <h3 id="plan1Title">Complete Pack</h3>
-    <div class="price" id="plan1Price">€57</div>
-    <p id="plan1Desc">
-      Full access to all tools and resources to start and grow your business.
-    </p>
-    <button class="btn-primary" id="plan1Btn" onclick="buyBasic()">Get Access</button>
+    <div class="footer" id="footerText">
+      Smart tools for modern entrepreneurs
+    </div>
+
   </div>
 
-  <div class="card">
-    <h3 id="plan2Title">Complete + Editable Library</h3>
-    <div class="price" id="plan2Price">€87</div>
-    <p id="plan2Desc">
-      Includes everything + editable templates and advanced resources.
-    </p>
-    <button class="btn-primary" id="plan2Btn" onclick="buyPremium()">Get Full Access</button>
-  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-client.js"></script>
+  <script src="/js/auth.js"></script>
 
-</div>
+  <script>
+    function goLogin(){
+      window.location.href = "/login.html";
+    }
 
-<div class="footer" id="footerText">
-  Smart tools for modern entrepreneurs
-</div>
+    function goSignup(){
+      window.location.href = "/signup.html";
+    }
 
-</div>
+    function updateLanguage(){
+      const lang = document.getElementById("language").value;
 
-<script>
-function goLogin(){
-  window.location.href = "/login.html";
-}
+      if(lang === "pt"){
+        document.documentElement.lang = "pt";
+        document.getElementById("loginBtn").innerText = "Entrar";
+        document.getElementById("signupBtn").innerText = "Criar Conta";
+        document.getElementById("title").innerText = "✦ Pack Premium de Negócio ✦";
+        document.getElementById("subtitle").innerText = "Tudo o que é necessário para criar, lançar e fazer crescer o rendimento online";
+        document.getElementById("boxTitle").innerText = "O que está incluído:";
+        document.getElementById("feature1").innerText = "✔ Gerador Premium de Nomes de Negócio";
+        document.getElementById("feature2").innerText = "✔ Gerador de Ideias de Negócio e Renda Extra";
+        document.getElementById("feature3").innerText = "✔ E-book Digital de Negócio";
+        document.getElementById("feature4").innerText = "✔ Checklist de Execução";
+        document.getElementById("feature5").innerText = "✔ Acesso Vitalício";
 
-function goSignup(){
-  window.location.href = "/signup.html";
-}
+        document.getElementById("plan1Title").innerText = "Pack Completo";
+        document.getElementById("plan1Desc").innerText = "Acesso completo a todas as ferramentas e recursos para criar e desenvolver o negócio.";
+        document.getElementById("plan1Btn").innerText = "Quero Aceder";
 
-async function buyBasic(){
-  localStorage.setItem("selectedPlan", "complete");
-  window.location.href = "/login.html";
-}
+        document.getElementById("plan2Title").innerText = "Pack Completo + Biblioteca Editável";
+        document.getElementById("plan2Desc").innerText = "Inclui tudo + templates editáveis e recursos avançados.";
+        document.getElementById("plan2Btn").innerText = "Quero o Acesso Total";
 
-async function buyPremium(){
-  localStorage.setItem("selectedPlan", "complete_plus_library");
-  window.location.href = "/login.html";
-}
-</script>
+        document.getElementById("footerText").innerText = "Ferramentas inteligentes para empreendedores modernos";
+      } else {
+        document.documentElement.lang = "en";
+        document.getElementById("loginBtn").innerText = "Login";
+        document.getElementById("signupBtn").innerText = "Create Account";
+        document.getElementById("title").innerText = "✦ Premium Business Pack ✦";
+        document.getElementById("subtitle").innerText = "Everything you need to build, launch and grow your income online";
+        document.getElementById("boxTitle").innerText = "What you get:";
+        document.getElementById("feature1").innerText = "✔ Premium Business Name Generator";
+        document.getElementById("feature2").innerText = "✔ Business & Side Hustle Ideas Generator";
+        document.getElementById("feature3").innerText = "✔ Digital Business eBook";
+        document.getElementById("feature4").innerText = "✔ Execution Checklist";
+        document.getElementById("feature5").innerText = "✔ Lifetime Access";
 
-function updateLanguage(){
-  const lang = document.getElementById("language").value;
+        document.getElementById("plan1Title").innerText = "Complete Pack";
+        document.getElementById("plan1Desc").innerText = "Full access to all tools and resources to start and grow your business.";
+        document.getElementById("plan1Btn").innerText = "Get Access";
 
-  if(lang === "pt"){
-    document.documentElement.lang = "pt";
-    document.getElementById("loginBtn").innerText = "Entrar";
-    document.getElementById("signupBtn").innerText = "Criar Conta";
-    document.getElementById("title").innerText = "✦ Pack Premium de Negócio ✦";
-    document.getElementById("subtitle").innerText = "Tudo o que é necessário para criar, lançar e fazer crescer o rendimento online";
-    document.getElementById("boxTitle").innerText = "O que está incluído:";
-    document.getElementById("feature1").innerText = "✔ Gerador Premium de Nomes de Negócio";
-    document.getElementById("feature2").innerText = "✔ Gerador de Ideias de Negócio e Renda Extra";
-    document.getElementById("feature3").innerText = "✔ E-book Digital de Negócio";
-    document.getElementById("feature4").innerText = "✔ Checklist de Execução";
-    document.getElementById("feature5").innerText = "✔ Acesso Vitalício";
+        document.getElementById("plan2Title").innerText = "Complete + Editable Library";
+        document.getElementById("plan2Desc").innerText = "Includes everything + editable templates and advanced resources.";
+        document.getElementById("plan2Btn").innerText = "Get Full Access";
 
-    document.getElementById("plan1Title").innerText = "Pack Completo";
-    document.getElementById("plan1Desc").innerText = "Acesso completo a todas as ferramentas e recursos para criar e desenvolver o negócio.";
-    document.getElementById("plan1Btn").innerText = "Quero Aceder";
+        document.getElementById("footerText").innerText = "Smart tools for modern entrepreneurs";
+      }
+    }
 
-    document.getElementById("plan2Title").innerText = "Pack Completo + Biblioteca Editável";
-    document.getElementById("plan2Desc").innerText = "Inclui tudo + templates editáveis e recursos avançados.";
-    document.getElementById("plan2Btn").innerText = "Quero o Acesso Total";
+    async function buyPlan(plan) {
+      const { data: { user } } = await supabaseClient.auth.getUser();
 
-    document.getElementById("footerText").innerText = "Ferramentas inteligentes para empreendedores modernos";
-  } else {
-    document.documentElement.lang = "en";
-    document.getElementById("loginBtn").innerText = "Login";
-    document.getElementById("signupBtn").innerText = "Create Account";
-    document.getElementById("title").innerText = "✦ Premium Business Pack ✦";
-    document.getElementById("subtitle").innerText = "Everything you need to build, launch and grow your income online";
-    document.getElementById("boxTitle").innerText = "What you get:";
-    document.getElementById("feature1").innerText = "✔ Premium Business Name Generator";
-    document.getElementById("feature2").innerText = "✔ Business & Side Hustle Ideas Generator";
-    document.getElementById("feature3").innerText = "✔ Digital Business eBook";
-    document.getElementById("feature4").innerText = "✔ Execution Checklist";
-    document.getElementById("feature5").innerText = "✔ Lifetime Access";
+      if (!user) {
+        localStorage.setItem("selectedPlan", plan);
+        window.location.href = "/login.html";
+        return;
+      }
 
-    document.getElementById("plan1Title").innerText = "Complete Pack";
-    document.getElementById("plan1Desc").innerText = "Full access to all tools and resources to start and grow your business.";
-    document.getElementById("plan1Btn").innerText = "Get Access";
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          plan: plan,
+          userId: user.id
+        })
+      });
 
-    document.getElementById("plan2Title").innerText = "Complete + Editable Library";
-    document.getElementById("plan2Desc").innerText = "Includes everything + editable templates and advanced resources.";
-    document.getElementById("plan2Btn").innerText = "Get Full Access";
+      const data = await response.json();
 
-    document.getElementById("footerText").innerText = "Smart tools for modern entrepreneurs";
-  }
-}
-
-  async function buyPlan(plan) {
-
-  const { data: { user } } = await supabaseClient.auth.getUser();
-
-  if (!user) {
-    alert("You need to login first");
-    return;
-  }
-
-  const response = await fetch('/api/create-checkout-session', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      plan: plan,
-      userId: user.id
-    })
-  });
-
-  const data = await response.json();
-
-  window.location.href = data.url;
-}
-</script>
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Could not start checkout.");
+      }
+    }
+  </script>
 
 </body>
 </html>
-
