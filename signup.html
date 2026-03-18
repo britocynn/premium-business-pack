@@ -167,32 +167,39 @@
     }
 
     async function handleSignup(){
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const lang = document.getElementById("language").value;
-      const message = document.getElementById("message");
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const lang = document.getElementById("language").value;
+  const message = document.getElementById("message");
 
-      message.innerText = "";
+  message.innerText = "";
 
-      if(!email || !password){
-        message.innerText = lang === "pt"
-          ? "Preenche todos os campos."
-          : "Please fill in all fields.";
-        return;
-      }
+  if(!email || !password){
+    message.innerText = lang === "pt"
+      ? "Preenche todos os campos."
+      : "Please fill in all fields.";
+    return;
+  }
 
-      const result = await signUpUser(email, password);
+  const params = new URLSearchParams(window.location.search);
+  const selectedPlan = params.get("plan");
 
-      if(result){
-        message.innerText = lang === "pt"
-          ? "Conta criada com sucesso. Verifica o teu email para confirmares a conta."
-          : "Account created successfully. Please check your email to confirm your account.";
+  const redirectTo = selectedPlan
+    ? `${window.location.origin}/login.html?plan=${selectedPlan}`
+    : `${window.location.origin}/login.html`;
 
-        setTimeout(() => {
-          window.location.href = "/login.html";
-        }, 2500);
-      }
-    }
+  const result = await signUpUser(email, password, redirectTo);
+
+  if(result){
+    message.innerText = lang === "pt"
+      ? "Conta criada com sucesso. Verifica o teu email para confirmares a conta."
+      : "Account created successfully. Please check your email to confirm your account.";
+
+    setTimeout(() => {
+      window.location.href = redirectTo;
+    }, 2500);
+  }
+}
 
     updateLanguage();
   </script>
