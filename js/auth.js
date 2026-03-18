@@ -1,7 +1,10 @@
-async function signUpUser(email, password) {
+async function signUpUser(email, password, redirectTo) {
   const { data, error } = await supabaseClient.auth.signUp({
     email: email,
-    password: password
+    password: password,
+    options: {
+      emailRedirectTo: redirectTo
+    }
   });
 
   if (error) {
