@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+      color:#f5ead9;
+      padding:40px 20px;
+      text-align:center;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:25px;
+    }
+
+    .language-wrap select{
+      padding:10px 12px;
+      border-radius:10px;
+      border:none;
+      font-size:15px;
+    }
+
+    .back-btn{
+      background:#2b241c;
+      color:#f5ead9;
+      border:none;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .hero{
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      margin-bottom:24px;
+    }
+
+    .hero h1{
+      margin:0 0 10px 0;
+    }
+
+    .hero p{
+      color:#6b5a43;
+      line-height:1.6;
+    }
+
+    .content-box{
+      background:#fffaf2;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      border:1px solid #e0cfa9;
+    }
+
+    .main-btn{
+      display:inline-block;
+      margin-top:20px;
+      background:linear-gradient(135deg,#d6a84f,#9c6a26);
+      color:white;
+      text-decoration:none;
+      padding:14px 22px;
+      border-radius:10px;
+      font-weight:bold;
+    }
+
+    .locked{
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      display:none;
+    }
+
+    .locked button{
+      margin-top:16px;
+      background:#2b241c;
+      color:#f5ead9;
+      border:none;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="top-bar">
+      <button class="back-btn" id="backBtn" onclick="goBack()">← Back</button>
+
+      <div class="language-wrap">
+        <select id="language" onchange="updateLanguage()">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1 id="title">Execution Checklist</h1>
+      <p id="subtitle">Follow a clear step-by-step path to launch your business.</p>
+    </div>
+
+    <div class="locked" id="lockedBox">
+      <h2 id="lockedTitle">Access not active</h2>
+      <p id="lockedText">You need an active premium plan to access this checklist.</p>
+      <button id="lockedBtn" onclick="window.location.href='/index.html'">View Plans</button>
+    </div>
+
+    <div id="contentArea" class="content-box hidden">
+      <h2 id="checklistTitle">Your Business Checklist</h2>
+
+      <p id="checklistDesc">
+        This checklist gives you a clear structure so you know exactly what to do and in which order.
+      </p>
+
+      <p id="checklistDesc2">
+        Open it below and follow each step at your own pace.
+      </p>
+
+      <!-- SUBSTITUI ESTE LINK -->
+      <a id="checklistBtn" class="main-btn" href="COLE_AQUI_O_LINK_DO_CHECKLIST" target="_blank">
+        Open Checklist
+      </a>
+
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-client.js"></script>
+  <script src="/js/auth.js"></script>
+
+  <script>
+    function goBack(){
+      window.location.href = "/members.html";
+    }
+
+    function updateLanguage(){
+      const lang = document.getElementById("language").value;
+
+      if(lang === "pt"){
+        document.documentElement.lang = "pt";
+        document.title = "Checklist";
+        document.getElementById("backBtn").innerText = "← Voltar";
+        document.getElementById("title").innerText = "Checklist de Execução";
+        document.getElementById("subtitle").innerText = "Segue um caminho claro passo a passo para lançar o teu negócio.";
+
+        document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
+        document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para aceder a esta checklist.";
+        document.getElementById("lockedBtn").innerText = "Ver Packs";
+
+        document.getElementById("checklistTitle").innerText = "A tua Checklist de Negócio";
+        document.getElementById("checklistDesc").innerText = "Esta checklist dá-te uma estrutura clara para saberes exatamente o que fazer e em que ordem.";
+        document.getElementById("checklistDesc2").innerText = "Abre abaixo e segue cada passo ao teu ritmo.";
+        document.getElementById("checklistBtn").innerText = "Abrir Checklist";
+      } else {
+        document.documentElement.lang = "en";
+        document.title = "Checklist";
+        document.getElementById("backBtn").innerText = "← Back";
+        document.getElementById("title").innerText = "Execution Checklist";
+        document.getElementById("subtitle").innerText = "Follow a clear step-by-step path to launch your business.";
+
+        document.getElementById("lockedTitle").innerText = "Access not active";
+        document.getElementById("lockedText").innerText = "You need an active premium plan to access this checklist.";
+        document.getElementById("lockedBtn").innerText = "View Plans";
+
+        document.getElementById("checklistTitle").innerText = "Your Business Checklist";
+        document.getElementById("checklistDesc").innerText = "This checklist gives you a clear structure so you know exactly what to do and in which order.";
+        document.getElementById("checklistDesc2").innerText = "Open it below and follow each step at your own pace.";
+        document.getElementById("checklistBtn").innerText = "Open Checklist";
+      }
+    }
+
+    async function checkAccess(){
+      const user = await getCurrentUser();
+
+      if(!user){
+        window.location.href = "/login.html";
+        return;
+      }
+
+      const profile = await getProfile();
+
+      if(!profile || profile.is_premium !== true){
+        document.getElementById("lockedBox").style.display = "block";
+        document.getElementById("contentArea").classList.add("hidden");
+        return;
+      }
+
+      document.getElementById("lockedBox").style.display = "none";
+      document.getElementById("contentArea").classList.remove("hidden");
+    }
+
+    updateLanguage();
+    checkAccess();
+  </script>
+
+</body>
+</html>
