@@ -167,38 +167,39 @@
     }
 
     async function handleSignup(){
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const lang = document.getElementById("language").value;
-  const message = document.getElementById("message");
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const lang = document.getElementById("language").value;
+      const message = document.getElementById("message");
 
-  message.innerText = "";
+      message.innerText = "";
 
-  if(!email || !password){
-    message.innerText = lang === "pt"
-      ? "Preenche todos os campos."
-      : "Please fill in all fields.";
-    return;
-  }
+      if(!email || !password){
+        message.innerText = lang === "pt"
+          ? "Preenche todos os campos."
+          : "Please fill in all fields.";
+        return;
+      }
 
-  const params = new URLSearchParams(window.location.search);
-  const selectedPlan = params.get("plan");
+      const params = new URLSearchParams(window.location.search);
+      const selectedPlan = params.get("plan");
 
-  const redirectTo = selectedPlan
-    ? `${window.location.origin}/login.html?plan=${selectedPlan}`
-    : `${window.location.origin}/login.html`;
+      const redirectTo = selectedPlan
+        ? `${window.location.origin}/login.html?plan=${selectedPlan}`
+        : `${window.location.origin}/login.html`;
 
-  const result = await signUpUser(email, password, redirectTo);
+      const result = await signUpUser(email, password, redirectTo);
 
-if(result){
-  message.innerText = lang === "pt"
-    ? "Conta criada com sucesso. A redirecionar para o login..."
-    : "Account created successfully. Redirecting to login...";
+      if(result){
+        message.innerText = lang === "pt"
+          ? "Conta criada com sucesso. A redirecionar para o login..."
+          : "Account created successfully. Redirecting to login...";
 
-  setTimeout(() => {
-    window.location.href = redirectTo;
-  }, 1200);
-}
+        setTimeout(() => {
+          window.location.href = redirectTo;
+        }, 1200);
+      }
+    }
 
     updateLanguage();
   </script>
