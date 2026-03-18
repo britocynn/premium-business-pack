@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
 
   <style>
@@ -113,10 +113,10 @@
     <p class="subtitle" id="subtitle">Access your Premium Business Pack account</p>
 
     <label id="emailLabel" for="email">Email</label>
-    <input id="email" type="email" placeholder="Enter your email">
+    <input id="email" type="email" placeholder="Enter your email" />
 
     <label id="passwordLabel" for="password">Password</label>
-    <input id="password" type="password" placeholder="Enter your password">
+    <input id="password" type="password" placeholder="Enter your password" />
 
     <button class="btn-primary" id="loginBtn" type="button" onclick="handleLogin()">Login</button>
 
@@ -184,17 +184,22 @@
       const result = await signInUser(email, password);
 
       if(!result){
+        message.innerText = lang === "pt"
+          ? "Não foi possível iniciar sessão."
+          : "Could not log in.";
         return;
       }
 
-const params = new URLSearchParams(window.location.search);
-const selectedPlan = params.get("plan");
+      const params = new URLSearchParams(window.location.search);
+      const selectedPlan = params.get("plan");
 
-if(selectedPlan){
-  window.location.href = `/members.html?checkout=1&plan=${selectedPlan}`;
-} else {
-  window.location.href = "/members.html";
-}
+      if(selectedPlan){
+        window.location.href = `/members.html?checkout=1&plan=${selectedPlan}`;
+      } else {
+        window.location.href = "/members.html";
+      }
+    }
+
     updateLanguage();
   </script>
 
