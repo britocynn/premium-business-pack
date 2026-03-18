@@ -16,7 +16,7 @@
     }
 
     .container{
-      max-width:900px;
+      max-width:950px;
       margin:auto;
     }
 
@@ -115,6 +115,7 @@
       border:1px solid #e0cfa9;
       border-radius:14px;
       padding:18px;
+      text-align:left;
     }
 
     .result-name{
@@ -128,6 +129,32 @@
       color:#5f503c;
       font-size:14px;
       line-height:1.5;
+      margin-bottom:14px;
+    }
+
+    .result-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .small-btn{
+      border:none;
+      border-radius:10px;
+      padding:10px 14px;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:bold;
+    }
+
+    .copy-btn{
+      background:#2b241c;
+      color:#f5ead9;
+    }
+
+    .fav-btn{
+      background:#d6a84f;
+      color:white;
     }
 
     .locked{
@@ -152,6 +179,34 @@
     .hidden{
       display:none;
     }
+
+    .favorites-box{
+      margin-top:26px;
+      background:#f8f0e3;
+      border:1px solid #e0cfa9;
+      border-radius:16px;
+      padding:18px;
+    }
+
+    .favorites-box h3{
+      margin-top:0;
+      color:#2b241c;
+    }
+
+    .favorite-item{
+      background:#fffaf2;
+      border:1px solid #e0cfa9;
+      border-radius:10px;
+      padding:10px 12px;
+      margin-bottom:10px;
+      color:#2b241c;
+      font-weight:bold;
+    }
+
+    .favorite-empty{
+      color:#6b5a43;
+      font-size:14px;
+    }
   </style>
 </head>
 <body>
@@ -162,7 +217,7 @@
       <button class="back-btn" id="backBtn" onclick="goBack()">← Back</button>
 
       <div class="language-wrap">
-        <select id="language" onchange="updateLanguage()">
+        <select id="language" onchange="updateLanguage(); renderFavorites();">
           <option value="en">English</option>
           <option value="pt">Português</option>
         </select>
@@ -192,8 +247,14 @@
       </select>
 
       <button class="primary" id="generateBtn" onclick="generateNames()">Generate Premium Names</button>
+      <button class="primary" id="moreBtn" onclick="generateMoreNames()" style="display:none; margin-top:12px;">Generate More Names</button>
 
       <div class="results" id="results"></div>
+
+      <div class="favorites-box">
+        <h3 id="favoritesTitle">Favorite Names</h3>
+        <div id="favoritesList"></div>
+      </div>
     </div>
 
   </div>
@@ -203,6 +264,9 @@
   <script src="/js/auth.js"></script>
 
   <script>
+    let lastKeyword = "";
+    let lastStyle = "";
+
     function goBack(){
       window.location.href = "/members.html";
     }
@@ -223,9 +287,11 @@
         document.getElementById("style").options[1].text = "Moderno / Brandable";
         document.getElementById("style").options[2].text = "Profissional / Confiança";
         document.getElementById("generateBtn").innerText = "Gerar Nomes Premium";
+        document.getElementById("moreBtn").innerText = "Gerar Mais Nomes";
         document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
         document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para usar esta ferramenta.";
         document.getElementById("lockedBtn").innerText = "Ver Packs";
+        document.getElementById("favoritesTitle").innerText = "Nomes Favoritos";
       } else {
         document.documentElement.lang = "en";
         document.title = "Premium Name Generator";
@@ -239,9 +305,11 @@
         document.getElementById("style").options[1].text = "Modern / Brandable";
         document.getElementById("style").options[2].text = "Professional / Trustworthy";
         document.getElementById("generateBtn").innerText = "Generate Premium Names";
+        document.getElementById("moreBtn").innerText = "Generate More Names";
         document.getElementById("lockedTitle").innerText = "Access not active";
         document.getElementById("lockedText").innerText = "You need an active premium plan to use this tool.";
         document.getElementById("lockedBtn").innerText = "View Plans";
+        document.getElementById("favoritesTitle").innerText = "Favorite Names";
       }
     }
 
@@ -250,49 +318,120 @@
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     }
 
+    function shuffleArray(array){
+      const arr = [...array];
+      for(let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function uniqueNames(list){
+      return [...new Set(list)];
+    }
+
     function generateLuxuryNames(keyword){
-      const prefixes = ["Velora", "Aurea", "Lunara", "Virelle", "Élan", "Nobira", "Serelle", "Altiera"];
-      const suffixes = ["Studio", "Maison", "Collective", "Group", "Lab", "House", "Atelier", "Works"];
       const root = capitalize(keyword);
 
-      return [
-        `${root} ${suffixes[0]}`,
-        `${prefixes[0]} ${root}`,
-        `${root}${prefixes[1]}`,
-        `${prefixes[2]} ${suffixes[1]}`,
-        `${root} ${suffixes[2]}`,
-        `${prefixes[3]} ${root}`
+      const prefixes = [
+        "Velora", "Aurea", "Lunara", "Virelle", "Elara", "Serelle",
+        "Altiera", "Norelle", "Valencia", "Celestia", "Monara", "Avoria"
       ];
+
+      const suffixes = [
+        "Studio", "Maison", "Collective", "Group", "Lab", "House",
+        "Atelier", "Works", "Society", "Signature", "Boutique", "Circle"
+      ];
+
+      let names = [];
+
+      prefixes.forEach(prefix => {
+        names.push(`${prefix} ${root}`);
+        names.push(`${prefix}${root}`);
+      });
+
+      suffixes.forEach(suffix => {
+        names.push(`${root} ${suffix}`);
+        names.push(`${root}${suffix}`);
+      });
+
+      prefixes.forEach(prefix => {
+        suffixes.forEach(suffix => {
+          names.push(`${prefix} ${suffix}`);
+        });
+      });
+
+      return shuffleArray(uniqueNames(names)).slice(0, 18);
     }
 
     function generateModernNames(keyword){
-      const prefixes = ["Nexa", "Vynta", "Zentro", "Lumio", "Axora", "Noviq", "Brivon", "Klyra"];
-      const suffixes = ["Flow", "Core", "Lab", "Hive", "Boost", "Wave", "Scale", "Base"];
       const root = capitalize(keyword);
 
-      return [
-        `${prefixes[0]}${root}`,
-        `${root}${suffixes[0]}`,
-        `${prefixes[1]} ${suffixes[1]}`,
-        `${root} ${suffixes[2]}`,
-        `${prefixes[2]} ${root}`,
-        `${prefixes[3]} ${suffixes[3]}`
+      const prefixes = [
+        "Nexa", "Vynta", "Zentro", "Lumio", "Axora", "Noviq",
+        "Brivon", "Klyra", "Moviq", "Zyro", "Novara", "Kyven"
       ];
+
+      const suffixes = [
+        "Flow", "Core", "Lab", "Hive", "Boost", "Wave",
+        "Scale", "Base", "Grid", "Spark", "Edge", "Sync"
+      ];
+
+      let names = [];
+
+      prefixes.forEach(prefix => {
+        names.push(`${prefix}${root}`);
+        names.push(`${prefix} ${root}`);
+      });
+
+      suffixes.forEach(suffix => {
+        names.push(`${root}${suffix}`);
+        names.push(`${root} ${suffix}`);
+      });
+
+      prefixes.forEach(prefix => {
+        suffixes.forEach(suffix => {
+          names.push(`${prefix}${suffix}`);
+        });
+      });
+
+      return shuffleArray(uniqueNames(names)).slice(0, 18);
     }
 
     function generateProfessionalNames(keyword){
-      const prefixes = ["Prime", "Trust", "Clear", "Elite", "Solid", "Core", "Bright", "Vision"];
-      const suffixes = ["Partners", "Consulting", "Advisory", "Solutions", "Services", "Experts", "Associates", "Management"];
       const root = capitalize(keyword);
 
-      return [
-        `${root} ${suffixes[0]}`,
-        `${prefixes[0]} ${root}`,
-        `${prefixes[1]} ${suffixes[1]}`,
-        `${root} ${suffixes[2]}`,
-        `${prefixes[2]} ${root} ${suffixes[3]}`,
-        `${prefixes[3]} ${root}`
+      const prefixes = [
+        "Prime", "Trust", "Clear", "Elite", "Solid", "Core",
+        "Bright", "Vision", "Value", "Strategic", "Direct", "Summit"
       ];
+
+      const suffixes = [
+        "Partners", "Consulting", "Advisory", "Solutions",
+        "Services", "Experts", "Associates", "Management",
+        "Strategies", "Advisors", "Group", "Professionals"
+      ];
+
+      let names = [];
+
+      prefixes.forEach(prefix => {
+        names.push(`${prefix} ${root}`);
+        names.push(`${prefix}${root}`);
+      });
+
+      suffixes.forEach(suffix => {
+        names.push(`${root} ${suffix}`);
+        names.push(`${root}${suffix}`);
+      });
+
+      prefixes.forEach(prefix => {
+        suffixes.forEach(suffix => {
+          names.push(`${prefix} ${suffix}`);
+        });
+      });
+
+      return shuffleArray(uniqueNames(names)).slice(0, 18);
     }
 
     function getDescription(name, keyword, lang){
@@ -302,29 +441,57 @@
       return `A stronger, more premium and memorable name positioned for the ${keyword} niche.`;
     }
 
-    function generateNames(){
-      const keyword = document.getElementById("keyword").value.trim();
-      const style = document.getElementById("style").value;
-      const lang = document.getElementById("language").value;
-      const results = document.getElementById("results");
+    function getFavoriteNames(){
+      const saved = localStorage.getItem("favoritePremiumNames");
+      return saved ? JSON.parse(saved) : [];
+    }
 
-      if(!keyword){
-        alert(lang === "pt"
-          ? "Introduz uma palavra-chave ou nicho."
-          : "Please enter a keyword or niche.");
+    function saveFavoriteName(name){
+      let favorites = getFavoriteNames();
+
+      if(!favorites.includes(name)){
+        favorites.push(name);
+        localStorage.setItem("favoritePremiumNames", JSON.stringify(favorites));
+      }
+
+      renderFavorites();
+    }
+
+    function renderFavorites(){
+      const lang = document.getElementById("language").value;
+      const list = document.getElementById("favoritesList");
+      const favorites = getFavoriteNames();
+
+      list.innerHTML = "";
+
+      if(favorites.length === 0){
+        const empty = document.createElement("div");
+        empty.className = "favorite-empty";
+        empty.innerText = lang === "pt"
+          ? "Ainda não tens nomes favoritos guardados."
+          : "You do not have any saved favorite names yet.";
+        list.appendChild(empty);
         return;
       }
 
-      let names = [];
+      favorites.forEach(name => {
+        const item = document.createElement("div");
+        item.className = "favorite-item";
+        item.innerText = name;
+        list.appendChild(item);
+      });
+    }
 
-      if(style === "luxury"){
-        names = generateLuxuryNames(keyword);
-      } else if(style === "modern"){
-        names = generateModernNames(keyword);
-      } else {
-        names = generateProfessionalNames(keyword);
-      }
+    function copyName(name){
+      const lang = document.getElementById("language").value;
 
+      navigator.clipboard.writeText(name).then(() => {
+        alert(lang === "pt" ? "Nome copiado!" : "Name copied!");
+      });
+    }
+
+    function renderResults(names, keyword, lang){
+      const results = document.getElementById("results");
       results.innerHTML = "";
 
       names.forEach(name => {
@@ -339,10 +506,80 @@
         desc.className = "result-desc";
         desc.innerText = getDescription(name, keyword, lang);
 
+        const actions = document.createElement("div");
+        actions.className = "result-actions";
+
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "small-btn copy-btn";
+        copyBtn.innerText = lang === "pt" ? "Copiar Nome" : "Copy Name";
+        copyBtn.onclick = () => copyName(name);
+
+        const favBtn = document.createElement("button");
+        favBtn.className = "small-btn fav-btn";
+        favBtn.innerText = lang === "pt" ? "Favorito" : "Favorite";
+        favBtn.onclick = () => saveFavoriteName(name);
+
+        actions.appendChild(copyBtn);
+        actions.appendChild(favBtn);
+
         card.appendChild(title);
         card.appendChild(desc);
+        card.appendChild(actions);
+
         results.appendChild(card);
       });
+    }
+
+    function generateNames(){
+      const keyword = document.getElementById("keyword").value.trim();
+      const style = document.getElementById("style").value;
+      const lang = document.getElementById("language").value;
+
+      if(!keyword){
+        alert(lang === "pt"
+          ? "Introduz uma palavra-chave ou nicho."
+          : "Please enter a keyword or niche.");
+        return;
+      }
+
+      lastKeyword = keyword;
+      lastStyle = style;
+
+      let names = [];
+
+      if(style === "luxury"){
+        names = generateLuxuryNames(keyword);
+      } else if(style === "modern"){
+        names = generateModernNames(keyword);
+      } else {
+        names = generateProfessionalNames(keyword);
+      }
+
+      renderResults(names, keyword, lang);
+      document.getElementById("moreBtn").style.display = "block";
+    }
+
+    function generateMoreNames(){
+      const lang = document.getElementById("language").value;
+
+      if(!lastKeyword || !lastStyle){
+        alert(lang === "pt"
+          ? "Gera primeiro os nomes iniciais."
+          : "Generate the initial names first.");
+        return;
+      }
+
+      let names = [];
+
+      if(lastStyle === "luxury"){
+        names = generateLuxuryNames(lastKeyword);
+      } else if(lastStyle === "modern"){
+        names = generateModernNames(lastKeyword);
+      } else {
+        names = generateProfessionalNames(lastKeyword);
+      }
+
+      renderResults(names, lastKeyword, lang);
     }
 
     async function checkAccess(){
@@ -366,6 +603,7 @@
     }
 
     updateLanguage();
+    renderFavorites();
     checkAccess();
   </script>
 
