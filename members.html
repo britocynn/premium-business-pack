@@ -1,594 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Members Area</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Members</title>
 
-  <style>
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(156,106,38,0.14) 0%, rgba(17,13,10,0) 24%),
-        linear-gradient(180deg, #16120f 0%, #0d0b0a 100%);
-      color:#f5ead9;
-      padding:20px 14px 34px;
-    }
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0f0f0f;
+  color:#f5ead9;
+  padding:18px 14px 30px;
+}
 
-    .container{
-      max-width:1080px;
-      margin:0 auto;
-    }
+.container{
+  max-width:1000px;
+  margin:auto;
+}
 
-    .top-bar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
+/* TOP BAR */
 
-    .top-left,
-    .top-right{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
 
-    .logout-btn{
-      background:rgba(255,250,242,0.06);
-      color:#f5ead9;
-      border:1px solid rgba(224,207,169,0.18);
-      padding:11px 16px;
-      border-radius:14px;
-      font-weight:600;
-      cursor:pointer;
-      font-size:14px;
-      backdrop-filter: blur(6px);
-    }
+.top button{
+  background:#2b241c;
+  color:#f5ead9;
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:bold;
+}
 
-    .language-select{
-      padding:11px 14px;
-      border-radius:14px;
-      border:1px solid rgba(224,207,169,0.18);
-      background:#fffaf2;
-      color:#2b241c;
-      font-size:14px;
-      font-weight:600;
-    }
+select{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+}
 
-    .hero{
-      background:linear-gradient(180deg, rgba(250,244,235,0.98), rgba(255,250,242,0.98));
-      color:#2b241c;
-      border:1px solid rgba(224,207,169,0.82);
-      border-radius:24px;
-      padding:18px 16px;
-      box-shadow:0 14px 40px rgba(0,0,0,0.24);
-      margin-bottom:18px;
-    }
+/* INFO BAR (SUBSTITUI HERO) */
 
-    .hero-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:12px;
-      flex-wrap:wrap;
-    }
+.info{
+  background:#f8f0e3;
+  color:#2b241c;
+  padding:14px 16px;
+  border-radius:14px;
+  margin-bottom:18px;
+}
 
-    .hero-text{
-      flex:1 1 420px;
-    }
+.info p{
+  margin:4px 0;
+  font-size:14px;
+}
 
-    .hero h1{
-      margin:0 0 8px 0;
-      font-size:clamp(1.6rem, 4vw, 2.5rem);
-      line-height:1.06;
-      font-weight:700;
-      letter-spacing:-0.03em;
-    }
+/* GRID */
 
-    .hero-subtitle{
-      margin:0;
-      color:#6f5c44;
-      font-size:0.98rem;
-      line-height:1.6;
-      max-width:700px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
 
-    .plan-pill{
-      background:linear-gradient(135deg,#dfb35a,#b67d2f);
-      color:white;
-      border-radius:999px;
-      padding:10px 14px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:0.02em;
-      box-shadow:0 8px 20px rgba(182,125,47,0.26);
-      text-align:center;
-      max-width:100%;
-      box-sizing:border-box;
-    }
+.card{
+  background:#fffaf2;
+  color:#2b241c;
+  padding:18px;
+  border-radius:16px;
+}
 
-    .meta-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;
-      margin-top:14px;
-    }
+.card h3{
+  margin:0 0 6px 0;
+}
 
-    .meta-card{
-      background:rgba(255,250,242,0.72);
-      border:1px solid rgba(224,207,169,0.82);
-      border-radius:18px;
-      padding:14px 14px 13px;
-    }
+.card p{
+  font-size:14px;
+  color:#6b5a43;
+}
 
-    .meta-label{
-      margin:0 0 7px 0;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      color:#9a7740;
-    }
+.card button{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(135deg,#d6a84f,#9c6a26);
+  color:white;
+  font-weight:bold;
+}
 
-    .meta-value{
-      margin:0;
-      font-size:0.98rem;
-      line-height:1.45;
-      color:#2b241c;
-      font-weight:600;
-      word-break:break-word;
-    }
+.locked{
+  opacity:0.5;
+}
 
-    .locked-box{
-      display:none;
-      background:linear-gradient(180deg, rgba(250,244,235,0.98), rgba(255,250,242,0.98));
-      color:#2b241c;
-      border:1px solid rgba(224,207,169,0.82);
-      border-radius:24px;
-      padding:22px 16px;
-      box-shadow:0 14px 40px rgba(0,0,0,0.24);
-      margin-bottom:18px;
-      text-align:center;
-    }
-
-    .locked-box h2{
-      margin:0 0 10px 0;
-      font-size:1.65rem;
-      font-weight:700;
-      letter-spacing:-0.02em;
-    }
-
-    .locked-box p{
-      margin:0;
-      color:#6f5c44;
-      line-height:1.6;
-    }
-
-    .locked-btn{
-      margin-top:16px;
-      background:#2b241c;
-      color:#f5ead9;
-      border:none;
-      padding:12px 18px;
-      border-radius:14px;
-      font-weight:600;
-      cursor:pointer;
-      font-size:14px;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:12px;
-      margin:0 0 14px 0;
-      flex-wrap:wrap;
-    }
-
-    .section-title{
-      margin:0;
-      font-size:1.08rem;
-      color:#f3e7d3;
-      font-weight:600;
-      letter-spacing:-0.01em;
-    }
-
-    .section-subtitle{
-      margin:0;
-      color:#cdb89a;
-      font-size:0.92rem;
-      line-height:1.5;
-    }
-
-    .tools-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:16px;
-    }
-
-    .tool-card{
-      background:linear-gradient(180deg, rgba(255,250,242,0.98), rgba(247,239,228,0.98));
-      color:#2b241c;
-      border:1px solid rgba(224,207,169,0.82);
-      border-radius:22px;
-      padding:17px 16px 15px;
-      box-shadow:0 12px 28px rgba(0,0,0,0.18);
-      display:flex;
-      flex-direction:column;
-      min-height:210px;
-    }
-
-    .tool-badge{
-      align-self:flex-start;
-      background:#f1dfb7;
-      color:#936c2e;
-      border-radius:999px;
-      padding:7px 10px;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      margin-bottom:13px;
-    }
-
-    .tool-card h3{
-      margin:0 0 10px 0;
-      font-size:1.28rem;
-      line-height:1.16;
-      letter-spacing:-0.02em;
-      font-weight:700;
-    }
-
-    .tool-card p{
-      margin:0 0 16px 0;
-      color:#6d5a43;
-      line-height:1.58;
-      font-size:0.95rem;
-      flex-grow:1;
-    }
-
-    .tool-btn{
-      width:100%;
-      border:none;
-      border-radius:15px;
-      padding:14px 16px;
-      font-weight:700;
-      font-size:15px;
-      cursor:pointer;
-      background:linear-gradient(135deg,#dfb35a,#b67d2f);
-      color:white;
-      box-shadow:0 8px 18px rgba(182,125,47,0.2);
-    }
-
-    .tool-card.locked{
-      opacity:0.72;
-    }
-
-    .tool-card.locked .tool-btn{
-      background:#bfb7ab;
-      color:white;
-      cursor:not-allowed;
-      box-shadow:none;
-    }
-
-    .footer-note{
-      margin-top:18px;
-      text-align:center;
-      color:#cdb89a;
-      font-size:13px;
-      line-height:1.5;
-    }
-
-    @media (max-width: 700px){
-      body{
-        padding:18px 14px 28px;
-      }
-
-      .hero,
-      .locked-box{
-        padding:18px 16px;
-        border-radius:22px;
-      }
-
-      .hero-top{
-        flex-direction:column;
-        align-items:stretch;
-        gap:10px;
-      }
-
-      .plan-pill{
-        width:100%;
-      }
-
-      .meta-grid{
-        grid-template-columns:1fr;
-      }
-
-      .tool-card{
-        min-height:auto;
-      }
-
-      .tool-card h3{
-        font-size:1.18rem;
-      }
-    }
-  </style>
+.locked button{
+  background:#999;
+}
+</style>
 </head>
+
 <body>
-  <div class="container">
 
-    <div class="top-bar">
-      <div class="top-left">
-        <button class="logout-btn" id="logoutBtn" onclick="logout()">Logout</button>
-      </div>
+<div class="container">
 
-      <div class="top-right">
-        <select id="language" class="language-select" onchange="updateLanguage()">
-          <option value="en">English</option>
-          <option value="pt">Português</option>
-        </select>
-      </div>
-    </div>
+<div class="top">
+  <button onclick="logout()">Logout</button>
+  <select id="lang" onchange="setLang()">
+    <option value="en">EN</option>
+    <option value="pt">PT</option>
+  </select>
+</div>
 
-    <div class="hero">
-      <div class="hero-top">
-        <div class="hero-text">
-          <h1 id="title">Members Area</h1>
-          <p class="hero-subtitle" id="subtitle">Access your premium tools and resources in one private space.</p>
-        </div>
+<div class="info">
+  <p id="email">Email: -</p>
+  <p id="plan">Plan: -</p>
+  <p id="status">Status: -</p>
+</div>
 
-        <div class="plan-pill" id="planBadge">Plan: Checking...</div>
-      </div>
+<div class="grid">
 
-      <div class="meta-grid">
-        <div class="meta-card">
-          <p class="meta-label" id="emailLabel">Account Email</p>
-          <p class="meta-value" id="emailValue">Loading...</p>
-        </div>
-
-        <div class="meta-card">
-          <p class="meta-label" id="statusLabel">Access Status</p>
-          <p class="meta-value" id="statusValue">Checking...</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="locked-box" id="lockedBox">
-      <h2 id="lockedTitle">Access not active</h2>
-      <p id="lockedText">Your account exists, but you do not yet have an active premium plan.</p>
-      <button class="locked-btn" id="lockedBtn" onclick="window.location.href='/index.html'">View Plans</button>
-    </div>
-
-    <div id="contentArea">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title" id="toolsTitle">Your Tools</h2>
-          <p class="section-subtitle" id="toolsSubtitle">Everything organized for fast access and clear execution.</p>
-        </div>
-      </div>
-
-      <div class="tools-grid">
-        <div class="tool-card">
-          <div class="tool-badge" id="tagNames">Premium</div>
-          <h3 id="namesTitle">Premium Name Generator</h3>
-          <p id="namesDesc">Create stronger, more memorable and more premium business names.</p>
-          <button class="tool-btn" id="namesBtn" onclick="window.location.href='/premium-names.html'">Open</button>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-badge" id="tagIdeas">Premium</div>
-          <h3 id="ideasTitle">Business Ideas Generator</h3>
-          <p id="ideasDesc">Generate premium ideas with stronger monetization potential.</p>
-          <button class="tool-btn" id="ideasBtn" onclick="window.location.href='/ideas.html'">Open</button>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-badge" id="tagEbook">Guide</div>
-          <h3 id="ebookTitle">eBook</h3>
-          <p id="ebookDesc">Access your digital guide and core learning materials.</p>
-          <button class="tool-btn" id="ebookBtn" onclick="window.location.href='/ebook.html'">Open</button>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-badge" id="tagChecklist">Action</div>
-          <h3 id="checklistTitle">Checklist</h3>
-          <p id="checklistDesc">Follow a structured execution checklist step by step.</p>
-          <button class="tool-btn" id="checklistBtn" onclick="window.location.href='/checklist.html'">Open</button>
-        </div>
-
-        <div class="tool-card" id="libraryCard">
-          <div class="tool-badge" id="tagLibrary">Upgrade</div>
-          <h3 id="libraryTitle">Premium Library</h3>
-          <p id="libraryDesc">Exclusive templates, tools and advanced resources.</p>
-          <button class="tool-btn" id="libraryBtn" onclick="window.location.href='/library.html'">Open</button>
-        </div>
-      </div>
-
-      <div class="footer-note" id="footerNote">
-        Everything in one place, designed to help you move with clarity and speed.
-      </div>
-    </div>
-
+  <div class="card">
+    <h3>Names Generator</h3>
+    <p>Create premium business names</p>
+    <button onclick="go('/premium-names.html')">Open</button>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/js/supabase-client.js"></script>
-  <script src="/js/auth.js"></script>
+  <div class="card">
+    <h3>Ideas Generator</h3>
+    <p>Generate business ideas</p>
+    <button onclick="go('/ideas.html')">Open</button>
+  </div>
 
-  <script>
-    let currentProfile = null;
-    let currentUser = null;
+  <div class="card">
+    <h3>Ebook</h3>
+    <p>Access your guide</p>
+    <button onclick="go('/ebook.html')">Open</button>
+  </div>
 
-    async function logout(){
-      await supabaseClient.auth.signOut();
-      window.location.href = "/login.html";
+  <div class="card">
+    <h3>Checklist</h3>
+    <p>Follow the execution steps</p>
+    <button onclick="go('/checklist.html')">Open</button>
+  </div>
+
+  <div class="card" id="libraryCard">
+    <h3>Library</h3>
+    <p>Premium templates and resources</p>
+    <button onclick="go('/library.html')">Open</button>
+  </div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/auth.js"></script>
+
+<script>
+function go(url){
+  window.location.href = url;
+}
+
+async function logout(){
+  await supabaseClient.auth.signOut();
+  window.location.href="/login.html";
+}
+
+async function load(){
+  const user = await getCurrentUser();
+  if(!user){
+    window.location.href="/login.html";
+    return;
+  }
+
+  const profile = await getProfile();
+
+  document.getElementById("email").innerText = "Email: " + user.email;
+
+  if(profile){
+    document.getElementById("plan").innerText = "Plan: " + (profile.plan || "free");
+    document.getElementById("status").innerText = profile.is_premium ? "Premium active" : "No premium";
+
+    if(profile.plan !== "complete_plus_library"){
+      document.getElementById("libraryCard").classList.add("locked");
     }
+  }
+}
 
-    function updateLanguage(){
-      const lang = document.getElementById("language").value;
+load();
+</script>
 
-      if(lang === "pt"){
-        document.documentElement.lang = "pt";
-        document.title = "Área de Membros";
-        document.getElementById("logoutBtn").innerText = "Terminar Sessão";
-        document.getElementById("title").innerText = "Área de Membros";
-        document.getElementById("subtitle").innerText = "Acede às tuas ferramentas e recursos premium num único espaço privado.";
-        document.getElementById("emailLabel").innerText = "Email da Conta";
-        document.getElementById("statusLabel").innerText = "Estado do Acesso";
-        document.getElementById("toolsTitle").innerText = "As Tuas Ferramentas";
-        document.getElementById("toolsSubtitle").innerText = "Tudo organizado para acesso rápido e execução clara.";
-
-        document.getElementById("tagNames").innerText = "Premium";
-        document.getElementById("tagIdeas").innerText = "Premium";
-        document.getElementById("tagEbook").innerText = "Guia";
-        document.getElementById("tagChecklist").innerText = "Ação";
-        document.getElementById("tagLibrary").innerText = "Upgrade";
-
-        document.getElementById("namesTitle").innerText = "Gerador Premium de Nomes";
-        document.getElementById("namesDesc").innerText = "Cria nomes de negócio mais fortes, memoráveis e mais premium.";
-        document.getElementById("namesBtn").innerText = "Abrir";
-
-        document.getElementById("ideasTitle").innerText = "Gerador de Ideias de Negócio";
-        document.getElementById("ideasDesc").innerText = "Gera ideias premium com maior potencial de monetização.";
-        document.getElementById("ideasBtn").innerText = "Abrir";
-
-        document.getElementById("ebookTitle").innerText = "E-book";
-        document.getElementById("ebookDesc").innerText = "Acede ao teu guia digital e materiais principais.";
-        document.getElementById("ebookBtn").innerText = "Abrir";
-
-        document.getElementById("checklistTitle").innerText = "Checklist";
-        document.getElementById("checklistDesc").innerText = "Segue uma checklist de execução estruturada passo a passo.";
-        document.getElementById("checklistBtn").innerText = "Abrir";
-
-        document.getElementById("libraryTitle").innerText = "Biblioteca Premium";
-        document.getElementById("libraryDesc").innerText = "Templates exclusivos, ferramentas e recursos avançados.";
-        document.getElementById("libraryBtn").innerText = "Abrir";
-
-        document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
-        document.getElementById("lockedText").innerText = "A tua conta já existe, mas ainda não tens um plano premium ativo.";
-        document.getElementById("lockedBtn").innerText = "Ver Packs";
-
-        document.getElementById("footerNote").innerText = "Tudo num só lugar, pensado para te ajudar a avançar com clareza e rapidez.";
-      } else {
-        document.documentElement.lang = "en";
-        document.title = "Members Area";
-        document.getElementById("logoutBtn").innerText = "Logout";
-        document.getElementById("title").innerText = "Members Area";
-        document.getElementById("subtitle").innerText = "Access your premium tools and resources in one private space.";
-        document.getElementById("emailLabel").innerText = "Account Email";
-        document.getElementById("statusLabel").innerText = "Access Status";
-        document.getElementById("toolsTitle").innerText = "Your Tools";
-        document.getElementById("toolsSubtitle").innerText = "Everything organized for fast access and clear execution.";
-
-        document.getElementById("tagNames").innerText = "Premium";
-        document.getElementById("tagIdeas").innerText = "Premium";
-        document.getElementById("tagEbook").innerText = "Guide";
-        document.getElementById("tagChecklist").innerText = "Action";
-        document.getElementById("tagLibrary").innerText = "Upgrade";
-
-        document.getElementById("namesTitle").innerText = "Premium Name Generator";
-        document.getElementById("namesDesc").innerText = "Create stronger, more memorable and more premium business names.";
-        document.getElementById("namesBtn").innerText = "Open";
-
-        document.getElementById("ideasTitle").innerText = "Business Ideas Generator";
-        document.getElementById("ideasDesc").innerText = "Generate premium ideas with stronger monetization potential.";
-        document.getElementById("ideasBtn").innerText = "Open";
-
-        document.getElementById("ebookTitle").innerText = "eBook";
-        document.getElementById("ebookDesc").innerText = "Access your digital guide and core learning materials.";
-        document.getElementById("ebookBtn").innerText = "Open";
-
-        document.getElementById("checklistTitle").innerText = "Checklist";
-        document.getElementById("checklistDesc").innerText = "Follow a structured execution checklist step by step.";
-        document.getElementById("checklistBtn").innerText = "Open";
-
-        document.getElementById("libraryTitle").innerText = "Premium Library";
-        document.getElementById("libraryDesc").innerText = "Exclusive templates, tools and advanced resources.";
-        document.getElementById("libraryBtn").innerText = "Open";
-
-        document.getElementById("lockedTitle").innerText = "Access not active";
-        document.getElementById("lockedText").innerText = "Your account exists, but you do not yet have an active premium plan.";
-        document.getElementById("lockedBtn").innerText = "View Plans";
-
-        document.getElementById("footerNote").innerText = "Everything in one place, designed to help you move with clarity and speed.";
-      }
-
-      renderProfileData();
-    }
-
-    function renderProfileData(){
-      const lang = document.getElementById("language").value;
-
-      if(currentUser){
-        document.getElementById("emailValue").innerText = currentUser.email || "-";
-      }
-
-      if(!currentProfile){
-        document.getElementById("planBadge").innerText = lang === "pt" ? "Plano: A verificar..." : "Plan: Checking...";
-        document.getElementById("statusValue").innerText = lang === "pt" ? "A verificar..." : "Checking...";
-        return;
-      }
-
-      let planText = "";
-      let statusText = "";
-
-      if(lang === "pt"){
-        planText =
-          currentProfile.plan === "complete_plus_library"
-            ? "Plano: Completo + Biblioteca"
-            : currentProfile.plan === "complete"
-            ? "Plano: Pack Completo"
-            : "Plano: Gratuito";
-
-        statusText = currentProfile.is_premium ? "Premium ativo" : "Sem acesso premium";
-      } else {
-        planText =
-          currentProfile.plan === "complete_plus_library"
-            ? "Plan: Complete + Library"
-            : currentProfile.plan === "complete"
-            ? "Plan: Complete Pack"
-            : "Plan: Free";
-
-        statusText = currentProfile.is_premium ? "Premium active" : "No premium access";
-      }
-
-      document.getElementById("planBadge").innerText = planText;
-      document.getElementById("statusValue").innerText = statusText;
-    }
-
-    async function checkAccess(){
-      currentUser = await getCurrentUser();
-
-      if(!currentUser){
-        window.location.href = "/login.html";
-        return;
-      }
-
-      currentProfile = await getProfile();
-      renderProfileData();
-
-      if(!currentProfile || currentProfile.is_premium !== true){
-        document.getElementById("contentArea").style.display = "none";
-        document.getElementById("lockedBox").style.display = "block";
-        return;
-      }
-
-      document.getElementById("contentArea").style.display = "block";
-      document.getElementById("lockedBox").style.display = "none";
-
-      if(currentProfile.plan !== "complete_plus_library"){
-        document.getElementById("libraryCard").classList.add("locked");
-        document.getElementById("libraryBtn").disabled = true;
-      }
-    }
-
-    updateLanguage();
-    checkAccess();
-  </script>
 </body>
 </html>
