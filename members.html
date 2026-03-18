@@ -124,7 +124,13 @@ body{
     <p id="planText">Plan: Checking...</p>
   </div>
 
-  <div class="cards">
+  <div class="hero hidden" id="lockedBox">
+  <h2 id="lockedTitle">Access not active</h2>
+  <p id="lockedText">Your account exists, but you do not yet have an active premium plan.</p>
+  <button class="logout-btn" id="lockedBtn" onclick="goToPage('/index.html')">View Plans</button>
+</div>
+  
+  <div class="cards" id="membersCards">
     <div class="card">
       <h3 id="card1Title">Premium Name Generator</h3>
       <p id="card1Desc">Create stronger, more memorable and more brandable business names.</p>
@@ -196,6 +202,10 @@ function updateLanguage(){
     document.getElementById("card5Title").innerText = "Biblioteca Editável";
     document.getElementById("card5Desc").innerText = "Acede aos teus templates editáveis e recursos avançados.";
     document.getElementById("card5Btn").innerText = "Abrir";
+
+    document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
+document.getElementById("lockedText").innerText = "A tua conta já existe, mas ainda não tens um plano premium ativo.";
+document.getElementById("lockedBtn").innerText = "Ver Packs";
   } else {
     document.documentElement.lang = "en";
     document.title = "Members Area";
@@ -222,6 +232,10 @@ function updateLanguage(){
     document.getElementById("card5Title").innerText = "Editable Library";
     document.getElementById("card5Desc").innerText = "Access your editable templates and advanced business resources.";
     document.getElementById("card5Btn").innerText = "Open";
+
+    document.getElementById("lockedTitle").innerText = "Access not active";
+document.getElementById("lockedText").innerText = "Your account exists, but you do not yet have an active premium plan.";
+document.getElementById("lockedBtn").innerText = "View Plans";
   }
 }
 
@@ -237,6 +251,21 @@ await startCheckoutIfNeeded(user);
 
 const profile = await getProfile();
 
+  if (!profile || profile.is_premium !== true) {
+  document.getElementById("membersCards").classList.add("hidden");
+  document.getElementById("lockedBox").classList.remove("hidden");
+
+  if (document.getElementById("language").value === "pt") {
+    document.getElementById("planText").innerText = "Plano: Gratuito";
+  } else {
+    document.getElementById("planText").innerText = "Plan: Free";
+  }
+
+  document.getElementById("emailText").innerText =
+    "Email: " + user.email;
+
+  return;
+}
   document.getElementById("emailText").innerText =
     document.getElementById("language").value === "pt"
       ? "Email: " + user.email
