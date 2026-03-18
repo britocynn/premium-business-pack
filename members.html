@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Members Area</title>
 
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+  color:#f5ead9;
+  padding:40px 20px;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+}
+
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:25px;
+}
+
+.language-wrap select{
+  padding:10px 12px;
+  border-radius:10px;
+  border:none;
+  font-size:15px;
+}
+
+.logout-btn{
+  background:#2b241c;
+  color:#f5ead9;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.hero{
+  background:#f8f0e3;
+  color:#2b241c;
+  padding:28px;
+  border-radius:20px;
+  margin-bottom:24px;
+}
+
+.hero h1{
+  margin:0 0 10px 0;
+}
+
+.hero p{
+  margin:8px 0;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:20px;
+}
+
+.card{
+  background:#fffaf2;
+  color:#2b241c;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+  border:1px solid #e0cfa9;
+}
+
+.card h3{
+  margin-top:0;
+}
+
+.card p{
+  color:#5f503c;
+  min-height:52px;
+}
+
+.card button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  background:linear-gradient(135deg,#d6a84f,#9c6a26);
+  color:white;
+}
+
+.hidden{
+  display:none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="top-bar">
+    <div class="language-wrap">
+      <select id="language" onchange="updateLanguage()">
+        <option value="en">English</option>
+        <option value="pt">Português</option>
+      </select>
+    </div>
+
+    <button class="logout-btn" id="logoutBtn" onclick="signOutUser()">Logout</button>
+  </div>
+
+  <div class="hero">
+    <h1 id="title">Your Members Area</h1>
+    <p id="welcomeText">Welcome to your Premium Business Pack dashboard.</p>
+    <p id="emailText">Email: Loading...</p>
+    <p id="planText">Plan: Checking...</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3 id="card1Title">Premium Name Generator</h3>
+      <p id="card1Desc">Create stronger, more memorable and more brandable business names.</p>
+      <button id="card1Btn" onclick="goToPage('/premium-names.html')">Open</button>
+    </div>
+
+    <div class="card">
+      <h3 id="card2Title">Business Ideas Generator</h3>
+      <p id="card2Desc">Generate premium business and side hustle ideas with better monetization potential.</p>
+      <button id="card2Btn" onclick="goToPage('/premium-ideas.html')">Open</button>
+    </div>
+
+    <div class="card">
+      <h3 id="card3Title">eBook</h3>
+      <p id="card3Desc">Access your digital guide and core training materials.</p>
+      <button id="card3Btn" onclick="goToPage('/ebook.html')">Open</button>
+    </div>
+
+    <div class="card">
+      <h3 id="card4Title">Checklist</h3>
+      <p id="card4Desc">Follow the execution checklist step by step.</p>
+      <button id="card4Btn" onclick="goToPage('/checklist.html')">Open</button>
+    </div>
+
+    <div class="card hidden" id="libraryCard">
+      <h3 id="card5Title">Editable Library</h3>
+      <p id="card5Desc">Access your editable templates and advanced business resources.</p>
+      <button id="card5Btn" onclick="goToPage('/library.html')">Open</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/auth.js"></script>
+
+<script>
+function goToPage(url){
+  window.location.href = url;
+}
+
+function updateLanguage(){
+  const lang = document.getElementById("language").value;
+
+  if(lang === "pt"){
+    document.documentElement.lang = "pt";
+    document.title = "Área de Membro";
+    document.getElementById("logoutBtn").innerText = "Terminar sessão";
+    document.getElementById("title").innerText = "A tua Área de Membro";
+    document.getElementById("welcomeText").innerText = "Bem-vinda à tua área privada do Pack Premium de Negócio";
+
+    document.getElementById("card1Title").innerText = "Gerador Premium de Nomes";
+    document.getElementById("card1Desc").innerText = "Cria nomes de negócio mais fortes, memoráveis e brandáveis.";
+    document.getElementById("card1Btn").innerText = "Abrir";
+
+    document.getElementById("card2Title").innerText = "Gerador de Ideias de Negócio";
+    document.getElementById("card2Desc").innerText = "Gera ideias premium de negócio e renda extra com maior potencial de monetização.";
+    document.getElementById("card2Btn").innerText = "Abrir";
+
+    document.getElementById("card3Title").innerText = "E-book";
+    document.getElementById("card3Desc").innerText = "Acede ao teu guia digital e aos materiais principais.";
+    document.getElementById("card3Btn").innerText = "Abrir";
+
+    document.getElementById("card4Title").innerText = "Checklist";
+    document.getElementById("card4Desc").innerText = "Segue a checklist de execução passo a passo.";
+    document.getElementById("card4Btn").innerText = "Abrir";
+
+    document.getElementById("card5Title").innerText = "Biblioteca Editável";
+    document.getElementById("card5Desc").innerText = "Acede aos teus templates editáveis e recursos avançados.";
+    document.getElementById("card5Btn").innerText = "Abrir";
+  } else {
+    document.documentElement.lang = "en";
+    document
