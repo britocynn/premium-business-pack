@@ -198,4 +198,73 @@ function updateLanguage(){
     document.getElementById("card5Btn").innerText = "Abrir";
   } else {
     document.documentElement.lang = "en";
-    document
+    document.title = "Members Area";
+    document.getElementById("logoutBtn").innerText = "Logout";
+    document.getElementById("title").innerText = "Your Members Area";
+    document.getElementById("welcomeText").innerText = "Welcome to your Premium Business Pack dashboard.";
+
+    document.getElementById("card1Title").innerText = "Premium Name Generator";
+    document.getElementById("card1Desc").innerText = "Create stronger, more memorable and more brandable business names.";
+    document.getElementById("card1Btn").innerText = "Open";
+
+    document.getElementById("card2Title").innerText = "Business Ideas Generator";
+    document.getElementById("card2Desc").innerText = "Generate premium business and side hustle ideas with better monetization potential.";
+    document.getElementById("card2Btn").innerText = "Open";
+
+    document.getElementById("card3Title").innerText = "eBook";
+    document.getElementById("card3Desc").innerText = "Access your digital guide and core training materials.";
+    document.getElementById("card3Btn").innerText = "Open";
+
+    document.getElementById("card4Title").innerText = "Checklist";
+    document.getElementById("card4Desc").innerText = "Follow the execution checklist step by step.";
+    document.getElementById("card4Btn").innerText = "Open";
+
+    document.getElementById("card5Title").innerText = "Editable Library";
+    document.getElementById("card5Desc").innerText = "Access your editable templates and advanced business resources.";
+    document.getElementById("card5Btn").innerText = "Open";
+  }
+}
+
+async function loadMembersArea(){
+  const user = await getCurrentUser();
+
+  if(!user){
+    window.location.href = "/login.html";
+    return;
+  }
+
+  const profile = await getProfile();
+
+  document.getElementById("emailText").innerText =
+    document.getElementById("language").value === "pt"
+      ? "Email: " + user.email
+      : "Email: " + user.email;
+
+  if(profile){
+    if(document.getElementById("language").value === "pt"){
+      document.getElementById("planText").innerText =
+        profile.plan === "complete_plus_library"
+          ? "Plano: Completo + Biblioteca Editável"
+          : profile.plan === "complete"
+          ? "Plano: Pack Completo"
+          : "Plano: Gratuito";
+    } else {
+      document.getElementById("planText").innerText =
+        profile.plan === "complete_plus_library"
+          ? "Plan: Complete + Editable Library"
+          : profile.plan === "complete"
+          ? "Plan: Complete Pack"
+          : "Plan: Free";
+    }
+
+    if(profile.plan === "complete_plus_library"){
+      document.getElementById("libraryCard").classList.remove("hidden");
+    }
+  }
+}
+
+loadMembersArea();
+</script>
+
+</body>
+</html>
