@@ -429,6 +429,31 @@
       window.location.href = "/login.html";
     }
 
+    async function startCheckoutIfNeeded(user) {
+      const params = new URLSearchParams(window.location.search);
+      const shouldCheckout = params.get("checkout");
+      const selectedPlan = params.get("plan");
+
+      if (shouldCheckout === "1" && selectedPlan) {
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            plan: selectedPlan,
+            userId: user.id
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          alert("Erro ao iniciar pagamento.");
+        }
+      }
+    }
+
     function updateLanguage(){
       const lang = document.getElementById("language").value;
 
@@ -568,6 +593,8 @@
         window.location.href = "/login.html";
         return;
       }
+
+      await startCheckoutIfNeeded(currentUser);
 
       currentProfile = await getProfile();
       renderProfileData();
