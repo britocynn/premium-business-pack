@@ -1,1 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
 
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+  color:#f5ead9;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.container{
+  max-width:520px;
+  margin:auto;
+  background:#f8f0e3;
+  color:#2b241c;
+  padding:30px 24px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.language-wrap{
+  margin-bottom:20px;
+  text-align:right;
+}
+
+.language-wrap select{
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #d9c39b;
+  font-size:15px;
+}
+
+h1{
+  margin-top:0;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#6e5a3b;
+  margin-bottom:25px;
+}
+
+label{
+  display:block;
+  text-align:left;
+  margin:14px 0 8px;
+  font-weight:bold;
+}
+
+input{
+  width:100%;
+  box-sizing:border-box;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #d9c39b;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#d6a84f,#9c6a26);
+  color:white;
+}
+
+.secondary-link{
+  margin-top:18px;
+  font-size:14px;
+}
+
+.secondary-link a{
+  color:#9c6a26;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.message{
+  margin-top:18px;
+  font-size:14px;
+  color:#7a5d2f;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="language-wrap">
+    <select id="language" onchange="updateLanguage()">
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>
+
+  <h1 id="title">Login</h1>
+  <p class="subtitle" id="subtitle">Access your Premium Business Pack account</p>
+
+  <label id="emailLabel" for="email">Email</label>
+  <input id="email" type="email" placeholder="Enter your email">
+
+  <label id="passwordLabel" for="password">Password</label>
+  <input id="password" type="password" placeholder="Enter your password">
+
+  <button class="btn-primary" id="loginBtn" onclick="handleLogin()">Login</button>
+
+  <div class="secondary-link">
+    <span id="signupText">Don't have an account?</span>
+    <a href="/signup.html" id="signupLink">Create one</a>
+  </div>
+
+  <div class="message" id="message"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/auth.js"></script>
+
+<script>
+function updateLanguage(){
+  const lang = document.getElementById("language").value;
+
+  if(lang === "pt"){
+    document.documentElement.lang = "pt";
+    document.title = "Entrar";
+    document.getElementById("title").innerText = "Entrar";
+    document.getElementById("subtitle").innerText = "Acede à tua conta do Pack Premium de Negócio";
+    document.getElementById("emailLabel").innerText = "Email";
+    document.getElementById("passwordLabel").innerText = "Palavra-passe";
+    document.getElementById("email").placeholder = "Introduz o teu email";
+    document.getElementById("password").placeholder = "Introduz a tua palavra-passe";
+    document.getElementById("loginBtn").innerText = "Entrar";
+    document.getElementById("signupText").innerText = "Ainda não tens conta?";
+    document.getElementById("signupLink").innerText = "Criar conta";
+  } else {
+    document.documentElement.lang = "en";
+    document.title = "Login";
+    document.getElementById("title").innerText = "Login";
+    document.getElementById("subtitle").innerText = "Access your Premium Business Pack account";
+    document.getElementById("emailLabel").innerText = "Email";
+    document.getElementById("passwordLabel").innerText = "Password";
+    document.getElementById("email").placeholder = "Enter your email";
+    document.getElementById("password").placeholder = "Enter your password";
+    document.getElementById("loginBtn").innerText = "Login";
+    document.getElementById("signupText").innerText = "Don't have an account?";
+    document.getElementById("signupLink").innerText = "Create one";
+  }
+
+  document.getElementById("message").innerText = "";
+}
+
+async function handleLogin(){
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const lang = document.getElementById("language").value;
+  const message = document.getElementById("message");
+
+  message.innerText = "";
+
+  if(!email || !password){
+    message.innerText = lang === "pt"
+      ? "Preenche todos os campos."
+      : "Please fill in all fields.";
+    return;
+  }
+
+  const result = await signInUser(email, password);
+
+  if(result){
+    window.location.href = "/members.html";
+  }
+}
+</script>
+
+</body>
+</html>
