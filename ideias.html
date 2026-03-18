@@ -1,158 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Ideas Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Ideas Generator</title>
 
-<style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
-  color:#f5ead9;
-  padding:40px 20px;
-  text-align:center;
-}
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+      color:#f5ead9;
+      padding:40px 20px;
+      text-align:center;
+    }
 
-.container{
-  max-width:1000px;
-  margin:auto;
-}
+    .container{
+      max-width:1000px;
+      margin:auto;
+    }
 
-.top-bar{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:25px;
+    }
 
-.top-bar button, select{
-  padding:10px 14px;
-  border-radius:10px;
-  border:none;
-  font-weight:bold;
-}
+    .top-bar button, select{
+      padding:10px 14px;
+      border-radius:10px;
+      border:none;
+      font-weight:bold;
+    }
 
-h1{
-  margin-bottom:10px;
-}
+    .back-btn{
+      background:#2b241c;
+      color:#f5ead9;
+      cursor:pointer;
+    }
 
-.subtitle{
-  color:#cbb58c;
-  margin-bottom:30px;
-}
+    h1{
+      margin-bottom:10px;
+    }
 
-.controls{
-  margin-bottom:25px;
-}
+    .subtitle{
+      color:#cbb58c;
+      margin-bottom:30px;
+    }
 
-.controls button{
-  margin:5px;
-  padding:12px 18px;
-  border-radius:10px;
-  border:none;
-  cursor:pointer;
-  font-weight:bold;
-}
+    .controls{
+      margin-bottom:25px;
+    }
 
-.generate{
-  background:linear-gradient(135deg,#d6a84f,#9c6a26);
-  color:white;
-}
+    .controls button{
+      margin:5px;
+      padding:12px 18px;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+      font-weight:bold;
+    }
 
-.more{
-  background:#2b241c;
-  color:#f5ead9;
-}
+    .generate{
+      background:linear-gradient(135deg,#d6a84f,#9c6a26);
+      color:white;
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:18px;
-}
+    .more{
+      background:#2b241c;
+      color:#f5ead9;
+    }
 
-.card{
-  background:#fffaf2;
-  color:#2b241c;
-  padding:18px;
-  border-radius:16px;
-  text-align:left;
-}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+    }
 
-.card h3{
-  margin:0 0 8px 0;
-}
+    .card{
+      background:#fffaf2;
+      color:#2b241c;
+      padding:18px;
+      border-radius:16px;
+      text-align:left;
+    }
 
-.card p{
-  font-size:14px;
-  color:#6b5a43;
-}
+    .card h3{
+      margin:0 0 8px 0;
+    }
 
-.card button{
-  margin-top:10px;
-  padding:8px 12px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:13px;
-}
+    .card p{
+      font-size:14px;
+      color:#6b5a43;
+      line-height:1.5;
+      min-height:72px;
+    }
 
-.copy{
-  background:#2b241c;
-  color:white;
-}
+    .card button{
+      margin-top:10px;
+      margin-right:8px;
+      padding:8px 12px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:13px;
+    }
 
-.favorite{
-  background:#d6a84f;
-  color:white;
-}
+    .copy{
+      background:#2b241c;
+      color:white;
+    }
 
-.locked{
-  display:none;
-  background:#f8f0e3;
-  color:#2b241c;
-  padding:25px;
-  border-radius:16px;
-}
+    .favorite{
+      background:#d6a84f;
+      color:white;
+    }
 
-</style>
+    .locked{
+      display:none;
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:25px;
+      border-radius:16px;
+    }
+
+    .favorites-box{
+      margin-top:24px;
+      background:#fffaf2;
+      color:#2b241c;
+      padding:18px;
+      border-radius:16px;
+      text-align:left;
+    }
+
+    .favorite-item{
+      background:#f8f0e3;
+      border-radius:10px;
+      padding:10px 12px;
+      margin-top:10px;
+      font-weight:bold;
+    }
+
+    .empty-favorites{
+      color:#6b5a43;
+      font-size:14px;
+    }
+  </style>
 </head>
 
 <body>
-
 <div class="container">
 
-<div class="top-bar">
-  <button onclick="goBack()">← Back</button>
+  <div class="top-bar">
+    <button class="back-btn" id="backBtn" onclick="goBack()">← Back</button>
 
-  <select id="language" onchange="updateLanguage()">
-    <option value="en">English</option>
-    <option value="pt">Português</option>
-  </select>
-</div>
+    <select id="language" onchange="updateLanguage(); renderFavorites();">
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>
 
-<h1 id="title">Business Ideas Generator</h1>
-<p class="subtitle" id="subtitle">
-Discover profitable ideas you can start today.
-</p>
+  <h1 id="title">Business Ideas Generator</h1>
+  <p class="subtitle" id="subtitle">Discover premium business and side hustle ideas with better monetization potential.</p>
 
-<div class="locked" id="lockedBox">
-  <h2 id="lockedTitle">Access not active</h2>
-  <p id="lockedText">You need premium access</p>
-  <button onclick="window.location.href='/index.html'">View Plans</button>
-</div>
+  <div class="locked" id="lockedBox">
+    <h2 id="lockedTitle">Access not active</h2>
+    <p id="lockedText">You need premium access to use this tool.</p>
+    <button class="back-btn" id="lockedBtn" onclick="window.location.href='/index.html'">View Plans</button>
+  </div>
 
-<div id="appArea">
+  <div id="appArea">
+    <div class="controls">
+      <button class="generate" id="generateBtn" onclick="generateIdeas()">Generate Ideas</button>
+      <button class="more" id="moreBtn" onclick="generateIdeas()">Generate More Ideas</button>
+    </div>
 
-<div class="controls">
-  <button class="generate" onclick="generateIdeas()">Generate Ideas</button>
-  <button class="more" onclick="generateIdeas()">Generate More</button>
-</div>
+    <div class="grid" id="ideasContainer"></div>
 
-<div class="grid" id="ideasContainer"></div>
-
-</div>
+    <div class="favorites-box">
+      <h3 id="favoritesTitle">Favorite Ideas</h3>
+      <div id="favoritesList"></div>
+    </div>
+  </div>
 
 </div>
 
@@ -161,97 +193,233 @@ Discover profitable ideas you can start today.
 <script src="/js/auth.js"></script>
 
 <script>
+  const ideasPool = [
+    {
+      titleEn:"Digital Product Store",
+      titlePt:"Loja de Produtos Digitais",
+      descEn:"Sell templates, guides, planners or mini tools online with high margins and low delivery cost.",
+      descPt:"Vende templates, guias, planners ou mini ferramentas online com margens altas e baixo custo de entrega."
+    },
+    {
+      titleEn:"Niche Instagram Page",
+      titlePt:"Página de Instagram de Nicho",
+      descEn:"Build a focused audience and monetize through affiliate links, services or your own products.",
+      descPt:"Cria uma audiência focada e monetiza com afiliados, serviços ou produtos próprios."
+    },
+    {
+      titleEn:"Freelance Service Offer",
+      titlePt:"Oferta de Serviço Freelance",
+      descEn:"Offer a simple service such as design, copywriting, bookkeeping, admin support or consulting.",
+      descPt:"Oferece um serviço simples como design, copywriting, contabilidade, apoio administrativo ou consultoria."
+    },
+    {
+      titleEn:"Online Course",
+      titlePt:"Curso Online",
+      descEn:"Package one skill you already know and sell it in a structured learning format.",
+      descPt:"Transforma uma competência que já tens num formato de aprendizagem estruturado e vendável."
+    },
+    {
+      titleEn:"AI Content Service",
+      titlePt:"Serviço de Conteúdo com IA",
+      descEn:"Help businesses create faster content, captions, emails or offers using AI-assisted workflows.",
+      descPt:"Ajuda empresas a criar conteúdo, legendas, emails ou ofertas mais rapidamente com fluxos assistidos por IA."
+    },
+    {
+      titleEn:"Personal Brand Advisory",
+      titlePt:"Consultoria de Marca Pessoal",
+      descEn:"Guide professionals or entrepreneurs on positioning, image, visibility and authority.",
+      descPt:"Orienta profissionais ou empreendedores em posicionamento, imagem, visibilidade e autoridade."
+    },
+    {
+      titleEn:"eBook Business",
+      titlePt:"Negócio de E-books",
+      descEn:"Create practical digital guides for a clear target audience and sell them repeatedly.",
+      descPt:"Cria guias digitais práticos para um público específico e vende-os repetidamente."
+    },
+    {
+      titleEn:"Affiliate Review Page",
+      titlePt:"Página de Reviews Afiliadas",
+      descEn:"Recommend products in a niche and earn commission from trusted recommendations.",
+      descPt:"Recomenda produtos num nicho e ganha comissão através de recomendações confiáveis."
+    },
+    {
+      titleEn:"Micro Agency",
+      titlePt:"Micro Agência",
+      descEn:"Start with one core service, get 3 to 5 clients and then systemize delivery.",
+      descPt:"Começa com um serviço principal, conquista 3 a 5 clientes e depois sistematiza a entrega."
+    },
+    {
+      titleEn:"Subscription Community",
+      titlePt:"Comunidade por Subscrição",
+      descEn:"Offer exclusive content, accountability, templates or support inside a premium group.",
+      descPt:"Oferece conteúdo exclusivo, acompanhamento, templates ou apoio dentro de um grupo premium."
+    },
+    {
+      titleEn:"Local Premium Service",
+      titlePt:"Serviço Local Premium",
+      descEn:"Package a local service with a premium positioning, stronger branding and better pricing.",
+      descPt:"Empacota um serviço local com posicionamento premium, branding mais forte e melhor preço."
+    },
+    {
+      titleEn:"Template Library",
+      titlePt:"Biblioteca de Templates",
+      descEn:"Sell editable templates that save time for creators, freelancers or business owners.",
+      descPt:"Vende templates editáveis que poupam tempo a criadores, freelancers ou empresários."
+    }
+  ];
 
-function goBack(){
-  window.location.href = "/members.html";
-}
-
-function updateLanguage(){
-  const lang = document.getElementById("language").value;
-
-  if(lang === "pt"){
-    document.getElementById("title").innerText = "Gerador de Ideias de Negócio";
-    document.getElementById("subtitle").innerText = "Descobre ideias lucrativas que podes começar hoje.";
-
-    document.getElementById("lockedTitle").innerText = "Acesso não ativo";
-    document.getElementById("lockedText").innerText = "Precisas de acesso premium";
-
-  } else {
-    document.getElementById("title").innerText = "Business Ideas Generator";
-    document.getElementById("subtitle").innerText = "Discover profitable ideas you can start today.";
-
-    document.getElementById("lockedTitle").innerText = "Access not active";
-    document.getElementById("lockedText").innerText = "You need premium access";
+  function goBack(){
+    window.location.href = "/members.html";
   }
-}
 
-async function checkAccess(){
-  const user = await getCurrentUser();
+  function updateLanguage(){
+    const lang = document.getElementById("language").value;
 
-  if(!user){
-    window.location.href = "/login.html";
-    return;
+    if(lang === "pt"){
+      document.documentElement.lang = "pt";
+      document.title = "Gerador de Ideias de Negócio";
+      document.getElementById("backBtn").innerText = "← Voltar";
+      document.getElementById("title").innerText = "Gerador de Ideias de Negócio";
+      document.getElementById("subtitle").innerText = "Descobre ideias premium de negócio e renda extra com maior potencial de monetização.";
+      document.getElementById("lockedTitle").innerText = "Acesso não ativo";
+      document.getElementById("lockedText").innerText = "Precisas de acesso premium para usar esta ferramenta.";
+      document.getElementById("lockedBtn").innerText = "Ver Plans";
+      document.getElementById("generateBtn").innerText = "Gerar Ideias";
+      document.getElementById("moreBtn").innerText = "Gerar Mais Ideias";
+      document.getElementById("favoritesTitle").innerText = "Ideias Favoritas";
+    } else {
+      document.documentElement.lang = "en";
+      document.title = "Business Ideas Generator";
+      document.getElementById("backBtn").innerText = "← Back";
+      document.getElementById("title").innerText = "Business Ideas Generator";
+      document.getElementById("subtitle").innerText = "Discover premium business and side hustle ideas with better monetization potential.";
+      document.getElementById("lockedTitle").innerText = "Access not active";
+      document.getElementById("lockedText").innerText = "You need premium access to use this tool.";
+      document.getElementById("lockedBtn").innerText = "View Plans";
+      document.getElementById("generateBtn").innerText = "Generate Ideas";
+      document.getElementById("moreBtn").innerText = "Generate More Ideas";
+      document.getElementById("favoritesTitle").innerText = "Favorite Ideas";
+    }
   }
 
-  const profile = await getProfile();
-
-  if(!profile || profile.is_premium !== true){
-    document.getElementById("lockedBox").style.display = "block";
-    document.getElementById("appArea").style.display = "none";
-    return;
+  function shuffleArray(array){
+    const arr = [...array];
+    for(let i = arr.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
   }
-}
 
-const ideasPool = [
-  {title:"Digital Product Store", desc:"Sell templates, guides or digital tools online."},
-  {title:"Niche Instagram Page", desc:"Grow a targeted audience and monetize with offers."},
-  {title:"Freelance Services", desc:"Offer skills like design, copywriting or consulting."},
-  {title:"Online Course", desc:"Teach a skill you already master."},
-  {title:"Dropshipping Store", desc:"Sell products without holding inventory."},
-  {title:"Personal Brand", desc:"Build authority and sell your expertise."},
-  {title:"Ebook Business", desc:"Create and sell digital books."},
-  {title:"Affiliate Marketing", desc:"Earn commissions promoting products."},
-  {title:"AI Content Agency", desc:"Offer AI-powered services to businesses."},
-  {title:"Local Service Business", desc:"Cleaning, beauty, consulting or similar."},
-  {title:"Subscription Community", desc:"Create exclusive content for members."},
-  {title:"TikTok Monetization", desc:"Grow fast and monetize traffic."}
-];
-
-function generateIdeas(){
-  const container = document.getElementById("ideasContainer");
-
-  for(let i=0;i<6;i++){
-    const idea = ideasPool[Math.floor(Math.random()*ideasPool.length)];
-
-    const card = document.createElement("div");
-    card.className="card";
-
-    card.innerHTML = `
-      <h3>${idea.title}</h3>
-      <p>${idea.desc}</p>
-      <button class="copy" onclick="copyText('${idea.title}')">Copy</button>
-      <button class="favorite" onclick="saveFav('${idea.title}')">★</button>
-    `;
-
-    container.appendChild(card);
+  function getFavorites(){
+    const saved = localStorage.getItem("favoriteIdeas");
+    return saved ? JSON.parse(saved) : [];
   }
-}
 
-function copyText(text){
-  navigator.clipboard.writeText(text);
-  alert("Copied!");
-}
+  function saveFav(title){
+    const lang = document.getElementById("language").value;
+    let favs = getFavorites();
 
-function saveFav(text){
-  let favs = JSON.parse(localStorage.getItem("favs") || "[]");
-  favs.push(text);
-  localStorage.setItem("favs", JSON.stringify(favs));
-  alert("Saved!");
-}
+    if(!favs.includes(title)){
+      favs.push(title);
+      localStorage.setItem("favoriteIdeas", JSON.stringify(favs));
+    }
 
-updateLanguage();
-checkAccess();
+    renderFavorites();
+    alert(lang === "pt" ? "Ideia guardada!" : "Idea saved!");
+  }
 
+  function renderFavorites(){
+    const lang = document.getElementById("language").value;
+    const container = document.getElementById("favoritesList");
+    const favs = getFavorites();
+
+    container.innerHTML = "";
+
+    if(favs.length === 0){
+      const empty = document.createElement("div");
+      empty.className = "empty-favorites";
+      empty.innerText = lang === "pt"
+        ? "Ainda não tens ideias guardadas."
+        : "You do not have any saved ideas yet.";
+      container.appendChild(empty);
+      return;
+    }
+
+    favs.forEach(fav => {
+      const item = document.createElement("div");
+      item.className = "favorite-item";
+      item.innerText = fav;
+      container.appendChild(item);
+    });
+  }
+
+  function copyText(text){
+    const lang = document.getElementById("language").value;
+    navigator.clipboard.writeText(text).then(() => {
+      alert(lang === "pt" ? "Ideia copiada!" : "Idea copied!");
+    });
+  }
+
+  function generateIdeas(){
+    const lang = document.getElementById("language").value;
+    const container = document.getElementById("ideasContainer");
+    container.innerHTML = "";
+
+    const selected = shuffleArray(ideasPool).slice(0, 8);
+
+    selected.forEach(idea => {
+      const title = lang === "pt" ? idea.titlePt : idea.titleEn;
+      const desc = lang === "pt" ? idea.descPt : idea.descEn;
+
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const h3 = document.createElement("h3");
+      h3.innerText = title;
+
+      const p = document.createElement("p");
+      p.innerText = desc;
+
+      const copyBtn = document.createElement("button");
+      copyBtn.className = "copy";
+      copyBtn.innerText = lang === "pt" ? "Copiar Ideia" : "Copy Idea";
+      copyBtn.onclick = () => copyText(title);
+
+      const favBtn = document.createElement("button");
+      favBtn.className = "favorite";
+      favBtn.innerText = lang === "pt" ? "Favorito" : "Favorite";
+      favBtn.onclick = () => saveFav(title);
+
+      card.appendChild(h3);
+      card.appendChild(p);
+      card.appendChild(copyBtn);
+      card.appendChild(favBtn);
+
+      container.appendChild(card);
+    });
+  }
+
+  async function checkAccess(){
+    const user = await getCurrentUser();
+
+    if(!user){
+      window.location.href = "/login.html";
+      return;
+    }
+
+    const profile = await getProfile();
+
+    if(!profile || profile.is_premium !== true){
+      document.getElementById("lockedBox").style.display = "block";
+      document.getElementById("appArea").style.display = "none";
+      return;
+    }
+  }
+
+  updateLanguage();
+  renderFavorites();
+  checkAccess();
 </script>
 
 </body>
