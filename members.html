@@ -158,11 +158,30 @@ h1{
 
 <script>
 
-function goNames(){ window.location.href = "/names.html"; }
-function goIdeas(){ window.location.href = "/ideas.html"; }
-function goEbook(){ window.location.href = "/ebook.html"; }
-function goChecklist(){ window.location.href = "/checklist.html"; }
-function goLibrary(){ window.location.href = "/library.html"; }
+function goNames(){
+  alert("Going to names");
+  window.location.href = "/names.html?v=1";
+}
+
+function goIdeas(){
+  alert("Going to ideas");
+  window.location.href = "/ideas.html?v=1";
+}
+
+function goEbook(){
+  alert("Going to ebook");
+  window.location.href = "/ebook.html?v=1";
+}
+
+function goChecklist(){
+  alert("Going to checklist");
+  window.location.href = "/checklist.html?v=1";
+}
+
+function goLibrary(){
+  alert("Going to library");
+  window.location.href = "/library.html?v=1";
+}
 
 async function logout(){
   await supabaseClient.auth.signOut();
