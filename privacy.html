@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+      color:#f5ead9;
+      padding:40px 20px;
+    }
+
+    .container{
+      max-width:950px;
+      margin:auto;
+    }
+
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:25px;
+    }
+
+    .back-btn{
+      background:#2b241c;
+      color:#f5ead9;
+      border:none;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .language-wrap select{
+      padding:10px 12px;
+      border-radius:10px;
+      border:none;
+      font-size:15px;
+    }
+
+    .hero{
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      margin-bottom:24px;
+      text-align:center;
+    }
+
+    .hero h1{
+      margin:0 0 10px 0;
+    }
+
+    .hero p{
+      margin:0;
+      color:#6b5a43;
+      line-height:1.6;
+    }
+
+    .content-box{
+      background:#fffaf2;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+      border:1px solid #e0cfa9;
+      text-align:left;
+      line-height:1.7;
+    }
+
+    .content-box h2{
+      margin-top:0;
+      margin-bottom:14px;
+    }
+
+    .content-box h3{
+      margin-top:28px;
+      margin-bottom:10px;
+      color:#2b241c;
+    }
+
+    .content-box p{
+      color:#5f503c;
+      margin:0 0 12px 0;
+    }
+
+    .content-box ul{
+      margin:0 0 12px 18px;
+      color:#5f503c;
+      padding:0;
+    }
+
+    .content-box li{
+      margin-bottom:8px;
+    }
+
+    .note{
+      background:#f8f0e3;
+      border:1px solid #e0cfa9;
+      border-radius:14px;
+      padding:16px;
+      margin-top:20px;
+    }
+
+    .site-footer{
+      width:100%;
+      margin-top:26px;
+    }
+
+    .site-footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      text-align:center;
+      color:#cbb58c;
+      font-size:14px;
+      padding:0 18px 24px;
+      box-sizing:border-box;
+    }
+
+    .site-footer-content p{
+      margin:8px 0;
+    }
+
+    #footerNote{
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="top-bar">
+      <button class="back-btn" id="backBtn" onclick="goBack()">← Voltar</button>
+
+      <div class="language-wrap">
+        <select id="language" onchange="updateLanguage()">
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1 id="title">Política de Privacidade</h1>
+      <p id="subtitle">Informação sobre como os teus dados podem ser tratados nesta plataforma.</p>
+    </div>
+
+    <div class="content-box">
+      <h2 id="section1Title">1. Responsável pelo tratamento</h2>
+      <p id="section1Text">
+        A presente plataforma é gerida por SB - Contabilidade & Consultoria.
+      </p>
+
+      <h3 id="section2Title">2. Dados que podem ser recolhidos</h3>
+      <p id="section2Text">
+        No contexto desta plataforma, podem ser tratados dados estritamente necessários ao funcionamento do serviço, como por exemplo:
+      </p>
+      <ul>
+        <li id="data1">nome e email da conta, quando aplicável;</li>
+        <li id="data2">dados de autenticação e acesso;</li>
+        <li id="data3">informação técnica necessária ao funcionamento da plataforma;</li>
+        <li id="data4">informação relacionada com pagamentos, processada através de prestadores externos.</li>
+      </ul>
+
+      <h3 id="section3Title">3. Finalidade do tratamento</h3>
+      <p id="section3Text">
+        Os dados podem ser utilizados para criar e gerir contas de utilizador, permitir o acesso aos conteúdos adquiridos, processar pagamentos, prestar apoio ao cliente e garantir a segurança e funcionamento da plataforma.
+      </p>
+
+      <h3 id="section4Title">4. Pagamentos</h3>
+      <p id="section4Text">
+        Os pagamentos são processados através de plataformas externas seguras. Os dados de pagamento não são tratados diretamente nesta página, mas pelo respetivo prestador de pagamento.
+      </p>
+
+      <h3 id="section5Title">5. Conservação dos dados</h3>
+      <p id="section5Text">
+        Os dados são conservados apenas pelo período necessário para as finalidades acima indicadas, ou enquanto existir uma relação ativa com o utilizador, salvo obrigação legal em contrário.
+      </p>
+
+      <h3 id="section6Title">6. Direitos do utilizador</h3>
+      <p id="section6Text">
+        O utilizador pode, nos termos aplicáveis, solicitar acesso, retificação, apagamento, limitação ou oposição ao tratamento dos seus dados, bem como retirar consentimento quando este seja a base legal aplicável.
+      </p>
+
+      <h3 id="section7Title">7. Contacto</h3>
+      <p id="section7Text">
+        Para questões relacionadas com privacidade e proteção de dados, o contacto deve ser feito através dos meios disponibilizados pela SB - Contabilidade & Consultoria.
+      </p>
+
+      <div class="note">
+        <p id="noteText">
+          Nota: este texto serve como base informativa geral e pode ser ajustado e completado de acordo com a evolução da plataforma e das necessidades legais aplicáveis.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-content">
+      <p id="footerNote">Tudo num só lugar, organizado para execução rápida.</p>
+      <p id="footerCopy">© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.</p>
+      <p id="footerTagline">Sistema criado para acelerar a criação de negócios</p>
+      <p id="footerAuthor">Desenvolvido por Suellen Brito</p>
+    </div>
+  </footer>
+
+  <script>
+    function goBack(){
+      window.location.href = "/index.html";
+    }
+
+    function updateLanguage(){
+      const lang = document.getElementById("language").value;
+
+      if(lang === "pt"){
+        document.documentElement.lang = "pt";
+        document.title = "Política de Privacidade";
+        document.getElementById("backBtn").innerText = "← Voltar";
+        document.getElementById("title").innerText = "Política de Privacidade";
+        document.getElementById("subtitle").innerText = "Informação sobre como os teus dados podem ser tratados nesta plataforma.";
+
+        document.getElementById("section1Title").innerText = "1. Responsável pelo tratamento";
+        document.getElementById("section1Text").innerText = "A presente plataforma é gerida por SB - Contabilidade & Consultoria.";
+
+        document.getElementById("section2Title").innerText = "2. Dados que podem ser recolhidos";
+        document.getElementById("section2Text").innerText = "No contexto desta plataforma, podem ser tratados dados estritamente necessários ao funcionamento do serviço, como por exemplo:";
+        document.getElementById("data1").innerText = "nome e email da conta, quando aplicável;";
+        document.getElementById("data2").innerText = "dados de autenticação e acesso;";
+        document.getElementById("data3").innerText = "informação técnica necessária ao funcionamento da plataforma;";
+        document.getElementById("data4").innerText = "informação relacionada com pagamentos, processada através de prestadores externos.";
+
+        document.getElementById("section3Title").innerText = "3. Finalidade do tratamento";
+        document.getElementById("section3Text").innerText = "Os dados podem ser utilizados para criar e gerir contas de utilizador, permitir o acesso aos conteúdos adquiridos, processar pagamentos, prestar apoio ao cliente e garantir a segurança e funcionamento da plataforma.";
+
+        document.getElementById("section4Title").innerText = "4. Pagamentos";
+        document.getElementById("section4Text").innerText = "Os pagamentos são processados através de plataformas externas seguras. Os dados de pagamento não são tratados diretamente nesta página, mas pelo respetivo prestador de pagamento.";
+
+        document.getElementById("section5Title").innerText = "5. Conservação dos dados";
+        document.getElementById("section5Text").innerText = "Os dados são conservados apenas pelo período necessário para as finalidades acima indicadas, ou enquanto existir uma relação ativa com o utilizador, salvo obrigação legal em contrário.";
+
+        document.getElementById("section6Title").innerText = "6. Direitos do utilizador";
+        document.getElementById("section6Text").innerText = "O utilizador pode, nos termos aplicáveis, solicitar acesso, retificação, apagamento, limitação ou oposição ao tratamento dos seus dados, bem como retirar consentimento quando este seja a base legal aplicável.";
+
+        document.getElementById("section7Title").innerText = "7. Contacto";
+        document.getElementById("section7Text").innerText = "Para questões relacionadas com privacidade e proteção de dados, o contacto deve ser feito através dos meios disponibilizados pela SB - Contabilidade & Consultoria.";
+
+        document.getElementById("noteText").innerText = "Nota: este texto serve como base informativa geral e pode ser ajustado e completado de acordo com a evolução da plataforma e das necessidades legais aplicáveis.";
+
+        document.getElementById("footerNote").innerText = "Tudo num só lugar, organizado para execução rápida.";
+        document.getElementById("footerCopy").innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+        document.getElementById("footerTagline").innerText = "Sistema criado para acelerar a criação de negócios";
+        document.getElementById("footerAuthor").innerText = "Desenvolvido por Suellen Brito";
+
+      } else {
+        document.documentElement.lang = "en";
+        document.title = "Privacy Policy";
+        document.getElementById("backBtn").innerText = "← Back";
+        document.getElementById("title").innerText = "Privacy Policy";
+        document.getElementById("subtitle").innerText = "Information about how your data may be processed on this platform.";
+
+        document.getElementById("section1Title").innerText = "1. Data controller";
+        document.getElementById("section1Text").innerText = "This platform is managed by SB - Contabilidade & Consultoria.";
+
+        document.getElementById("section2Title").innerText = "2. Data that may be collected";
+        document.getElementById("section2Text").innerText = "Within this platform, only data strictly necessary for the operation of the service may be processed, such as:";
+        document.getElementById("data1").innerText = "account name and email, where applicable;";
+        document.getElementById("data2").innerText = "authentication and access data;";
+        document.getElementById("data3").innerText = "technical information necessary for the platform to function;";
+        document.getElementById("data4").innerText = "payment-related information processed through external providers.";
+
+        document.getElementById("section3Title").innerText = "3. Purpose of processing";
+        document.getElementById("section3Text").innerText = "Data may be used to create and manage user accounts, provide access to purchased content, process payments, provide support and ensure the security and proper operation of the platform.";
+
+        document.getElementById("section4Title").innerText = "4. Payments";
+        document.getElementById("section4Text").innerText = "Payments are processed through secure external platforms. Payment data is not processed directly on this page, but by the respective payment provider.";
+
+        document.getElementById("section5Title").innerText = "5. Data retention";
+        document.getElementById("section5Text").innerText = "Data is kept only for the period necessary for the purposes indicated above, or while there is an active relationship with the user, unless otherwise required by law.";
+
+        document.getElementById("section6Title").innerText = "6. User rights";
+        document.getElementById("section6Text").innerText = "Where applicable, the user may request access, rectification, erasure, restriction or objection to the processing of personal data, as well as withdraw consent where consent is the applicable legal basis.";
+
+        document.getElementById("section7Title").innerText = "7. Contact";
+        document.getElementById("section7Text").innerText = "For privacy and data protection matters, contact should be made through the channels made available by SB - Contabilidade & Consultoria.";
+
+        document.getElementById("noteText").innerText = "Note: this text serves as a general informational basis and may be adjusted and expanded according to the evolution of the platform and applicable legal needs.";
+
+        document.getElementById("footerNote").innerText = "Everything in one place, organized for fast execution.";
+        document.getElementById("footerCopy").innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+        document.getElementById("footerTagline").innerText = "System created to accelerate business creation";
+        document.getElementById("footerAuthor").innerText = "Developed by Suellen Brito";
+      }
+    }
+
+    updateLanguage();
+  </script>
+</body>
+</html>
