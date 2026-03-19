@@ -202,6 +202,11 @@
     <p id="footerCopy">© 2025 SB - Contabilidade & Consultoria. All rights reserved.</p>
     <p id="footerTagline">System created to accelerate Business creation</p>
     <p id="footerAuthor">Developed by Suellen Brito</p>
+    <p>
+  <a href="/privacy.html" id="privacyLink" style="color:#cbb58c; text-decoration:underline;">
+    Privacy Policy
+  </a>
+</p>
   </div>
 </footer>
   
@@ -248,11 +253,14 @@
       const footerCopy = document.getElementById("footerCopy");
       const footerTagline = document.getElementById("footerTagline");
       const footerAuthor = document.getElementById("footerAuthor");
+      const privacyLink = document.getElementById("privacyLink");
+
 
       if (footerNote) footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
       if (footerCopy) footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
       if (footerTagline) footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
       if (footerAuthor) footerAuthor.innerText = "Desenvolvido por Suellen Brito";
+      if (privacyLink) privacyLink.innerText = "Política de Privacidade";
 
     } else {
       document.documentElement.lang = "en";
@@ -281,11 +289,13 @@
       const footerCopy = document.getElementById("footerCopy");
       const footerTagline = document.getElementById("footerTagline");
       const footerAuthor = document.getElementById("footerAuthor");
+      const privacyLink = document.getElementById("privacyLink");
 
       if (footerNote) footerNote.innerText = "Everything in one place, organized for fast execution.";
       if (footerCopy) footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
       if (footerTagline) footerTagline.innerText = "System created to accelerate business creation";
       if (footerAuthor) footerAuthor.innerText = "Developed by Suellen Brito";
+      if (privacyLink) privacyLink.innerText = "Privacy Policy";
     }
   }
 
