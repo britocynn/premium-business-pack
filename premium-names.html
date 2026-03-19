@@ -304,28 +304,28 @@
     }
 
     function updateLanguage(){
-      const lang = document.getElementById("language").value;
+  const lang = document.getElementById("language").value;
 
-      if(lang === "pt"){
-        document.documentElement.lang = "pt";
-        document.title = "Gerador Premium de Nomes";
-        document.getElementById("backBtn").innerText = "← Voltar";
-        document.getElementById("title").innerText = "Gerador Premium de Nomes";
-        document.getElementById("subtitle").innerText = "Gera nomes de negócio mais fortes, mais premium e mais brandáveis.";
-        document.getElementById("keywordLabel").innerText = "Palavra-chave / nicho";
-        document.getElementById("keyword").placeholder = "ex.: beleza, contabilidade, digital, finanças";
-        document.getElementById("styleLabel").innerText = "Estilo do nome";
-        document.getElementById("style").options[0].text = "Luxo / Premium";
-        document.getElementById("style").options[1].text = "Moderno / Brandable";
-        document.getElementById("style").options[2].text = "Profissional / Confiança";
-        document.getElementById("generateBtn").innerText = "Gerar Nomes Premium";
-        document.getElementById("moreBtn").innerText = "Gerar Mais Nomes";
-        document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
-        document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para usar esta ferramenta.";
-        document.getElementById("lockedBtn").innerText = "Ver Packs";
-        document.getElementById("favoritesTitle").innerText = "Nomes Favoritos";
+  if(lang === "pt"){
+    document.documentElement.lang = "pt";
+    document.title = "Gerador Premium de Nomes";
+    document.getElementById("backBtn").innerText = "← Voltar";
+    document.getElementById("title").innerText = "Gerador Premium de Nomes";
+    document.getElementById("subtitle").innerText = "Gera nomes de negócio mais fortes, mais premium e mais brandáveis.";
+    document.getElementById("keywordLabel").innerText = "Palavra-chave / nicho";
+    document.getElementById("keyword").placeholder = "ex.: beleza, contabilidade, digital, finanças";
+    document.getElementById("styleLabel").innerText = "Estilo do nome";
+    document.getElementById("style").options[0].text = "Luxo / Premium";
+    document.getElementById("style").options[1].text = "Moderno / Brandable";
+    document.getElementById("style").options[2].text = "Profissional / Confiança";
+    document.getElementById("generateBtn").innerText = "Gerar Nomes Premium";
+    document.getElementById("moreBtn").innerText = "Gerar Mais Nomes";
+    document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
+    document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para usar esta ferramenta.";
+    document.getElementById("lockedBtn").innerText = "Ver Packs";
+    document.getElementById("favoritesTitle").innerText = "Nomes Favoritos";
 
-            const footerNote = document.getElementById("footerNote");
+    const footerNote = document.getElementById("footerNote");
     const footerCopy = document.getElementById("footerCopy");
     const footerTagline = document.getElementById("footerTagline");
     const footerAuthor = document.getElementById("footerAuthor");
@@ -342,26 +342,27 @@
     if (footerAuthor) {
       footerAuthor.innerText = "Desenvolvido por Suellen Brito";
     }
-      } else {
-        document.documentElement.lang = "en";
-        document.title = "Premium Name Generator";
-        document.getElementById("backBtn").innerText = "← Back";
-        document.getElementById("title").innerText = "Premium Name Generator";
-        document.getElementById("subtitle").innerText = "Generate stronger, more brandable and more premium business names.";
-        document.getElementById("keywordLabel").innerText = "Business keyword / niche";
-        document.getElementById("keyword").placeholder = "e.g. beauty, accounting, digital, finance";
-        document.getElementById("styleLabel").innerText = "Name style";
-        document.getElementById("style").options[0].text = "Luxury / Premium";
-        document.getElementById("style").options[1].text = "Modern / Brandable";
-        document.getElementById("style").options[2].text = "Professional / Trustworthy";
-        document.getElementById("generateBtn").innerText = "Generate Premium Names";
-        document.getElementById("moreBtn").innerText = "Generate More Names";
-        document.getElementById("lockedTitle").innerText = "Access not active";
-        document.getElementById("lockedText").innerText = "You need an active premium plan to use this tool.";
-        document.getElementById("lockedBtn").innerText = "View Plans";
-        document.getElementById("favoritesTitle").innerText = "Favorite Names";
 
-            const footerNote = document.getElementById("footerNote");
+  } else {
+    document.documentElement.lang = "en";
+    document.title = "Premium Name Generator";
+    document.getElementById("backBtn").innerText = "← Back";
+    document.getElementById("title").innerText = "Premium Name Generator";
+    document.getElementById("subtitle").innerText = "Generate stronger, more brandable and more premium business names.";
+    document.getElementById("keywordLabel").innerText = "Business keyword / niche";
+    document.getElementById("keyword").placeholder = "e.g. beauty, accounting, digital, finance";
+    document.getElementById("styleLabel").innerText = "Name style";
+    document.getElementById("style").options[0].text = "Luxury / Premium";
+    document.getElementById("style").options[1].text = "Modern / Brandable";
+    document.getElementById("style").options[2].text = "Professional / Trustworthy";
+    document.getElementById("generateBtn").innerText = "Generate Premium Names";
+    document.getElementById("moreBtn").innerText = "Generate More Names";
+    document.getElementById("lockedTitle").innerText = "Access not active";
+    document.getElementById("lockedText").innerText = "You need an active premium plan to use this tool.";
+    document.getElementById("lockedBtn").innerText = "View Plans";
+    document.getElementById("favoritesTitle").innerText = "Favorite Names";
+
+    const footerNote = document.getElementById("footerNote");
     const footerCopy = document.getElementById("footerCopy");
     const footerTagline = document.getElementById("footerTagline");
     const footerAuthor = document.getElementById("footerAuthor");
@@ -377,9 +378,9 @@
     }
     if (footerAuthor) {
       footerAuthor.innerText = "Developed by Suellen Brito";
-      }
     }
-
+  }
+}
     function capitalize(word){
       if(!word) return "";
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
