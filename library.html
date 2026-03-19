@@ -90,7 +90,7 @@
     }
 
     .content-box ul{
-      margin:0 0 18px 18px;
+      margin:0 0 18px 20px;
       color:#5f503c;
       line-height:1.7;
       padding:0;
@@ -100,7 +100,7 @@
       margin-bottom:8px;
     }
 
-    .highlight-box{
+    .section-box{
       background:#f8f0e3;
       border:1px solid #e0cfa9;
       border-radius:14px;
@@ -109,7 +109,12 @@
       margin-bottom:20px;
     }
 
-    .highlight-box p{
+    .section-box h3{
+      margin-top:0;
+      color:#2b241c;
+    }
+
+    .section-box p{
       margin:8px 0;
     }
 
@@ -208,17 +213,26 @@
       </p>
 
       <ul>
-        <li id="item1">Templates editáveis</li>
-        <li id="item2">Ferramentas práticas</li>
-        <li id="item3">Recursos estratégicos</li>
-        <li id="item4">Materiais de apoio</li>
+        <li id="item1">E-books completos prontos a usar (várias áreas)</li>
+        <li id="item2">Templates editáveis (Notion, planners, trackers)</li>
+        <li id="item3">Vídeos (incluindo conteúdo faceless)</li>
+        <li id="item4">Recursos digitais para venda e criação de conteúdo</li>
+        <li id="item5">Ferramentas práticas para negócio e produtividade</li>
       </ul>
 
-      <div class="highlight-box">
-        <p id="importantTitle"><strong>Importante:</strong></p>
+      <div class="section-box">
+        <h3 id="howToTitle">Como aceder e utilizar</h3>
+        <p id="howTo1">1. Ao entrares na biblioteca, procura o ficheiro principal (PDF) “MRR Digital Product Bundles”.</p>
+        <p id="howTo2">2. Abre esse ficheiro — é o ponto de acesso central.</p>
+        <p id="howTo3">3. Dentro do PDF encontrarás links diretos para todos os recursos.</p>
+        <p id="howTo4">4. Alguns ficheiros estão em formato .zip ou .rar — basta extrair (unzip) para aceder ao conteúdo.</p>
+      </div>
+
+      <div class="section-box">
+        <h3 id="importantTitle">Importante</h3>
         <p id="importantText1">Todo o conteúdo está em inglês.</p>
         <p id="importantText2">No entanto, é 100% editável, facilmente traduzível e pode ser adaptado ao teu negócio, marca ou idioma.</p>
-        <p id="importantText3">Esta biblioteca foi criada para poupar tempo, dar estrutura e acelerar resultados — não para começares do zero.</p>
+        <p id="importantText3">Não é necessário criares nada do zero — o objetivo é poupar tempo, dar estrutura e acelerar resultados.</p>
       </div>
 
       <button class="primary-btn" id="libraryBtn" onclick="openLibrary()">Abrir Biblioteca</button>
@@ -267,15 +281,22 @@
         document.getElementById("libraryTitle").innerText = "O que está incluído";
         document.getElementById("libraryIntro").innerText = "Esta biblioteca inclui milhares de recursos digitais prontos a usar para acelerar a criação e crescimento do teu negócio.";
 
-        document.getElementById("item1").innerText = "Templates editáveis";
-        document.getElementById("item2").innerText = "Ferramentas práticas";
-        document.getElementById("item3").innerText = "Recursos estratégicos";
-        document.getElementById("item4").innerText = "Materiais de apoio";
+        document.getElementById("item1").innerText = "E-books completos prontos a usar (várias áreas)";
+        document.getElementById("item2").innerText = "Templates editáveis (Notion, planners, trackers)";
+        document.getElementById("item3").innerText = "Vídeos (incluindo conteúdo faceless)";
+        document.getElementById("item4").innerText = "Recursos digitais para venda e criação de conteúdo";
+        document.getElementById("item5").innerText = "Ferramentas práticas para negócio e produtividade";
 
-        document.getElementById("importantTitle").innerHTML = "<strong>Importante:</strong>";
+        document.getElementById("howToTitle").innerText = "Como aceder e utilizar";
+        document.getElementById("howTo1").innerText = "1. Ao entrares na biblioteca, procura o ficheiro principal (PDF) “MRR Digital Product Bundles”.";
+        document.getElementById("howTo2").innerText = "2. Abre esse ficheiro — é o ponto de acesso central.";
+        document.getElementById("howTo3").innerText = "3. Dentro do PDF encontrarás links diretos para todos os recursos.";
+        document.getElementById("howTo4").innerText = "4. Alguns ficheiros estão em formato .zip ou .rar — basta extrair (unzip) para aceder ao conteúdo.";
+
+        document.getElementById("importantTitle").innerText = "Importante";
         document.getElementById("importantText1").innerText = "Todo o conteúdo está em inglês.";
         document.getElementById("importantText2").innerText = "No entanto, é 100% editável, facilmente traduzível e pode ser adaptado ao teu negócio, marca ou idioma.";
-        document.getElementById("importantText3").innerText = "Esta biblioteca foi criada para poupar tempo, dar estrutura e acelerar resultados — não para começares do zero.";
+        document.getElementById("importantText3").innerText = "Não é necessário criares nada do zero — o objetivo é poupar tempo, dar estrutura e acelerar resultados.";
 
         document.getElementById("libraryBtn").innerText = "Abrir Biblioteca";
 
@@ -311,15 +332,22 @@
         document.getElementById("libraryTitle").innerText = "What is included";
         document.getElementById("libraryIntro").innerText = "This library includes thousands of ready-to-use digital resources to help you build and grow your business faster.";
 
-        document.getElementById("item1").innerText = "Editable templates";
-        document.getElementById("item2").innerText = "Practical tools";
-        document.getElementById("item3").innerText = "Strategic resources";
-        document.getElementById("item4").innerText = "Support materials";
+        document.getElementById("item1").innerText = "Ready-to-use eBooks (multiple niches)";
+        document.getElementById("item2").innerText = "Editable templates (Notion, planners, trackers)";
+        document.getElementById("item3").innerText = "Videos (including faceless content)";
+        document.getElementById("item4").innerText = "Digital resources for selling and content creation";
+        document.getElementById("item5").innerText = "Practical tools for business and productivity";
 
-        document.getElementById("importantTitle").innerHTML = "<strong>Important:</strong>";
+        document.getElementById("howToTitle").innerText = "How to access and use";
+        document.getElementById("howTo1").innerText = "1. Inside the library, locate the main file (PDF) “MRR Digital Product Bundles”.";
+        document.getElementById("howTo2").innerText = "2. Open that file — it is your central access point.";
+        document.getElementById("howTo3").innerText = "3. Inside the PDF you will find direct links to all resources.";
+        document.getElementById("howTo4").innerText = "4. Some files are in .zip or .rar format — simply extract them to access the content.";
+
+        document.getElementById("importantTitle").innerText = "Important";
         document.getElementById("importantText1").innerText = "All content is in English.";
         document.getElementById("importantText2").innerText = "However, it is 100% editable, easily translatable and can be adapted to your business, brand or language.";
-        document.getElementById("importantText3").innerText = "This library was created to save you time, give you structure and accelerate results — not to start from scratch.";
+        document.getElementById("importantText3").innerText = "You do not need to start from scratch — the goal is to save time, give structure and accelerate results.";
 
         document.getElementById("libraryBtn").innerText = "Open Library";
 
