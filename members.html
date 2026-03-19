@@ -511,6 +511,54 @@
       document.getElementById("statusValue").innerText = statusText;
     }
 
+    async function handleCheckout(user, profile){
+  const params = new URLSearchParams(window.location.search);
+  const checkout = params.get("checkout");
+  const plan = params.get("plan");
+
+  if(checkout !== "1" || !plan) return;
+
+  // já tem o mesmo plano
+  if(profile?.plan === plan){
+    alert("Já tens este plano ativo.");
+    window.history.replaceState({}, document.title, "/members.html");
+    return;
+  }
+
+  // já tem o mais completo
+  if(profile?.plan === "complete_plus_library"){
+    alert("Já tens o plano mais completo.");
+    window.history.replaceState({}, document.title, "/members.html");
+    return;
+  }
+
+  try{
+    const response = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        plan: plan,
+        userId: user.id,
+        email: user.email
+      })
+    });
+
+    const data = await response.json();
+
+    if(data.url){
+      window.location.href = data.url;
+    } else {
+      alert("Erro ao iniciar pagamento.");
+    }
+
+  } catch(err){
+    console.error(err);
+    alert("Erro ao ligar ao Stripe.");
+  }
+}
+
     async function checkAccess(){
       currentUser = await getCurrentUser();
 
@@ -520,6 +568,7 @@
       }
 
       currentProfile = await getProfile();
+      await handleCheckout(currentUser, currentProfile);
       renderProfileData();
 
       if(!currentProfile || currentProfile.is_premium !== true){
