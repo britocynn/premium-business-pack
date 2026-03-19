@@ -207,6 +207,29 @@
       color:#6b5a43;
       font-size:14px;
     }
+
+    .site-footer{
+  width:100%;
+  margin-top:26px;
+}
+
+.site-footer-content{
+  max-width:1100px;
+  margin:0 auto;
+  text-align:center;
+  color:#cbb58c;
+  font-size:14px;
+  padding:0 18px 24px;
+  box-sizing:border-box;
+}
+
+.site-footer-content p{
+  margin:8px 0;
+}
+
+#footerNote{
+  font-weight:bold;
+}
   </style>
 </head>
 <body>
@@ -260,6 +283,15 @@
 
   </div>
 
+          <footer class="site-footer">
+  <div class="site-footer-content">
+    <p id="footerNote">Everything in one place, organized for fast execution.</p>
+    <p id="footerCopy">© 2025 SB - Contabilidade & Consultoria. All rights reserved.</p>
+    <p id="footerTagline">System created to accelerate Business creation</p>
+    <p id="footerAuthor">Developed by Suellen Brito</p>
+  </div>
+</footer>
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/js/supabase-client.js"></script>
   <script src="/js/auth.js"></script>
@@ -272,49 +304,86 @@
       window.location.href = "/members.html";
     }
 
-    function updateLanguage(){
-      const lang = document.getElementById("language").value;
+function updateLanguage(){
+  const lang = document.getElementById("language").value;
 
-      if(lang === "pt"){
-        document.documentElement.lang = "pt";
-        document.title = "Gerador de Ideias de Negócio";
-        document.getElementById("backBtn").innerText = "← Voltar";
-        document.getElementById("title").innerText = "Gerador de Ideias de Negócio";
-        document.getElementById("subtitle").innerText = "Gera ideias de negócio mais fortes, mais práticas e com maior potencial de monetização.";
-        document.getElementById("keywordLabel").innerText = "Nicho / área de negócio";
-        document.getElementById("keyword").placeholder = "ex.: beleza, contabilidade, fitness, produtos digitais";
-        document.getElementById("typeLabel").innerText = "Tipo de ideia";
-        document.getElementById("ideaType").options[0].text = "Negócio de Serviços";
-        document.getElementById("ideaType").options[1].text = "Produto Digital";
-        document.getElementById("ideaType").options[2].text = "Conteúdo / Audiência";
-        document.getElementById("ideaType").options[3].text = "Negócio Local";
-        document.getElementById("generateBtn").innerText = "Gerar Ideias";
-        document.getElementById("moreBtn").innerText = "Gerar Mais Ideias";
-        document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
-        document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para usar esta ferramenta.";
-        document.getElementById("lockedBtn").innerText = "Ver Packs";
-        document.getElementById("favoritesTitle").innerText = "Ideias Favoritas";
-      } else {
-        document.documentElement.lang = "en";
-        document.title = "Business Ideas Generator";
-        document.getElementById("backBtn").innerText = "← Back";
-        document.getElementById("title").innerText = "Business Ideas Generator";
-        document.getElementById("subtitle").innerText = "Generate stronger, more practical and more monetizable business ideas.";
-        document.getElementById("keywordLabel").innerText = "Business niche / area";
-        document.getElementById("keyword").placeholder = "e.g. beauty, accounting, fitness, digital products";
-        document.getElementById("typeLabel").innerText = "Idea type";
-        document.getElementById("ideaType").options[0].text = "Service Business";
-        document.getElementById("ideaType").options[1].text = "Digital Product";
-        document.getElementById("ideaType").options[2].text = "Content / Audience";
-        document.getElementById("ideaType").options[3].text = "Local Business";
-        document.getElementById("generateBtn").innerText = "Generate Ideas";
-        document.getElementById("moreBtn").innerText = "Generate More Ideas";
-        document.getElementById("lockedTitle").innerText = "Access not active";
-        document.getElementById("lockedText").innerText = "You need an active premium plan to use this tool.";
-        document.getElementById("lockedBtn").innerText = "View Plans";
-        document.getElementById("favoritesTitle").innerText = "Favorite Ideas";
-      }
+  if(lang === "pt"){
+    document.documentElement.lang = "pt";
+    document.title = "Gerador de Ideias de Negócio";
+    document.getElementById("backBtn").innerText = "← Voltar";
+    document.getElementById("title").innerText = "Gerador de Ideias de Negócio";
+    document.getElementById("subtitle").innerText = "Gera ideias de negócio mais fortes, mais práticas e com maior potencial de monetização.";
+    document.getElementById("keywordLabel").innerText = "Nicho / área de negócio";
+    document.getElementById("keyword").placeholder = "ex.: beleza, contabilidade, fitness, produtos digitais";
+    document.getElementById("typeLabel").innerText = "Tipo de ideia";
+    document.getElementById("ideaType").options[0].text = "Negócio de Serviços";
+    document.getElementById("ideaType").options[1].text = "Produto Digital";
+    document.getElementById("ideaType").options[2].text = "Conteúdo / Audiência";
+    document.getElementById("ideaType").options[3].text = "Negócio Local";
+    document.getElementById("generateBtn").innerText = "Gerar Ideias";
+    document.getElementById("moreBtn").innerText = "Gerar Mais Ideias";
+    document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
+    document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para usar esta ferramenta.";
+    document.getElementById("lockedBtn").innerText = "Ver Packs";
+    document.getElementById("favoritesTitle").innerText = "Ideias Favoritas";
+
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
+
+    if (footerNote) {
+      footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
     }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Desenvolvido por Suellen Brito";
+    }
+
+  } else {
+    document.documentElement.lang = "en";
+    document.title = "Business Ideas Generator";
+    document.getElementById("backBtn").innerText = "← Back";
+    document.getElementById("title").innerText = "Business Ideas Generator";
+    document.getElementById("subtitle").innerText = "Generate stronger, more practical and more monetizable business ideas.";
+    document.getElementById("keywordLabel").innerText = "Business niche / area";
+    document.getElementById("keyword").placeholder = "e.g. beauty, accounting, fitness, digital products";
+    document.getElementById("typeLabel").innerText = "Idea type";
+    document.getElementById("ideaType").options[0].text = "Service Business";
+    document.getElementById("ideaType").options[1].text = "Digital Product";
+    document.getElementById("ideaType").options[2].text = "Content / Audience";
+    document.getElementById("ideaType").options[3].text = "Local Business";
+    document.getElementById("generateBtn").innerText = "Generate Ideas";
+    document.getElementById("moreBtn").innerText = "Generate More Ideas";
+    document.getElementById("lockedTitle").innerText = "Access not active";
+    document.getElementById("lockedText").innerText = "You need an active premium plan to use this tool.";
+    document.getElementById("lockedBtn").innerText = "View Plans";
+    document.getElementById("favoritesTitle").innerText = "Favorite Ideas";
+
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
+
+    if (footerNote) {
+      footerNote.innerText = "Everything in one place, organized for fast execution.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "System created to accelerate business creation";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Developed by Suellen Brito";
+    }
+  }
+}
 
     function capitalize(word){
       if(!word) return "";
