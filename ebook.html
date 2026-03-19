@@ -126,6 +126,29 @@
     .hidden{
       display:none;
     }
+
+    .site-footer{
+  width:100%;
+  margin-top:26px;
+}
+
+.site-footer-content{
+  max-width:1100px;
+  margin:0 auto;
+  text-align:center;
+  color:#cbb58c;
+  font-size:14px;
+  padding:0 18px 24px;
+  box-sizing:border-box;
+}
+
+.site-footer-content p{
+  margin:8px 0;
+}
+
+#footerNote{
+  font-weight:bold;
+}
   </style>
 </head>
 <body>
@@ -176,6 +199,15 @@
 
   </div>
 
+          <footer class="site-footer">
+  <div class="site-footer-content">
+    <p id="footerNote">Everything in one place, organized for fast execution.</p>
+    <p id="footerCopy">© 2025 SB - Contabilidade & Consultoria. All rights reserved.</p>
+    <p id="footerTagline">System created to accelerate Business creation</p>
+    <p id="footerAuthor">Developed by Suellen Brito</p>
+  </div>
+</footer>
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/js/supabase-client.js"></script>
   <script src="/js/auth.js"></script>
@@ -186,42 +218,79 @@
     }
 
     function updateLanguage(){
-      const lang = document.getElementById("language").value;
+  const lang = document.getElementById("language").value;
 
-      if(lang === "pt"){
-        document.documentElement.lang = "pt";
-        document.title = "E-book";
-        document.getElementById("backBtn").innerText = "← Voltar";
-        document.getElementById("title").innerText = "O Teu E-book Premium";
-        document.getElementById("subtitle").innerText = "Acede ao teu guia digital e lê-o sempre que quiseres.";
+  if(lang === "pt"){
+    document.documentElement.lang = "pt";
+    document.title = "E-book";
+    document.getElementById("backBtn").innerText = "← Voltar";
+    document.getElementById("title").innerText = "O Teu E-book Premium";
+    document.getElementById("subtitle").innerText = "Acede ao teu guia digital e lê-o sempre que quiseres.";
 
-        document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
-        document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para aceder a este e-book.";
-        document.getElementById("lockedBtn").innerText = "Ver Packs";
+    document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
+    document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para aceder a este e-book.";
+    document.getElementById("lockedBtn").innerText = "Ver Packs";
 
-        document.getElementById("ebookTitle").innerText = "E-book Digital de Negócio";
-        document.getElementById("ebookDesc").innerText = "Este material foi criado para te ajudar a pensar com mais clareza, agir com estrutura e avançar mais depressa com a tua ideia de negócio.";
-        document.getElementById("ebookDesc2").innerText = "Abre o e-book abaixo e acede ao teu conteúdo premium em modo de leitura.";
-        document.getElementById("ebookBtn").innerText = "Abrir E-book";
-        document.getElementById("ebookNote").innerText = "Dica: guarda esta página nos favoritos para voltares facilmente aos teus materiais.";
-      } else {
-        document.documentElement.lang = "en";
-        document.title = "eBook";
-        document.getElementById("backBtn").innerText = "← Back";
-        document.getElementById("title").innerText = "Your Premium eBook";
-        document.getElementById("subtitle").innerText = "Access your digital guide and read it whenever you want.";
+    document.getElementById("ebookTitle").innerText = "E-book Digital de Negócio";
+    document.getElementById("ebookDesc").innerText = "Este material foi criado para te ajudar a pensar com mais clareza, agir com estrutura e avançar mais depressa com a tua ideia de negócio.";
+    document.getElementById("ebookDesc2").innerText = "Abre o e-book abaixo e acede ao teu conteúdo premium em modo de leitura.";
+    document.getElementById("ebookBtn").innerText = "Abrir E-book";
+    document.getElementById("ebookNote").innerText = "Dica: guarda esta página nos favoritos para voltares facilmente aos teus materiais.";
 
-        document.getElementById("lockedTitle").innerText = "Access not active";
-        document.getElementById("lockedText").innerText = "You need an active premium plan to access this eBook.";
-        document.getElementById("lockedBtn").innerText = "View Plans";
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
 
-        document.getElementById("ebookTitle").innerText = "Digital Business eBook";
-        document.getElementById("ebookDesc").innerText = "This material was created to help you think more clearly, act with structure and move faster with your business idea.";
-        document.getElementById("ebookDesc2").innerText = "Open the eBook below and access your premium content in reading mode.";
-        document.getElementById("ebookBtn").innerText = "Open eBook";
-        document.getElementById("ebookNote").innerText = "Tip: save this page in your favorites so you can come back to your materials easily.";
-      }
+    if (footerNote) {
+      footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
     }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Desenvolvido por Suellen Brito";
+    }
+
+  } else {
+    document.documentElement.lang = "en";
+    document.title = "eBook";
+    document.getElementById("backBtn").innerText = "← Back";
+    document.getElementById("title").innerText = "Your Premium eBook";
+    document.getElementById("subtitle").innerText = "Access your digital guide and read it whenever you want.";
+
+    document.getElementById("lockedTitle").innerText = "Access not active";
+    document.getElementById("lockedText").innerText = "You need an active premium plan to access this eBook.";
+    document.getElementById("lockedBtn").innerText = "View Plans";
+
+    document.getElementById("ebookTitle").innerText = "Digital Business eBook";
+    document.getElementById("ebookDesc").innerText = "This material was created to help you think more clearly, act with structure and move faster with your business idea.";
+    document.getElementById("ebookDesc2").innerText = "Open the eBook below and access your premium content in reading mode.";
+    document.getElementById("ebookBtn").innerText = "Open eBook";
+    document.getElementById("ebookNote").innerText = "Tip: save this page in your favorites so you can come back to your materials easily.";
+
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
+
+    if (footerNote) {
+      footerNote.innerText = "Everything in one place, organized for fast execution.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "System created to accelerate business creation";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Developed by Suellen Brito";
+    }
+  }
+}
 
     async function checkAccess(){
       const user = await getCurrentUser();
