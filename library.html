@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca Premium</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-client.js"></script>
+  <script src="/js/auth.js"></script>
+
+  <script>
+    async function checkAccess(){
+      const user = await getCurrentUser();
+
+      if(!user){
+        window.location.href = "/login.html";
+        return;
+      }
+
+      const profile = await getProfile();
+
+      // 🔒 BLOQUEIO
+      if(!profile || profile.plan !== "complete_plus_library"){
+        alert("Esta área é exclusiva do Pack Completo + Biblioteca.");
+        window.location.href = "/members.html";
+        return;
+      }
+
+      // ✅ REDIRECIONA PARA GOOGLE DRIVE
+      window.location.href = "https://drive.google.com/drive/folders/15Pa3TIMgBE7LKuUqHvCACFXom2M13PBo?usp=sharing";
+    }
+
+    checkAccess();
+  </script>
+</head>
+<body>
+</body>
+</html>
