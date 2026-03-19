@@ -105,6 +105,29 @@
       display:none;
     }
 
+    .site-footer{
+  width:100%;
+  margin-top:26px;
+}
+
+.site-footer-content{
+  max-width:1100px;
+  margin:0 auto;
+  text-align:center;
+  color:#cbb58c;
+  font-size:14px;
+  padding:0 18px 24px;
+  box-sizing:border-box;
+}
+
+.site-footer-content p{
+  margin:8px 0;
+}
+
+#footerNote{
+  font-weight:bold;
+}
+
   </style>
 </head>
 <body>
@@ -153,6 +176,15 @@
 
   </div>
 
+          <footer class="site-footer">
+  <div class="site-footer-content">
+    <p id="footerNote">Everything in one place, organized for fast execution.</p>
+    <p id="footerCopy">© 2025 SB - Contabilidade & Consultoria. All rights reserved.</p>
+    <p id="footerTagline">System created to accelerate Business creation</p>
+    <p id="footerAuthor">Developed by Suellen Brito</p>
+  </div>
+</footer>
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/js/supabase-client.js"></script>
   <script src="/js/auth.js"></script>
@@ -163,40 +195,77 @@
     }
 
     function updateLanguage(){
-      const lang = document.getElementById("language").value;
+  const lang = document.getElementById("language").value;
 
-      if(lang === "pt"){
-        document.documentElement.lang = "pt";
-        document.title = "Checklist";
-        document.getElementById("backBtn").innerText = "← Voltar";
-        document.getElementById("title").innerText = "Checklist de Execução";
-        document.getElementById("subtitle").innerText = "Segue um caminho claro passo a passo para lançar o teu negócio.";
+  if(lang === "pt"){
+    document.documentElement.lang = "pt";
+    document.title = "Checklist";
+    document.getElementById("backBtn").innerText = "← Voltar";
+    document.getElementById("title").innerText = "Checklist de Execução";
+    document.getElementById("subtitle").innerText = "Segue um caminho claro passo a passo para lançar o teu negócio.";
 
-        document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
-        document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para aceder a esta checklist.";
-        document.getElementById("lockedBtn").innerText = "Ver Packs";
+    document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
+    document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para aceder a esta checklist.";
+    document.getElementById("lockedBtn").innerText = "Ver Packs";
 
-        document.getElementById("checklistTitle").innerText = "A tua Checklist de Negócio";
-        document.getElementById("checklistDesc").innerText = "Esta checklist dá-te uma estrutura clara para saberes exatamente o que fazer e em que ordem.";
-        document.getElementById("checklistDesc2").innerText = "Abre abaixo e segue cada passo ao teu ritmo.";
-        document.getElementById("checklistBtn").innerText = "Abrir Checklist";
-      } else {
-        document.documentElement.lang = "en";
-        document.title = "Checklist";
-        document.getElementById("backBtn").innerText = "← Back";
-        document.getElementById("title").innerText = "Execution Checklist";
-        document.getElementById("subtitle").innerText = "Follow a clear step-by-step path to launch your business.";
+    document.getElementById("checklistTitle").innerText = "A tua Checklist de Negócio";
+    document.getElementById("checklistDesc").innerText = "Esta checklist dá-te uma estrutura clara para saberes exatamente o que fazer e em que ordem.";
+    document.getElementById("checklistDesc2").innerText = "Abre abaixo e segue cada passo ao teu ritmo.";
+    document.getElementById("checklistBtn").innerText = "Abrir Checklist";
 
-        document.getElementById("lockedTitle").innerText = "Access not active";
-        document.getElementById("lockedText").innerText = "You need an active premium plan to access this checklist.";
-        document.getElementById("lockedBtn").innerText = "View Plans";
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
 
-        document.getElementById("checklistTitle").innerText = "Your Business Checklist";
-        document.getElementById("checklistDesc").innerText = "This checklist gives you a clear structure so you know exactly what to do and in which order.";
-        document.getElementById("checklistDesc2").innerText = "Open it below and follow each step at your own pace.";
-        document.getElementById("checklistBtn").innerText = "Open Checklist";
-      }
+    if (footerNote) {
+      footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
     }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Desenvolvido por Suellen Brito";
+    }
+
+  } else {
+    document.documentElement.lang = "en";
+    document.title = "Checklist";
+    document.getElementById("backBtn").innerText = "← Back";
+    document.getElementById("title").innerText = "Execution Checklist";
+    document.getElementById("subtitle").innerText = "Follow a clear step-by-step path to launch your business.";
+
+    document.getElementById("lockedTitle").innerText = "Access not active";
+    document.getElementById("lockedText").innerText = "You need an active premium plan to access this checklist.";
+    document.getElementById("lockedBtn").innerText = "View Plans";
+
+    document.getElementById("checklistTitle").innerText = "Your Business Checklist";
+    document.getElementById("checklistDesc").innerText = "This checklist gives you a clear structure so you know exactly what to do and in which order.";
+    document.getElementById("checklistDesc2").innerText = "Open it below and follow each step at your own pace.";
+    document.getElementById("checklistBtn").innerText = "Open Checklist";
+
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
+
+    if (footerNote) {
+      footerNote.innerText = "Everything in one place, organized for fast execution.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "System created to accelerate business creation";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Developed by Suellen Brito";
+    }
+  }
+}
 
     async function checkAccess(){
       const user = await getCurrentUser();
