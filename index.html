@@ -141,7 +141,7 @@
 #footerNote{
   font-weight:bold;
 }
-    }
+    
   </style>
 </head>
 <body>
@@ -223,87 +223,93 @@
     }
 
     function updateLanguage() {
-      const lang = document.getElementById("language").value;
+  const lang = document.getElementById("language").value;
 
-      if (lang === "pt") {
-        document.documentElement.lang = "pt";
-        document.title = "Pack Premium de Negócio";
-        document.getElementById("loginBtn").innerText = "Entrar";
-        document.getElementById("signupBtn").innerText = "Criar Conta";
-        document.getElementById("title").innerText = "✦ Pack Premium de Negócio ✦";
-        document.getElementById("subtitle").innerText = "Tudo o que é necessário para criar, lançar e fazer crescer o rendimento online";
-        document.getElementById("boxTitle").innerText = "O que está incluído:";
-        document.getElementById("feature1").innerText = "✔ Gerador Premium de Nomes de Negócio";
-        document.getElementById("feature2").innerText = "✔ Gerador de Ideias de Negócio e Renda Extra";
-        document.getElementById("feature3").innerText = "✔ E-book Digital de Negócio";
-        document.getElementById("feature4").innerText = "✔ Checklist de Execução";
-        document.getElementById("feature5").innerText = "✔ Acesso Vitalício";
+  if (lang === "pt") {
+    document.documentElement.lang = "pt";
+    document.title = "Pack Premium de Negócio";
+    document.getElementById("loginBtn").innerText = "Entrar";
+    document.getElementById("signupBtn").innerText = "Criar Conta";
+    document.getElementById("title").innerText = "✦ Pack Premium de Negócio ✦";
+    document.getElementById("subtitle").innerText = "Tudo o que é necessário para criar, lançar e fazer crescer o rendimento online";
+    document.getElementById("boxTitle").innerText = "O que está incluído:";
+    document.getElementById("feature1").innerText = "✔ Gerador Premium de Nomes de Negócio";
+    document.getElementById("feature2").innerText = "✔ Gerador de Ideias de Negócio e Renda Extra";
+    document.getElementById("feature3").innerText = "✔ E-book Digital de Negócio";
+    document.getElementById("feature4").innerText = "✔ Checklist de Execução";
+    document.getElementById("feature5").innerText = "✔ Acesso Vitalício";
 
-        document.getElementById("plan1Title").innerText = "Pack Completo";
-        document.getElementById("plan1Desc").innerText = "Acesso completo a todas as ferramentas e recursos para criar e desenvolver o negócio.";
-        document.getElementById("plan1Btn").innerText = "Quero Aceder";
+    document.getElementById("plan1Title").innerText = "Pack Completo";
+    document.getElementById("plan1Desc").innerText = "Acesso completo a todas as ferramentas e recursos para criar e desenvolver o negócio.";
+    document.getElementById("plan1Btn").innerText = "Quero Aceder";
 
-        document.getElementById("plan2Title").innerText = "Pack Completo + Biblioteca Editável";
-        document.getElementById("plan2Desc").innerText = "Inclui tudo + templates editáveis e recursos avançados.";
-        document.getElementById("plan2Btn").innerText = "Quero o Acesso Total";
+    document.getElementById("plan2Title").innerText = "Pack Completo + Biblioteca Editável";
+    document.getElementById("plan2Desc").innerText = "Inclui tudo + templates editáveis e recursos avançados.";
+    document.getElementById("plan2Btn").innerText = "Quero o Acesso Total";
 
-        document.getElementById("footerText").innerText = "Ferramentas inteligentes para empreendedores modernos";
+    document.getElementById("footerText").innerText = "Ferramentas inteligentes para empreendedores modernos";
 
-              document.getElementById("footerNote").innerText = "Tudo num só lugar, organizado para execução rápida.";
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
 
-      const footerCopy = document.getElementById("footerCopy");
-      const footerTagline = document.getElementById("footerTagline");
-      const footerAuthor = document.getElementById("footerAuthor");
-
-      if (footerCopy) {
-        footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
-      }
-      if (footerTagline) {
-        footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
-      }
-      if (footerAuthor) {
-        footerAuthor.innerText = "Desenvolvido por Suellen Brito";
-      } else {
-        document.documentElement.lang = "en";
-        document.title = "Premium Business Pack";
-        document.getElementById("loginBtn").innerText = "Login";
-        document.getElementById("signupBtn").innerText = "Create Account";
-        document.getElementById("title").innerText = "✦ Premium Business Pack ✦";
-        document.getElementById("subtitle").innerText = "Everything you need to build, launch and grow your income online";
-        document.getElementById("boxTitle").innerText = "What you get:";
-        document.getElementById("feature1").innerText = "✔ Premium Business Name Generator";
-        document.getElementById("feature2").innerText = "✔ Business & Side Hustle Ideas Generator";
-        document.getElementById("feature3").innerText = "✔ Digital Business eBook";
-        document.getElementById("feature4").innerText = "✔ Execution Checklist";
-        document.getElementById("feature5").innerText = "✔ Lifetime Access";
-
-        document.getElementById("plan1Title").innerText = "Complete Pack";
-        document.getElementById("plan1Desc").innerText = "Full access to all tools and resources to start and grow your business.";
-        document.getElementById("plan1Btn").innerText = "Get Access";
-
-        document.getElementById("plan2Title").innerText = "Complete + Editable Library";
-        document.getElementById("plan2Desc").innerText = "Includes everything + editable templates and advanced resources.";
-        document.getElementById("plan2Btn").innerText = "Get Full Access";
-
-        document.getElementById("footerText").innerText = "Smart tools for modern entrepreneurs";
-
-              document.getElementById("footerNote").innerText = "Everything in one place, organized for fast execution.";
-
-      const footerCopy = document.getElementById("footerCopy");
-      const footerTagline = document.getElementById("footerTagline");
-      const footerAuthor = document.getElementById("footerAuthor");
-
-      if (footerCopy) {
-        footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
-      }
-      if (footerTagline) {
-        footerTagline.innerText = "System created to accelerate business creation";
-      }
-      if (footerAuthor) {
-        footerAuthor.innerText = "Developed by Suellen Brito";
-      }
+    if (footerNote) {
+      footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Desenvolvido por Suellen Brito";
     }
 
+  } else {
+    document.documentElement.lang = "en";
+    document.title = "Premium Business Pack";
+    document.getElementById("loginBtn").innerText = "Login";
+    document.getElementById("signupBtn").innerText = "Create Account";
+    document.getElementById("title").innerText = "✦ Premium Business Pack ✦";
+    document.getElementById("subtitle").innerText = "Everything you need to build, launch and grow your income online";
+    document.getElementById("boxTitle").innerText = "What you get:";
+    document.getElementById("feature1").innerText = "✔ Premium Business Name Generator";
+    document.getElementById("feature2").innerText = "✔ Business & Side Hustle Ideas Generator";
+    document.getElementById("feature3").innerText = "✔ Digital Business eBook";
+    document.getElementById("feature4").innerText = "✔ Execution Checklist";
+    document.getElementById("feature5").innerText = "✔ Lifetime Access";
+
+    document.getElementById("plan1Title").innerText = "Complete Pack";
+    document.getElementById("plan1Desc").innerText = "Full access to all tools and resources to start and grow your business.";
+    document.getElementById("plan1Btn").innerText = "Get Access";
+
+    document.getElementById("plan2Title").innerText = "Complete + Editable Library";
+    document.getElementById("plan2Desc").innerText = "Includes everything + editable templates and advanced resources.";
+    document.getElementById("plan2Btn").innerText = "Get Full Access";
+
+    document.getElementById("footerText").innerText = "Smart tools for modern entrepreneurs";
+
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
+
+    if (footerNote) {
+      footerNote.innerText = "Everything in one place, organized for fast execution.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "System created to accelerate business creation";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Developed by Suellen Brito";
+    }
+  }
+}
 async function buyPlan(plan) {
   const { data: { user } } = await supabaseClient.auth.getUser();
 
