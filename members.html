@@ -93,20 +93,20 @@
       font-size:1rem;
     }
 
-    .plan-badge{
-      flex:0 0 auto;
-      background:linear-gradient(135deg,#d6a84f,#9c6a26);
-      color:white;
-      padding:12px 16px;
-      border-radius:14px;
-      font-weight:bold;
-      font-size:14px;
-      min-width:180px;
-      text-align:center;
-      box-shadow:0 8px 20px rgba(156,106,38,0.28);
-      max-width:100%;
-      box-sizing:border-box;
-    }
+   .plan-badge{
+  flex:0 0 auto;
+  background:linear-gradient(135deg,#d6a84f,#9c6a26);
+  color:white;
+  padding:12px 16px;
+  border-radius:14px;
+  font-weight:bold;
+  font-size:14px;
+  min-width:180px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(156,106,38,0.28);
+  max-width:100%;
+  box-sizing:border-box;
+}
 
     .meta{
       display:grid;
@@ -244,27 +244,37 @@
     }
 
     @media (max-width: 640px){
-      body{
-        padding:22px 14px 40px;
-      }
+  body{
+    padding:22px 14px 40px;
+  }
 
-      .hero,
-      .locked-box{
-        padding:24px 18px;
-      }
+  .hero,
+  .locked-box{
+    padding:24px 18px;
+  }
 
-      .hero{
-        overflow:hidden;
-      }
+  .hero{
+    overflow:hidden;
+  }
 
-      .hero-top{
-        flex-direction:column;
-        align-items:stretch;
-      }
+  .hero-top{
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+  }
 
-      .tool-card{
-        min-height:auto;
-      }
+  .tool-card{
+    min-height:auto;
+  }
+
+  .plan-badge{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    align-self:stretch;
+  }
+}
 
       .plan-badge{
         width:100%;
