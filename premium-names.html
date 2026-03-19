@@ -207,6 +207,29 @@
       color:#6b5a43;
       font-size:14px;
     }
+
+    .site-footer{
+  width:100%;
+  margin-top:26px;
+}
+
+.site-footer-content{
+  max-width:1100px;
+  margin:0 auto;
+  text-align:center;
+  color:#cbb58c;
+  font-size:14px;
+  padding:0 18px 24px;
+  box-sizing:border-box;
+}
+
+.site-footer-content p{
+  margin:8px 0;
+}
+
+#footerNote{
+  font-weight:bold;
+}
   </style>
 </head>
 <body>
@@ -259,6 +282,15 @@
 
   </div>
 
+          <footer class="site-footer">
+  <div class="site-footer-content">
+    <p id="footerNote">Everything in one place, organized for fast execution.</p>
+    <p id="footerCopy">© 2025 SB - Contabilidade & Consultoria. All rigths reserved.</p>
+    <p id="footerTagline">System created to acelerate Business creation</p>
+    <p id="footerAuthor">Developed by Suellen Brito</p>
+  </div>
+</footer>
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/js/supabase-client.js"></script>
   <script src="/js/auth.js"></script>
@@ -292,6 +324,24 @@
         document.getElementById("lockedText").innerText = "Precisas de um plano premium ativo para usar esta ferramenta.";
         document.getElementById("lockedBtn").innerText = "Ver Packs";
         document.getElementById("favoritesTitle").innerText = "Nomes Favoritos";
+
+            const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
+
+    if (footerNote) {
+      footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Desenvolvido por Suellen Brito";
+    }
       } else {
         document.documentElement.lang = "en";
         document.title = "Premium Name Generator";
@@ -310,6 +360,23 @@
         document.getElementById("lockedText").innerText = "You need an active premium plan to use this tool.";
         document.getElementById("lockedBtn").innerText = "View Plans";
         document.getElementById("favoritesTitle").innerText = "Favorite Names";
+
+            const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
+
+    if (footerNote) {
+      footerNote.innerText = "Everything in one place, organized for fast execution.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "System created to accelerate business creation";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Developed by Suellen Brito";
       }
     }
 
