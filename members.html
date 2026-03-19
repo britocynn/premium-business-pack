@@ -234,13 +234,6 @@
       cursor:not-allowed;
     }
 
-    .footer-note{
-      margin-top:26px;
-      text-align:center;
-      color:#cbb58c;
-      font-size:14px;
-    }
-
     @media (max-width: 640px){
       body{
         padding:22px 14px 40px;
@@ -273,23 +266,27 @@
       }
     }
 
-    .footer{
-  margin-top:40px;
+.site-footer{
+  width:100%;
+  margin-top:26px;
+}
+
+.site-footer-content{
+  max-width:1100px;
+  margin:0 auto;
   text-align:center;
-  font-size:13px;
   color:#cbb58c;
-  opacity:0.85;
+  font-size:14px;
+  padding:0 18px 24px;
+  box-sizing:border-box;
 }
 
-.footer-content{
-  max-width:900px;
-  margin:auto;
+.site-footer-content p{
+  margin:8px 0;
 }
 
-.footer-sub{
-  margin-top:4px;
-  font-size:12px;
-  opacity:0.7;
+#footerNote{
+  font-weight:bold;
 }
     }
   </style>
@@ -637,12 +634,15 @@
     updateLanguage();
     checkAccess();
   </script>
-  <footer class="footer">
-  <div class="footer-content">
-    <p>© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.</p>
-    <p class="footer-sub">Sistema criado para acelerar a criação de negócios</p>
-    <p class="footer-sub">Desenvolvido por Suellen Brito</p>
+
+  <footer class="site-footer">
+  <div class="site-footer-content">
+    <p id="footerNote">Everything in one place, organized for fast execution.</p>
+    <p id="footerCopy">© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.</p>
+    <p id="footerTagline">Sistema criado para acelerar a criação de negócios</p>
+    <p id="footerAuthor">Desenvolvido por Suellen Brito</p>
   </div>
 </footer>
+  
 </body>
 </html>
