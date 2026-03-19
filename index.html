@@ -250,18 +250,10 @@
       const footerTagline = document.getElementById("footerTagline");
       const footerAuthor = document.getElementById("footerAuthor");
 
-      if (footerNote) {
-        footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
-      }
-      if (footerCopy) {
-        footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
-      }
-      if (footerTagline) {
-        footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
-      }
-      if (footerAuthor) {
-        footerAuthor.innerText = "Desenvolvido por Suellen Brito";
-      }
+      if (footerNote) footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
+      if (footerCopy) footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+      if (footerTagline) footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
+      if (footerAuthor) footerAuthor.innerText = "Desenvolvido por Suellen Brito";
 
     } else {
       document.documentElement.lang = "en";
@@ -292,57 +284,74 @@
       const footerTagline = document.getElementById("footerTagline");
       const footerAuthor = document.getElementById("footerAuthor");
 
-      if (footerNote) {
-        footerNote.innerText = "Everything in one place, organized for fast execution.";
-      }
-      if (footerCopy) {
-        footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
-      }
-      if (footerTagline) {
-        footerTagline.innerText = "System created to accelerate business creation";
-      }
-      if (footerAuthor) {
-        footerAuthor.innerText = "Developed by Suellen Brito";
-      }
+      if (footerNote) footerNote.innerText = "Everything in one place, organized for fast execution.";
+      if (footerCopy) footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+      if (footerTagline) footerTagline.innerText = "System created to accelerate business creation";
+      if (footerAuthor) footerAuthor.innerText = "Developed by Suellen Brito";
     }
   }
 
   async function buyPlan(plan) {
-    const { data: { user } } = await supabaseClient.auth.getUser();
+    try {
+      // fallback de segurança: se o cliente Supabase não existir, manda para login com plano
+      if (typeof supabaseClient === "undefined" || !supabaseClient?.auth) {
+        window.location.href = `/login.html?plan=${plan}`;
+        return;
+      }
 
-    if (!user) {
-      window.location.href = `/login.html?plan=${plan}`;
-      return;
-    }
+      const result = await supabaseClient.auth.getUser();
+      const user = result?.data?.user || null;
 
-    const { data: profile, error } = await supabaseClient
-      .from("profiles")
-      .select("is_premium, plan")
-      .eq("id", user.id)
-      .single();
+      // não autenticado → login com plano guardado
+      if (!user) {
+        window.location.href = `/login.html?plan=${plan}`;
+        return;
+      }
 
-    if (error) {
-      alert("Could not verify your account plan.");
-      return;
-    }
+      const { data: profile, error } = await supabaseClient
+        .from("profiles")
+        .select("is_premium, plan")
+        .eq("id", user.id)
+        .single();
 
-    if (profile.is_premium === true && profile.plan === "complete_plus_library") {
-      alert("You already have the highest plan.");
-      return;
-    }
+      if (error) {
+        console.error("Profile error:", error);
+        alert("Could not verify your account plan.");
+        return;
+      }
 
-    if (profile.is_premium === true && profile.plan === "complete" && plan === "complete") {
-      alert("You already have this plan.");
-      return;
-    }
+      // já tem o plano máximo
+      if (profile?.is_premium === true && profile?.plan === "complete_plus_library") {
+        alert("You already have the highest plan.");
+        return;
+      }
 
-    if (profile.is_premium === true && profile.plan === "complete" && plan === "complete_plus_library") {
+      // já tem o pack de 57 e tenta comprar o mesmo
+      if (profile?.is_premium === true && profile?.plan === "complete" && plan === "complete") {
+        alert("You already have this plan.");
+        return;
+      }
+
+      // upgrade
+      if (profile?.is_premium === true && profile?.plan === "complete" && plan === "complete_plus_library") {
+        window.location.href = `/members.html?checkout=1&plan=${plan}`;
+        return;
+      }
+
+      // conta free/logada
       window.location.href = `/members.html?checkout=1&plan=${plan}`;
-      return;
+    } catch (err) {
+      console.error("buyPlan error:", err);
+      // fallback para não ficar sem fazer nada
+      window.location.href = `/login.html?plan=${plan}`;
     }
-
-    window.location.href = `/members.html?checkout=1&plan=${plan}`;
   }
+
+  // garantir que as funções ficam globais para os onclick do HTML
+  window.goLogin = goLogin;
+  window.goSignup = goSignup;
+  window.buyPlan = buyPlan;
+  window.updateLanguage = updateLanguage;
 
   updateLanguage();
 </script>
