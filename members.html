@@ -9,16 +9,14 @@
     body{
       margin:0;
       font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(156,106,38,0.14) 0%, rgba(17,13,10,0) 24%),
-        linear-gradient(180deg, #16120f 0%, #0d0b0a 100%);
+      background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
       color:#f5ead9;
-      padding:20px 14px 34px;
+      padding:32px 18px 50px;
     }
 
     .container{
-      max-width:1080px;
-      margin:0 auto;
+      max-width:1100px;
+      margin:auto;
     }
 
     .top-bar{
@@ -27,54 +25,54 @@
       align-items:center;
       gap:12px;
       flex-wrap:wrap;
-      margin-bottom:18px;
+      margin-bottom:28px;
     }
 
-    .top-left,
-    .top-right{
+    .left-actions,
+    .right-actions{
       display:flex;
       align-items:center;
       gap:10px;
       flex-wrap:wrap;
     }
 
-    .logout-btn{
-      background:rgba(255,250,242,0.06);
+    .logout-btn,
+    .ghost-btn{
+      background:#2b241c;
       color:#f5ead9;
-      border:1px solid rgba(224,207,169,0.18);
-      padding:11px 16px;
-      border-radius:14px;
-      font-weight:600;
+      border:none;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:bold;
       cursor:pointer;
       font-size:14px;
-      backdrop-filter: blur(6px);
     }
 
     .language-select{
-      padding:11px 14px;
-      border-radius:14px;
-      border:1px solid rgba(224,207,169,0.18);
+      padding:12px 14px;
+      border-radius:12px;
+      border:none;
+      font-size:14px;
+      font-weight:bold;
       background:#fffaf2;
       color:#2b241c;
-      font-size:14px;
-      font-weight:600;
     }
 
     .hero{
-      background:linear-gradient(180deg, rgba(250,244,235,0.98), rgba(255,250,242,0.98));
+      background: linear-gradient(180deg, rgba(248,240,227,0.98), rgba(255,250,242,0.98));
       color:#2b241c;
-      border:1px solid rgba(224,207,169,0.82);
       border-radius:24px;
-      padding:18px 16px;
-      box-shadow:0 14px 40px rgba(0,0,0,0.24);
-      margin-bottom:18px;
+      padding:30px 24px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.25);
+      margin-bottom:26px;
+      border:1px solid #e0cfa9;
     }
 
     .hero-top{
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
-      gap:12px;
+      gap:18px;
       flex-wrap:wrap;
     }
 
@@ -83,238 +81,197 @@
     }
 
     .hero h1{
-      margin:0 0 8px 0;
-      font-size:clamp(1.6rem, 4vw, 2.5rem);
-      line-height:1.06;
-      font-weight:700;
-      letter-spacing:-0.03em;
+      margin:0 0 10px 0;
+      font-size:clamp(2rem, 4vw, 3rem);
+      line-height:1.05;
     }
 
-    .hero-subtitle{
+    .hero p{
       margin:0;
-      color:#6f5c44;
-      font-size:0.98rem;
+      color:#6b5a43;
       line-height:1.6;
-      max-width:700px;
+      font-size:1rem;
     }
 
-    .plan-pill{
-      background:linear-gradient(135deg,#dfb35a,#b67d2f);
+    .plan-badge{
+      flex:0 0 auto;
+      background:linear-gradient(135deg,#d6a84f,#9c6a26);
       color:white;
-      border-radius:999px;
-      padding:10px 14px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:0.02em;
-      box-shadow:0 8px 20px rgba(182,125,47,0.26);
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:bold;
+      font-size:14px;
+      min-width:180px;
       text-align:center;
+      box-shadow:0 8px 20px rgba(156,106,38,0.28);
       max-width:100%;
       box-sizing:border-box;
     }
 
-    .meta-grid{
+    .meta{
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;
-      margin-top:14px;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:14px;
+      margin-top:22px;
     }
 
     .meta-card{
-      background:rgba(255,250,242,0.72);
-      border:1px solid rgba(224,207,169,0.82);
-      border-radius:18px;
-      padding:14px 14px 13px;
+      background:#fffaf2;
+      border:1px solid #ead9b8;
+      border-radius:16px;
+      padding:16px;
     }
 
     .meta-label{
-      margin:0 0 7px 0;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:0.08em;
+      font-size:12px;
+      font-weight:bold;
+      letter-spacing:.04em;
       text-transform:uppercase;
-      color:#9a7740;
+      color:#9b7a47;
+      margin-bottom:6px;
     }
 
     .meta-value{
-      margin:0;
-      font-size:0.98rem;
-      line-height:1.45;
       color:#2b241c;
-      font-weight:600;
+      font-weight:bold;
+      line-height:1.4;
       word-break:break-word;
     }
 
     .locked-box{
       display:none;
-      background:linear-gradient(180deg, rgba(250,244,235,0.98), rgba(255,250,242,0.98));
+      background: linear-gradient(180deg, rgba(248,240,227,0.98), rgba(255,250,242,0.98));
       color:#2b241c;
-      border:1px solid rgba(224,207,169,0.82);
       border-radius:24px;
-      padding:22px 16px;
-      box-shadow:0 14px 40px rgba(0,0,0,0.24);
-      margin-bottom:18px;
+      padding:28px 24px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.25);
+      margin-bottom:26px;
+      border:1px solid #e0cfa9;
       text-align:center;
     }
 
     .locked-box h2{
       margin:0 0 10px 0;
-      font-size:1.65rem;
-      font-weight:700;
-      letter-spacing:-0.02em;
+      font-size:2rem;
     }
 
     .locked-box p{
       margin:0;
-      color:#6f5c44;
+      color:#6b5a43;
       line-height:1.6;
     }
 
-    .locked-btn{
-      margin-top:16px;
-      background:#2b241c;
-      color:#f5ead9;
-      border:none;
-      padding:12px 18px;
-      border-radius:14px;
-      font-weight:600;
-      cursor:pointer;
-      font-size:14px;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:12px;
-      margin:0 0 14px 0;
-      flex-wrap:wrap;
+    .locked-box .ghost-btn{
+      margin-top:18px;
     }
 
     .section-title{
-      margin:0;
-      font-size:1.08rem;
-      color:#f3e7d3;
-      font-weight:600;
-      letter-spacing:-0.01em;
+      margin:0 0 16px 0;
+      font-size:1.25rem;
+      color:#f5ead9;
     }
 
-    .section-subtitle{
-      margin:0;
-      color:#cdb89a;
-      font-size:0.92rem;
-      line-height:1.5;
-    }
-
-    .tools-grid{
+    .grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:16px;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:18px;
     }
 
     .tool-card{
-      background:linear-gradient(180deg, rgba(255,250,242,0.98), rgba(247,239,228,0.98));
+      background:#fffaf2;
       color:#2b241c;
-      border:1px solid rgba(224,207,169,0.82);
+      border:1px solid #e0cfa9;
       border-radius:22px;
-      padding:17px 16px 15px;
-      box-shadow:0 12px 28px rgba(0,0,0,0.18);
+      padding:22px 18px 18px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.22);
       display:flex;
       flex-direction:column;
-      min-height:210px;
+      min-height:240px;
     }
 
-    .tool-badge{
+    .tool-tag{
       align-self:flex-start;
-      background:#f1dfb7;
-      color:#936c2e;
-      border-radius:999px;
+      background:#f3e2bd;
+      color:#8f6727;
+      font-size:12px;
+      font-weight:bold;
       padding:7px 10px;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:0.08em;
+      border-radius:999px;
+      margin-bottom:14px;
       text-transform:uppercase;
-      margin-bottom:13px;
+      letter-spacing:.04em;
     }
 
     .tool-card h3{
       margin:0 0 10px 0;
-      font-size:1.28rem;
-      line-height:1.16;
-      letter-spacing:-0.02em;
-      font-weight:700;
+      font-size:1.45rem;
+      line-height:1.15;
     }
 
     .tool-card p{
-      margin:0 0 16px 0;
-      color:#6d5a43;
-      line-height:1.58;
-      font-size:0.95rem;
+      margin:0 0 18px 0;
+      color:#6b5a43;
+      line-height:1.55;
       flex-grow:1;
     }
 
     .tool-btn{
       width:100%;
       border:none;
-      border-radius:15px;
-      padding:14px 16px;
-      font-weight:700;
+      border-radius:14px;
+      padding:14px;
+      font-weight:bold;
       font-size:15px;
       cursor:pointer;
-      background:linear-gradient(135deg,#dfb35a,#b67d2f);
+      background:linear-gradient(135deg,#d6a84f,#9c6a26);
       color:white;
-      box-shadow:0 8px 18px rgba(182,125,47,0.2);
     }
 
     .tool-card.locked{
-      opacity:0.72;
+      opacity:.72;
     }
 
     .tool-card.locked .tool-btn{
-      background:#bfb7ab;
-      color:white;
+      background:#b6b6b6;
       cursor:not-allowed;
-      box-shadow:none;
     }
 
     .footer-note{
-      margin-top:18px;
+      margin-top:26px;
       text-align:center;
-      color:#cdb89a;
-      font-size:13px;
-      line-height:1.5;
+      color:#cbb58c;
+      font-size:14px;
     }
 
-    @media (max-width: 700px){
+    @media (max-width: 640px){
       body{
-        padding:18px 14px 28px;
+        padding:22px 14px 40px;
       }
 
       .hero,
       .locked-box{
-        padding:18px 16px;
-        border-radius:22px;
+        padding:24px 18px;
+      }
+
+      .hero{
+        overflow:hidden;
       }
 
       .hero-top{
         flex-direction:column;
         align-items:stretch;
-        gap:10px;
-      }
-
-      .plan-pill{
-        width:100%;
-      }
-
-      .meta-grid{
-        grid-template-columns:1fr;
       }
 
       .tool-card{
         min-height:auto;
       }
 
-      .tool-card h3{
-        font-size:1.18rem;
+      .plan-badge{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        box-sizing:border-box;
+        align-self:stretch;
       }
     }
   </style>
@@ -323,11 +280,11 @@
   <div class="container">
 
     <div class="top-bar">
-      <div class="top-left">
+      <div class="left-actions">
         <button class="logout-btn" id="logoutBtn" onclick="logout()">Logout</button>
       </div>
 
-      <div class="top-right">
+      <div class="right-actions">
         <select id="language" class="language-select" onchange="updateLanguage()">
           <option value="en">English</option>
           <option value="pt">Português</option>
@@ -339,21 +296,21 @@
       <div class="hero-top">
         <div class="hero-text">
           <h1 id="title">Members Area</h1>
-          <p class="hero-subtitle" id="subtitle">Access your premium tools and resources in one private space.</p>
+          <p id="subtitle">Access your premium tools and resources in one private space.</p>
         </div>
 
-        <div class="plan-pill" id="planBadge">Plan: Checking...</div>
+        <div class="plan-badge" id="planBadge">Plan: Checking...</div>
       </div>
 
-      <div class="meta-grid">
+      <div class="meta">
         <div class="meta-card">
-          <p class="meta-label" id="emailLabel">Account Email</p>
-          <p class="meta-value" id="emailValue">Loading...</p>
+          <div class="meta-label" id="emailLabel">Account Email</div>
+          <div class="meta-value" id="emailValue">Loading...</div>
         </div>
 
         <div class="meta-card">
-          <p class="meta-label" id="statusLabel">Access Status</p>
-          <p class="meta-value" id="statusValue">Checking...</p>
+          <div class="meta-label" id="statusLabel">Access Status</div>
+          <div class="meta-value" id="statusValue">Checking...</div>
         </div>
       </div>
     </div>
@@ -361,48 +318,43 @@
     <div class="locked-box" id="lockedBox">
       <h2 id="lockedTitle">Access not active</h2>
       <p id="lockedText">Your account exists, but you do not yet have an active premium plan.</p>
-      <button class="locked-btn" id="lockedBtn" onclick="window.location.href='/index.html'">View Plans</button>
+      <button class="ghost-btn" id="lockedBtn" onclick="window.location.href='/index.html'">View Plans</button>
     </div>
 
     <div id="contentArea">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title" id="toolsTitle">Your Tools</h2>
-          <p class="section-subtitle" id="toolsSubtitle">Everything organized for fast access and clear execution.</p>
-        </div>
-      </div>
+      <h2 class="section-title" id="toolsTitle">Your Tools</h2>
 
-      <div class="tools-grid">
+      <div class="grid">
         <div class="tool-card">
-          <div class="tool-badge" id="tagNames">Premium</div>
+          <div class="tool-tag" id="tagNames">Premium</div>
           <h3 id="namesTitle">Premium Name Generator</h3>
           <p id="namesDesc">Create stronger, more memorable and more premium business names.</p>
-          <button class="tool-btn" id="namesBtn" onclick="window.location.href='/premium-names.html'">Open</button>
+          <button class="tool-btn" id="namesBtn" onclick="window.location.href='/names.html'">Open</button>
         </div>
 
         <div class="tool-card">
-          <div class="tool-badge" id="tagIdeas">Premium</div>
+          <div class="tool-tag" id="tagIdeas">Premium</div>
           <h3 id="ideasTitle">Business Ideas Generator</h3>
           <p id="ideasDesc">Generate premium ideas with stronger monetization potential.</p>
           <button class="tool-btn" id="ideasBtn" onclick="window.location.href='/ideas.html'">Open</button>
         </div>
 
         <div class="tool-card">
-          <div class="tool-badge" id="tagEbook">Guide</div>
+          <div class="tool-tag" id="tagEbook">Guide</div>
           <h3 id="ebookTitle">eBook</h3>
           <p id="ebookDesc">Access your digital guide and core learning materials.</p>
           <button class="tool-btn" id="ebookBtn" onclick="window.location.href='/ebook.html'">Open</button>
         </div>
 
         <div class="tool-card">
-          <div class="tool-badge" id="tagChecklist">Action</div>
+          <div class="tool-tag" id="tagChecklist">Action</div>
           <h3 id="checklistTitle">Checklist</h3>
           <p id="checklistDesc">Follow a structured execution checklist step by step.</p>
           <button class="tool-btn" id="checklistBtn" onclick="window.location.href='/checklist.html'">Open</button>
         </div>
 
         <div class="tool-card" id="libraryCard">
-          <div class="tool-badge" id="tagLibrary">Upgrade</div>
+          <div class="tool-tag" id="tagLibrary">Upgrade</div>
           <h3 id="libraryTitle">Premium Library</h3>
           <p id="libraryDesc">Exclusive templates, tools and advanced resources.</p>
           <button class="tool-btn" id="libraryBtn" onclick="window.location.href='/library.html'">Open</button>
@@ -410,7 +362,7 @@
       </div>
 
       <div class="footer-note" id="footerNote">
-        Everything in one place, designed to help you move with clarity and speed.
+        Everything in one place, organized for fast execution.
       </div>
     </div>
 
@@ -429,31 +381,6 @@
       window.location.href = "/login.html";
     }
 
-    async function startCheckoutIfNeeded(user) {
-      const params = new URLSearchParams(window.location.search);
-      const shouldCheckout = params.get("checkout");
-      const selectedPlan = params.get("plan");
-
-      if (shouldCheckout === "1" && selectedPlan) {
-        const response = await fetch('/api/create-checkout-session', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            plan: selectedPlan,
-            userId: user.id
-          })
-        });
-
-        const data = await response.json();
-
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          alert("Erro ao iniciar pagamento.");
-        }
-      }
-    }
-
     function updateLanguage(){
       const lang = document.getElementById("language").value;
 
@@ -466,7 +393,6 @@
         document.getElementById("emailLabel").innerText = "Email da Conta";
         document.getElementById("statusLabel").innerText = "Estado do Acesso";
         document.getElementById("toolsTitle").innerText = "As Tuas Ferramentas";
-        document.getElementById("toolsSubtitle").innerText = "Tudo organizado para acesso rápido e execução clara.";
 
         document.getElementById("tagNames").innerText = "Premium";
         document.getElementById("tagIdeas").innerText = "Premium";
@@ -498,7 +424,7 @@
         document.getElementById("lockedText").innerText = "A tua conta já existe, mas ainda não tens um plano premium ativo.";
         document.getElementById("lockedBtn").innerText = "Ver Packs";
 
-        document.getElementById("footerNote").innerText = "Tudo num só lugar, pensado para te ajudar a avançar com clareza e rapidez.";
+        document.getElementById("footerNote").innerText = "Tudo num só lugar, organizado para execução rápida.";
       } else {
         document.documentElement.lang = "en";
         document.title = "Members Area";
@@ -508,7 +434,6 @@
         document.getElementById("emailLabel").innerText = "Account Email";
         document.getElementById("statusLabel").innerText = "Access Status";
         document.getElementById("toolsTitle").innerText = "Your Tools";
-        document.getElementById("toolsSubtitle").innerText = "Everything organized for fast access and clear execution.";
 
         document.getElementById("tagNames").innerText = "Premium";
         document.getElementById("tagIdeas").innerText = "Premium";
@@ -540,7 +465,7 @@
         document.getElementById("lockedText").innerText = "Your account exists, but you do not yet have an active premium plan.";
         document.getElementById("lockedBtn").innerText = "View Plans";
 
-        document.getElementById("footerNote").innerText = "Everything in one place, designed to help you move with clarity and speed.";
+        document.getElementById("footerNote").innerText = "Everything in one place, organized for fast execution.";
       }
 
       renderProfileData();
@@ -593,8 +518,6 @@
         window.location.href = "/login.html";
         return;
       }
-
-      await startCheckoutIfNeeded(currentUser);
 
       currentProfile = await getProfile();
       renderProfileData();
