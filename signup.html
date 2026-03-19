@@ -191,65 +191,73 @@
 
   <script>
     function updateLanguage(){
-      const lang = document.getElementById("language").value;
+  const lang = document.getElementById("language").value;
 
-      if(lang === "pt"){
-        document.documentElement.lang = "pt";
-        document.title = "Criar Conta";
-        document.getElementById("title").innerText = "Criar Conta";
-        document.getElementById("subtitle").innerText = "Cria a tua conta para aceder ao Pack Premium de Negócio";
-        document.getElementById("emailLabel").innerText = "Email";
-        document.getElementById("passwordLabel").innerText = "Palavra-passe";
-        document.getElementById("email").placeholder = "Introduz o teu email";
-        document.getElementById("password").placeholder = "Cria uma palavra-passe";
-        document.getElementById("signupBtn").innerText = "Criar Conta";
-        document.getElementById("loginText").innerText = "Já tens conta?";
-        document.getElementById("loginLink").innerText = "Entrar";
-              document.getElementById("footerNote").innerText = "Tudo num só lugar, organizado para execução rápida.";
+  if(lang === "pt"){
+    document.documentElement.lang = "pt";
+    document.title = "Criar Conta";
+    document.getElementById("title").innerText = "Criar Conta";
+    document.getElementById("subtitle").innerText = "Cria a tua conta para aceder ao Pack Premium de Negócio";
+    document.getElementById("emailLabel").innerText = "Email";
+    document.getElementById("passwordLabel").innerText = "Palavra-passe";
+    document.getElementById("email").placeholder = "Introduz o teu email";
+    document.getElementById("password").placeholder = "Cria uma palavra-passe";
+    document.getElementById("signupBtn").innerText = "Criar Conta";
+    document.getElementById("loginText").innerText = "Já tens conta?";
+    document.getElementById("loginLink").innerText = "Entrar";
 
-      const footerCopy = document.getElementById("footerCopy");
-      const footerTagline = document.getElementById("footerTagline");
-      const footerAuthor = document.getElementById("footerAuthor");
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
 
-      if (footerCopy) {
-        footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
-      }
-      if (footerTagline) {
-        footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
-      }
-      if (footerAuthor) {
-        footerAuthor.innerText = "Desenvolvido por Suellen Brito";
-      } else {
-        document.documentElement.lang = "en";
-        document.title = "Create Account";
-        document.getElementById("title").innerText = "Create Your Account";
-        document.getElementById("subtitle").innerText = "Create your account to access the Premium Business Pack";
-        document.getElementById("emailLabel").innerText = "Email";
-        document.getElementById("passwordLabel").innerText = "Password";
-        document.getElementById("email").placeholder = "Enter your email";
-        document.getElementById("password").placeholder = "Create a password";
-        document.getElementById("signupBtn").innerText = "Create Account";
-        document.getElementById("loginText").innerText = "Already have an account?";
-        document.getElementById("loginLink").innerText = "Login";
-              document.getElementById("footerNote").innerText = "Everything in one place, organized for fast execution.";
-
-      const footerCopy = document.getElementById("footerCopy");
-      const footerTagline = document.getElementById("footerTagline");
-      const footerAuthor = document.getElementById("footerAuthor");
-
-      if (footerCopy) {
-        footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
-      }
-      if (footerTagline) {
-        footerTagline.innerText = "System created to accelerate business creation";
-      }
-      if (footerAuthor) {
-        footerAuthor.innerText = "Developed by Suellen Brito";
-      }
-
-      document.getElementById("message").innerText = "";
+    if (footerNote) {
+      footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Desenvolvido por Suellen Brito";
     }
 
+  } else {
+    document.documentElement.lang = "en";
+    document.title = "Create Account";
+    document.getElementById("title").innerText = "Create Your Account";
+    document.getElementById("subtitle").innerText = "Create your account to access the Premium Business Pack";
+    document.getElementById("emailLabel").innerText = "Email";
+    document.getElementById("passwordLabel").innerText = "Password";
+    document.getElementById("email").placeholder = "Enter your email";
+    document.getElementById("password").placeholder = "Create a password";
+    document.getElementById("signupBtn").innerText = "Create Account";
+    document.getElementById("loginText").innerText = "Already have an account?";
+    document.getElementById("loginLink").innerText = "Login";
+
+    const footerNote = document.getElementById("footerNote");
+    const footerCopy = document.getElementById("footerCopy");
+    const footerTagline = document.getElementById("footerTagline");
+    const footerAuthor = document.getElementById("footerAuthor");
+
+    if (footerNote) {
+      footerNote.innerText = "Everything in one place, organized for fast execution.";
+    }
+    if (footerCopy) {
+      footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+    }
+    if (footerTagline) {
+      footerTagline.innerText = "System created to accelerate business creation";
+    }
+    if (footerAuthor) {
+      footerAuthor.innerText = "Developed by Suellen Brito";
+    }
+  }
+
+  document.getElementById("message").innerText = "";
+}
     async function handleSignup(){
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
