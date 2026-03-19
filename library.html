@@ -2,13 +2,347 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca Premium</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #3c2b16 0%, #1b1712 30%, #0f0f0f 100%);
+      color:#f5ead9;
+      padding:40px 20px;
+      text-align:center;
+    }
+
+    .container{
+      max-width:950px;
+      margin:auto;
+    }
+
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:25px;
+    }
+
+    .language-wrap select{
+      padding:10px 12px;
+      border-radius:10px;
+      border:none;
+      font-size:15px;
+    }
+
+    .back-btn{
+      background:#2b241c;
+      color:#f5ead9;
+      border:none;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .hero{
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      margin-bottom:24px;
+      text-align:left;
+    }
+
+    .hero h1{
+      margin:0 0 10px 0;
+      text-align:center;
+    }
+
+    .hero p{
+      margin:8px 0;
+      text-align:center;
+      color:#6b5a43;
+      line-height:1.6;
+    }
+
+    .content-box{
+      background:#fffaf2;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+      border:1px solid #e0cfa9;
+      text-align:left;
+    }
+
+    .content-box h2{
+      margin-top:0;
+      margin-bottom:14px;
+      text-align:center;
+    }
+
+    .content-box p{
+      color:#5f503c;
+      line-height:1.7;
+      margin-bottom:14px;
+    }
+
+    .content-box ul{
+      margin:0 0 18px 18px;
+      color:#5f503c;
+      line-height:1.7;
+      padding:0;
+    }
+
+    .content-box li{
+      margin-bottom:8px;
+    }
+
+    .highlight-box{
+      background:#f8f0e3;
+      border:1px solid #e0cfa9;
+      border-radius:14px;
+      padding:18px;
+      margin-top:20px;
+      margin-bottom:20px;
+    }
+
+    .highlight-box p{
+      margin:8px 0;
+    }
+
+    .primary-btn{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:16px;
+      font-weight:bold;
+      background:linear-gradient(135deg,#d6a84f,#9c6a26);
+      color:white;
+      margin-top:10px;
+    }
+
+    .locked{
+      background:#f8f0e3;
+      color:#2b241c;
+      padding:28px;
+      border-radius:20px;
+      display:none;
+      text-align:center;
+    }
+
+    .locked button{
+      margin-top:16px;
+      background:#2b241c;
+      color:#f5ead9;
+      border:none;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .site-footer{
+      width:100%;
+      margin-top:26px;
+    }
+
+    .site-footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      text-align:center;
+      color:#cbb58c;
+      font-size:14px;
+      padding:0 18px 24px;
+      box-sizing:border-box;
+    }
+
+    .site-footer-content p{
+      margin:8px 0;
+    }
+
+    #footerNote{
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="top-bar">
+      <button class="back-btn" id="backBtn" onclick="goBack()">← Voltar</button>
+
+      <div class="language-wrap">
+        <select id="language" onchange="updateLanguage()">
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1 id="title">Biblioteca Premium</h1>
+      <p id="subtitle">Acede a uma biblioteca completa de recursos editáveis para acelerar a criação e crescimento do teu negócio.</p>
+    </div>
+
+    <div class="locked" id="lockedBox">
+      <h2 id="lockedTitle">Acesso ainda não ativo</h2>
+      <p id="lockedText">Esta área é exclusiva do Pack Completo + Biblioteca.</p>
+      <button id="lockedBtn" onclick="window.location.href='/index.html'">Ver Packs</button>
+    </div>
+
+    <div id="contentArea" class="content-box hidden">
+      <h2 id="libraryTitle">O que está incluído</h2>
+
+      <p id="libraryIntro">
+        Esta biblioteca inclui milhares de recursos digitais prontos a usar para acelerar a criação e crescimento do teu negócio.
+      </p>
+
+      <ul>
+        <li id="item1">Templates editáveis</li>
+        <li id="item2">Ferramentas práticas</li>
+        <li id="item3">Recursos estratégicos</li>
+        <li id="item4">Materiais de apoio</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p id="importantTitle"><strong>Importante:</strong></p>
+        <p id="importantText1">Todo o conteúdo está em inglês.</p>
+        <p id="importantText2">No entanto, é 100% editável, facilmente traduzível e pode ser adaptado ao teu negócio, marca ou idioma.</p>
+        <p id="importantText3">Esta biblioteca foi criada para poupar tempo, dar estrutura e acelerar resultados — não para começares do zero.</p>
+      </div>
+
+      <button class="primary-btn" id="libraryBtn" onclick="openLibrary()">Abrir Biblioteca</button>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-content">
+      <p id="footerNote">Tudo num só lugar, organizado para execução rápida.</p>
+      <p id="footerCopy">© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.</p>
+      <p id="footerTagline">Sistema criado para acelerar a criação de negócios</p>
+      <p id="footerAuthor">Desenvolvido por Suellen Brito</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/js/supabase-client.js"></script>
   <script src="/js/auth.js"></script>
 
   <script>
+    const LIBRARY_URL = "https://drive.google.com/drive/folders/15Pa3TIMgBE7LKuUqHvCACFXom2M13PBo?usp=sharing";
+
+    function goBack(){
+      window.location.href = "/members.html";
+    }
+
+    function openLibrary(){
+      window.location.href = LIBRARY_URL;
+    }
+
+    function updateLanguage(){
+      const lang = document.getElementById("language").value;
+
+      if(lang === "pt"){
+        document.documentElement.lang = "pt";
+        document.title = "Biblioteca Premium";
+        document.getElementById("backBtn").innerText = "← Voltar";
+        document.getElementById("title").innerText = "Biblioteca Premium";
+        document.getElementById("subtitle").innerText = "Acede a uma biblioteca completa de recursos editáveis para acelerar a criação e crescimento do teu negócio.";
+
+        document.getElementById("lockedTitle").innerText = "Acesso ainda não ativo";
+        document.getElementById("lockedText").innerText = "Esta área é exclusiva do Pack Completo + Biblioteca.";
+        document.getElementById("lockedBtn").innerText = "Ver Packs";
+
+        document.getElementById("libraryTitle").innerText = "O que está incluído";
+        document.getElementById("libraryIntro").innerText = "Esta biblioteca inclui milhares de recursos digitais prontos a usar para acelerar a criação e crescimento do teu negócio.";
+
+        document.getElementById("item1").innerText = "Templates editáveis";
+        document.getElementById("item2").innerText = "Ferramentas práticas";
+        document.getElementById("item3").innerText = "Recursos estratégicos";
+        document.getElementById("item4").innerText = "Materiais de apoio";
+
+        document.getElementById("importantTitle").innerHTML = "<strong>Importante:</strong>";
+        document.getElementById("importantText1").innerText = "Todo o conteúdo está em inglês.";
+        document.getElementById("importantText2").innerText = "No entanto, é 100% editável, facilmente traduzível e pode ser adaptado ao teu negócio, marca ou idioma.";
+        document.getElementById("importantText3").innerText = "Esta biblioteca foi criada para poupar tempo, dar estrutura e acelerar resultados — não para começares do zero.";
+
+        document.getElementById("libraryBtn").innerText = "Abrir Biblioteca";
+
+        const footerNote = document.getElementById("footerNote");
+        const footerCopy = document.getElementById("footerCopy");
+        const footerTagline = document.getElementById("footerTagline");
+        const footerAuthor = document.getElementById("footerAuthor");
+
+        if (footerNote) {
+          footerNote.innerText = "Tudo num só lugar, organizado para execução rápida.";
+        }
+        if (footerCopy) {
+          footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. Todos os direitos reservados.";
+        }
+        if (footerTagline) {
+          footerTagline.innerText = "Sistema criado para acelerar a criação de negócios";
+        }
+        if (footerAuthor) {
+          footerAuthor.innerText = "Desenvolvido por Suellen Brito";
+        }
+
+      } else {
+        document.documentElement.lang = "en";
+        document.title = "Premium Library";
+        document.getElementById("backBtn").innerText = "← Back";
+        document.getElementById("title").innerText = "Premium Library";
+        document.getElementById("subtitle").innerText = "Access a complete library of editable resources to accelerate the creation and growth of your business.";
+
+        document.getElementById("lockedTitle").innerText = "Access not active";
+        document.getElementById("lockedText").innerText = "This area is exclusive to the Complete + Library Pack.";
+        document.getElementById("lockedBtn").innerText = "View Plans";
+
+        document.getElementById("libraryTitle").innerText = "What is included";
+        document.getElementById("libraryIntro").innerText = "This library includes thousands of ready-to-use digital resources to help you build and grow your business faster.";
+
+        document.getElementById("item1").innerText = "Editable templates";
+        document.getElementById("item2").innerText = "Practical tools";
+        document.getElementById("item3").innerText = "Strategic resources";
+        document.getElementById("item4").innerText = "Support materials";
+
+        document.getElementById("importantTitle").innerHTML = "<strong>Important:</strong>";
+        document.getElementById("importantText1").innerText = "All content is in English.";
+        document.getElementById("importantText2").innerText = "However, it is 100% editable, easily translatable and can be adapted to your business, brand or language.";
+        document.getElementById("importantText3").innerText = "This library was created to save you time, give you structure and accelerate results — not to start from scratch.";
+
+        document.getElementById("libraryBtn").innerText = "Open Library";
+
+        const footerNote = document.getElementById("footerNote");
+        const footerCopy = document.getElementById("footerCopy");
+        const footerTagline = document.getElementById("footerTagline");
+        const footerAuthor = document.getElementById("footerAuthor");
+
+        if (footerNote) {
+          footerNote.innerText = "Everything in one place, organized for fast execution.";
+        }
+        if (footerCopy) {
+          footerCopy.innerText = "© 2025 SB - Contabilidade & Consultoria. All rights reserved.";
+        }
+        if (footerTagline) {
+          footerTagline.innerText = "System created to accelerate business creation";
+        }
+        if (footerAuthor) {
+          footerAuthor.innerText = "Developed by Suellen Brito";
+        }
+      }
+    }
+
     async function checkAccess(){
       const user = await getCurrentUser();
 
@@ -19,20 +353,18 @@
 
       const profile = await getProfile();
 
-      // 🔒 BLOQUEIO
       if(!profile || profile.plan !== "complete_plus_library"){
-        alert("Esta área é exclusiva do Pack Completo + Biblioteca.");
-        window.location.href = "/members.html";
+        document.getElementById("lockedBox").style.display = "block";
+        document.getElementById("contentArea").classList.add("hidden");
         return;
       }
 
-      // ✅ REDIRECIONA PARA GOOGLE DRIVE
-      window.location.href = "https://drive.google.com/drive/folders/15Pa3TIMgBE7LKuUqHvCACFXom2M13PBo?usp=sharing";
+      document.getElementById("lockedBox").style.display = "none";
+      document.getElementById("contentArea").classList.remove("hidden");
     }
 
+    updateLanguage();
     checkAccess();
   </script>
-</head>
-<body>
 </body>
 </html>
