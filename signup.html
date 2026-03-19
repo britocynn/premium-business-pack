@@ -96,6 +96,28 @@
       color:#7a5d2f;
       min-height:20px;
     }
+
+    .password-wrap{
+  position:relative;
+  width:100%;
+}
+
+.password-wrap input{
+  width:100%;
+  box-sizing:border-box;
+  padding-right:45px;
+}
+
+.toggle-password{
+  position:absolute;
+  top:50%;
+  right:12px;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+}
   </style>
 </head>
 <body>
@@ -116,7 +138,10 @@
     <input id="email" type="email" placeholder="Enter your email">
 
     <label id="passwordLabel" for="password">Password</label>
-    <input id="password" type="password" placeholder="Create a password">
+    <div class="password-wrap">
+  <input id="password" type="password" placeholder="Enter your password" />
+  <button type="button" class="toggle-password" onclick="togglePassword('password', this)">👁</button>
+</div>
 
     <button class="btn-primary" id="signupBtn" type="button" onclick="handleSignup()">Create Account</button>
 
@@ -200,6 +225,18 @@
         }, 1200);
       }
     }
+
+    function togglePassword(inputId, button){
+  const input = document.getElementById(inputId);
+
+  if(input.type === "password"){
+    input.type = "text";
+    button.innerText = "🙈";
+  } else {
+    input.type = "password";
+    button.innerText = "👁";
+  }
+}
 
     updateLanguage();
   </script>
