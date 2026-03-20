@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -141,6 +141,56 @@
 #footerNote{
   font-weight:bold;
 }
+
+.info-block{
+  background:#f8f0e3;
+  color:#2b241c;
+  padding:30px 26px;
+  border-radius:20px;
+  margin-bottom:24px;
+  text-align:left;
+  border:1px solid #e0cfa9;
+  box-shadow:0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.info-block h2{
+  margin:0 0 10px 0;
+  font-size:1.8rem;
+  line-height:1.2;
+  text-align:center;
+}
+
+.info-subtitle{
+  color:#6b5a43;
+  text-align:center;
+  font-size:1.05rem;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+
+.info-body{
+  color:#4f4333;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+.info-list{
+  margin:0 0 18px 20px;
+  padding:0;
+  color:#4f4333;
+  line-height:1.7;
+}
+
+.info-list li{
+  margin-bottom:8px;
+}
+
+.info-closing{
+  margin:0;
+  font-weight:bold;
+  color:#9c6a26;
+  text-align:center;
+}
     
   </style>
 </head>
@@ -155,14 +205,35 @@
 
     <div class="language-wrap">
       <select id="language" onchange="updateLanguage()">
-        <option value="en">English</option>
         <option value="pt">Português</option>
+        <option value="en">English</option>
       </select>
     </div>
 
     <h1 id="title">✦ Premium Business Pack ✦</h1>
-    <p class="subtitle" id="subtitle">Everything you need to build, launch and grow your income online</p>
+    <p class="subtitle" id="subtitle">Everything you need to build, launch and turn an idea into a real source of income</p>
 
+    <div class="info-block">
+  <h2 id="infoTitle">From idea to income — even if you’re starting from zero</h2>
+
+  <p class="info-subtitle" id="infoSubtitle">
+    A complete system to help you create, structure and launch a business or extra income stream in a simple and practical way.
+  </p>
+
+  <p class="info-body" id="infoBody">
+    This pack was created for people who want to start but feel stuck, overwhelmed or unsure where to begin. Inside, you’ll find tools, guidance and practical resources to help you move from idea to execution.
+  </p>
+
+  <ul class="info-list">
+    <li id="infoBullet1">Generate business and side hustle ideas</li>
+    <li id="infoBullet2">Create a business name</li>
+    <li id="infoBullet3">Follow a step-by-step business guide</li>
+    <li id="infoBullet4">Use practical execution checklists</li>
+    <li id="infoBullet5">Start faster with the editable library option</li>
+  </ul>
+
+  <p class="info-closing" id="infoClosing">Choose the pack that fits your goals below.</p>
+</div>
     <div class="box">
       <h2 id="boxTitle">What you get:</h2>
 
@@ -232,7 +303,7 @@
       document.getElementById("loginBtn").innerText = "Entrar";
       document.getElementById("signupBtn").innerText = "Criar Conta";
       document.getElementById("title").innerText = "✦ Pack Premium de Negócio ✦";
-      document.getElementById("subtitle").innerText = "Tudo o que é necessário para criar, lançar e fazer crescer o rendimento online";
+      document.getElementById("subtitle").innerText = "Tudo o que é necessário para criar, lançar e transformar a tua ideia numa verdadeira fonte de rendimento";
       document.getElementById("boxTitle").innerText = "O que está incluído:";
       document.getElementById("feature1").innerText = "✔ Gerador Premium de Nomes de Negócio";
       document.getElementById("feature2").innerText = "✔ Gerador de Ideias de Negócio e Renda Extra";
@@ -247,6 +318,15 @@
       document.getElementById("plan2Title").innerText = "Pack Completo + Biblioteca Editável";
       document.getElementById("plan2Desc").innerText = "Inclui tudo + templates editáveis e recursos avançados.";
       document.getElementById("plan2Btn").innerText = "Quero o Acesso Total";
+      document.getElementById("infoTitle").innerText = "Da ideia ao rendimento — mesmo que estejas a começar do zero";
+      document.getElementById("infoSubtitle").innerText = "Um sistema completo para te ajudar a criar, estruturar e lançar um negócio ou fonte de rendimento extra de forma simples e prática.";
+      document.getElementById("infoBody").innerText = "Este pack foi criado para pessoas que querem começar, mas sentem-se bloqueadas, sobrecarregadas ou sem saber por onde começar. Lá dentro, vais encontrar ferramentas, orientação e recursos práticos para passar da ideia à execução.";
+      document.getElementById("infoBullet1").innerText = "Gerar ideias de negócio e de rendimento extra";
+      document.getElementById("infoBullet2").innerText = "Criar um nome para o negócio";
+      document.getElementById("infoBullet3").innerText = "Seguir um guia passo a passo de negócio";
+      document.getElementById("infoBullet4").innerText = "Usar checklists práticas de execução";
+      document.getElementById("infoBullet5").innerText = "Começar mais depressa com a opção de biblioteca editável";
+      document.getElementById("infoClosing").innerText = "Escolhe abaixo o pack mais adequado aos teus objetivos.";
 
 
       const footerNote = document.getElementById("footerNote");
@@ -268,7 +348,7 @@
       document.getElementById("loginBtn").innerText = "Login";
       document.getElementById("signupBtn").innerText = "Create Account";
       document.getElementById("title").innerText = "✦ Premium Business Pack ✦";
-      document.getElementById("subtitle").innerText = "Everything you need to build, launch and grow your income online";
+      document.getElementById("subtitle").innerText = "Everything you need to build, launch and turn an idea into a real source of income";
       document.getElementById("boxTitle").innerText = "What you get:";
       document.getElementById("feature1").innerText = "✔ Premium Business Name Generator";
       document.getElementById("feature2").innerText = "✔ Business & Side Hustle Ideas Generator";
@@ -283,6 +363,15 @@
       document.getElementById("plan2Title").innerText = "Complete + Editable Library";
       document.getElementById("plan2Desc").innerText = "Includes everything + editable templates and advanced resources.";
       document.getElementById("plan2Btn").innerText = "Get Full Access";
+      document.getElementById("infoTitle").innerText = "From idea to income — even if you’re starting from zero";
+      document.getElementById("infoSubtitle").innerText = "A complete system to help you create, structure and launch a business or extra income stream in a simple and practical way.";
+      document.getElementById("infoBody").innerText = "This pack was created for people who want to start but feel stuck, overwhelmed or unsure where to begin. Inside, you’ll find tools, guidance and practical resources to help you move from idea to execution.";
+      document.getElementById("infoBullet1").innerText = "Generate business and side hustle ideas";
+      document.getElementById("infoBullet2").innerText = "Create a business name";
+      document.getElementById("infoBullet3").innerText = "Follow a step-by-step business guide";
+      document.getElementById("infoBullet4").innerText = "Use practical execution checklists";
+      document.getElementById("infoBullet5").innerText = "Start faster with the editable library option";
+      document.getElementById("infoClosing").innerText = "Choose the pack that fits your goals below.";
 
 
       const footerNote = document.getElementById("footerNote");
@@ -361,6 +450,7 @@
   window.buyPlan = buyPlan;
   window.updateLanguage = updateLanguage;
 
+  document.getElementById("language").value = "pt";
   updateLanguage();
 </script>
 </body>
